@@ -1,0 +1,31 @@
+// TITLES
+@mixin M_Headline_1 {
+  font-family: 'Noto Sans';
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+@mixin M_Headline_1_Bold {
+  font-family: 'Noto Sans';
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+// BODY
+@mixin M_Body_1 {
+  font-family: 'Noto Sans';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.25px;
+}
+
+@mixin M_Body_1_Bold {
+  font-family: 'Noto Sans';
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: 0.25px;
+}

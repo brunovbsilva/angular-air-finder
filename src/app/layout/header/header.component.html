@@ -1,0 +1,21 @@
+<header>
+  <div class="hamburguer" (click)="toggleSidebarState()">
+    <span class="material-icons button-icon">menu</span>
+  </div>
+  <div 
+    class="AF-logo"
+    [routerLink]="['home']">
+    <img
+      class="AF-image"
+      src="assets/images/layout/logo.png"/>
+    <label
+      class="AF-name">
+      {{ "Header.Logo" | translate }}
+    </label>
+  </div>
+  <div class="user-picture">
+    <img 
+      class="picture" 
+      src="assets/images/user.png"/>
+  </div>
+</header>

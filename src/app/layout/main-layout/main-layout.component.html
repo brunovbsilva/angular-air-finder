@@ -1,0 +1,13 @@
+<div class="parent">
+  <app-header></app-header>
+  <div class="main">
+    <app-sidebar (sidebarCollapsedEvent)="sidebarCollapsedEvent($event)" id="sidebar"></app-sidebar>
+    <div id="page" 
+      [ngClass]="{ 
+        'sidebar-open': !sidebarCollapsed,
+        'sidebar-close': sidebarCollapsed}">
+        <app-breadcrumb id="breadcumb"></app-breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

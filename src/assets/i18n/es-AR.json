@@ -1,0 +1,28 @@
+{
+    "Header": {
+      "Logo": "AirFinder"
+    },
+    "Sidebar": {
+      "Home":{
+        "Name": "Home"
+      },
+      "Test":{
+        "Name": "Test",
+        "Submenus": {
+          "TestSub1": "TestSub1",
+          "TestSub2": "TestSub2",
+          "TestSub3": "TestSub3",
+          "TestSub4": "TestSub4"
+        }
+      }
+    },
+    "Breadcrumb":{
+      "Home": "Home",
+      "Test": "Test",
+      "TestSub1": "Sub1",
+      "TestSub2": "Sub2",
+      "TestSub3": "Sub3",
+      "TestSub4": "Sub4"
+    }
+  }
+  

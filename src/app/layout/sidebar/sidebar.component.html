@@ -1,0 +1,27 @@
+<nav
+  (mouseleave)="setMouseOver(false)">
+  <div class="menu"
+    (mouseover)="setMouseOver(true)"
+    [ngClass]="{ 'closed': sidebarCollapsed && !mouseOver }">
+    <app-menu-sidebar 
+      *ngIf="!sidebarCollapsed || mouseOver">
+    </app-menu-sidebar>
+    <div class="copyright"
+      *ngIf="!sidebarCollapsed || mouseOver">
+      <div> Copyright {{ currentYear }} </div>
+      <div> Todos os direitos reservados </div>
+    </div>
+  </div>
+  <div 
+    class="close"
+    [ngClass]="{'hide-arrow' : !sidebarCollapsed && !mouseOver }"
+    (click)="toggleSidebar()">
+    <span 
+      class="material-icons"
+      [ngClass]="{
+        'arrow-closed': sidebarCollapsed,
+        'arrow': !sidebarCollapsed }">
+          expand_less
+      </span>
+  </div>
+</nav>

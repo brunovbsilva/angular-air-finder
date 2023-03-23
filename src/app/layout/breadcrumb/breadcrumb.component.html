@@ -1,0 +1,7 @@
+<a class="breadcumb-item" routerLink="home">
+  <img src="../../../assets/images/layout/pistol_icon.png" />
+</a>
+
+<span class="breadcumb-item" *ngFor="let route of routes">
+  / {{ route | translate | uppercase }}
+</span>

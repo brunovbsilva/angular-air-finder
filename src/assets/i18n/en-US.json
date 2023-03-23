@@ -1,0 +1,13 @@
+{
+  "Header": {
+    "Logo": "AirFinder"
+  },
+  "Sidebar": {
+    "Home":{
+      "Name": "Home"
+    }
+  },
+  "Breadcrumb":{
+    "Home": "Home"
+  }
+}

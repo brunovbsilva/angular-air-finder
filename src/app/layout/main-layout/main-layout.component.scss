@@ -1,0 +1,82 @@
+@import '../../../assets/sass/style';
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: fit-content;
+
+  .main {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: hidden;
+
+    #page {
+      padding: 0 40px;
+      background-color: transparent;
+      transition: all 0.2s ease;
+      flex-grow: 1;
+      height: calc(100vh - 76px);
+      margin-top: 76px;
+      overflow: scroll;
+
+      &.sidebar-open{
+        width: calc(100vw - 261px);
+        margin-left: 261px;
+      }
+
+      &.sidebar-close{
+        width: calc(100vw - 20px);
+        margin-left: 20px;
+      }
+
+      #breadcumb {
+        padding: 20px 0;
+        display: block;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .parent {
+    .main {
+      #page {
+        &.sidebar-open{
+          display: none;
+          width: 0;
+          margin-left: 0px;
+        }
+  
+        &.sidebar-close{
+          width: 100vw;
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-clip: content-box;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $AF_primary;
+  border-radius: 3.5px;
+  background-clip: content-box;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  background-clip: content-box;
+}
