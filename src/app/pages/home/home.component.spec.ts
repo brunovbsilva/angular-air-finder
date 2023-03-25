@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { SelectComponentSpec } from 'src/app/core/mock/components/select-component.spec';
 
 import { HomeComponent } from './home.component';
 
@@ -8,7 +9,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent, SelectComponentSpec ]
     })
     .compileComponents();
 
@@ -17,7 +18,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', fakeAsync(() => {
     expect(component).toBeTruthy();
-  });
+  }));
 });

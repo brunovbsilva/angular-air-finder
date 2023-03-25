@@ -9,5 +9,13 @@
   },
   "Breadcrumb":{
     "Home": "Home"
+  },
+  "Components": {
+    "Select": {
+      "SelectAll": "Select all",
+      "RemoveAll": "Remove all",
+      "NoResultsFound": "No results found",
+      "Placeholder": "Search here"
+    }
   }
 }

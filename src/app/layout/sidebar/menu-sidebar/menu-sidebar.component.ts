@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { Menu } from '../models/menu.model';
 import ApplicationMenus from '../menu-constructor';
-import { Router, withDebugTracing } from '@angular/router';
+import { Router } from '@angular/router';
 import { SidebarService } from '../services/sidebar.service';
 
 @Component({
@@ -42,24 +42,16 @@ export class MenuSidebarComponent implements OnInit {
       }
     });
   }
-  
-  async menuClick(menu: Menu): Promise<void> {
-    if (menu.submenus) {
-      menu.collapsed = !menu.collapsed;
-      return;
-    }
 
-    if (menu.path) {
-      this.deactivateActiveMenus();
-      menu.active = true;
-      await this.router.navigate([menu.path]);
-      if(this.mobileSize()){
-        this.service.sendToggleSidebarState();
-      }
-    }
+  toggleCollapsedMenu(menu: Menu) {
+    menu.collapsed = !menu.collapsed;
   }
 
-  mobileSize(): boolean {
-    return window.screen.width <= 450;
+  activeMenu(menu: Menu) {
+    this.deactivateActiveMenus();
+    menu.active = true;
+    if(window.screen.width <= 450){
+      this.service.sendToggleSidebarState();
+    }
   }
 }

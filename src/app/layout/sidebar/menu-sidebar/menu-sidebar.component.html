@@ -1,22 +1,37 @@
-<div *ngFor="let item of menus">
-    <div (click)="menuClick(item)" class="menu-item">
-        <span 
-            class="material-icons arrow" 
-            *ngIf="item.submenus"
-            [ngClass]="{
-                'arrow-submenu-closed': item.collapsed,
-                'arrow-submenu': !item.collapsed }">
-            expand_less
-        </span>
-        {{ item.name | translate }}
-    </div>
-    <div class="submenu" *ngIf="item.collapsed" @inOutAnimation>
-        <div
-            class="menu-subitem"
-            [ngClass]="{ 'menu-active': subitem.active }"
-            *ngFor="let subitem of item.submenus"
-            (click)="menuClick(subitem)">
-            {{ subitem.name | translate }}
-        </div>
-    </div>
-</div>
+<nav>
+    <ng-container *ngFor="let item of menus">
+
+        <ng-container *ngIf="item.submenus; else single">
+            <a class="menu-item" (click)="toggleCollapsedMenu(item)">
+                <span class="material-icons arrow" *ngIf="item.submenus"
+                    [ngClass]="{ 'arrow-submenu-closed': item.collapsed, 'arrow-submenu': !item.collapsed }">
+                    expand_less
+                </span>
+                {{ item.name | translate }}
+            </a>
+            <div class="submenu" *ngIf="item.collapsed" @inOutAnimation>
+                <a  *ngFor="let subitem of item.submenus"
+                    class="menu-subitem"
+                    [ngClass]="{ 'menu-active': subitem.active }"
+                    [routerLink]="item.path+'/'+subitem.path"
+                    routerLinkActive="active-page"
+                    ariaCurrentWhenActive="page"
+                    (click)="activeMenu(subitem)">
+                    {{ subitem.name | translate }}
+                </a>
+            </div>
+        </ng-container>
+
+        <ng-template #single>
+            <a  class="menu-item"
+                [ngClass]="{ 'menu-active': item.active }"
+                [routerLink]="item.path"
+                routerLinkActive="active-page"
+                ariaCurrentWhenActive="page"
+                (click)="activeMenu(item)">
+                {{ item.name | translate }}
+            </a>
+        </ng-template>
+
+    </ng-container>
+</nav>

@@ -23,6 +23,14 @@
     "TestSub2": "Sub2",
     "TestSub3": "Sub3",
     "TestSub4": "Sub4"
+  },
+  "Components": {
+    "Select": {
+      "SelectAll": "Selecionar todos",
+      "RemoveAll": "Remover todos",
+      "NoResultsFound": "Não foram encontrados resultados",
+      "Placeholder": "Pesquise aqui"
+    }
   }
 }
   

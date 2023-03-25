@@ -7,6 +7,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HomeModule } from './pages/home/home.module';
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -18,9 +21,11 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     LayoutModule,
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -31,7 +36,7 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' }
