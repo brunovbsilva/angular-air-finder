@@ -6,6 +6,8 @@ import { HeaderComponent } from './header.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { SidebarService } from '../sidebar/services/sidebar.service';
 import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -13,8 +15,15 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      imports: [RouterTestingModule.withRoutes([]), TranslateModule],
+      declarations: [
+        HeaderComponent
+      ],
+      imports: [
+        RouterTestingModule.withRoutes([]), 
+        TranslateModule,
+        MatToolbarModule,
+        MatIconModule
+      ],
       providers: [
         {
           provide: TranslateService,

@@ -1,37 +1,26 @@
-<nav>
+<mat-nav-list>
     <ng-container *ngFor="let item of menus">
-
         <ng-container *ngIf="item.submenus; else single">
-            <a class="menu-item" (click)="toggleCollapsedMenu(item)">
-                <span class="material-icons arrow" *ngIf="item.submenus"
+            <mat-list-item class="menu-item" (click)="toggleCollapsedMenu(item)">
+                <mat-icon class="arrow" *ngIf="item.submenus"
                     [ngClass]="{ 'arrow-submenu-closed': item.collapsed, 'arrow-submenu': !item.collapsed }">
                     expand_less
-                </span>
+                </mat-icon>
                 {{ item.name | translate }}
-            </a>
-            <div class="submenu" *ngIf="item.collapsed" @inOutAnimation>
-                <a  *ngFor="let subitem of item.submenus"
-                    class="menu-subitem"
-                    [ngClass]="{ 'menu-active': subitem.active }"
-                    [routerLink]="item.path+'/'+subitem.path"
-                    routerLinkActive="active-page"
-                    ariaCurrentWhenActive="page"
-                    (click)="activeMenu(subitem)">
+            </mat-list-item>
+            <ng-container *ngIf="item.collapsed">
+                <mat-list-item *ngFor="let subitem of item.submenus" class="submenu-item"
+                    [routerLink]="item.path+'/'+subitem.path" routerLinkActive="active-page"
+                    ariaCurrentWhenActive="page" (click)="activeMenu(subitem)">
                     {{ subitem.name | translate }}
-                </a>
-            </div>
+                </mat-list-item>
+            </ng-container>
         </ng-container>
-
         <ng-template #single>
-            <a  class="menu-item"
-                [ngClass]="{ 'menu-active': item.active }"
-                [routerLink]="item.path"
-                routerLinkActive="active-page"
-                ariaCurrentWhenActive="page"
-                (click)="activeMenu(item)">
+            <mat-list-item class="menu-item" [routerLink]="item.path" routerLinkActive="active-page"
+                ariaCurrentWhenActive="page" (click)="activeMenu(item)">
                 {{ item.name | translate }}
-            </a>
+            </mat-list-item>
         </ng-template>
-
     </ng-container>
-</nav>
+</mat-nav-list>

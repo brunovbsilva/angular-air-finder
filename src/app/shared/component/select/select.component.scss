@@ -5,6 +5,8 @@ form {
         width: 100%;
     }
 
+    
+
     .list {
         width: 100%;
         max-height: 256px;
@@ -27,8 +29,6 @@ form {
     }
 }
 
-
 ::ng-deep .mat-pseudo-checkbox{
     display: none !important;
 }
-

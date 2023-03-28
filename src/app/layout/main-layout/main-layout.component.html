@@ -1,5 +1,5 @@
-<div class="parent">
-  <app-header></app-header>
+<mat-sidenav-container class="parent">
+  <app-header (darkModeToggle)="setTheme()"></app-header>
   <div class="main">
     <app-sidebar (sidebarCollapsedEvent)="sidebarCollapsedEvent($event)" id="sidebar"></app-sidebar>
     <div id="page" 
@@ -10,4 +10,4 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-</div>
+</mat-sidenav-container>

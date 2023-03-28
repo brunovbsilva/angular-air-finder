@@ -1,21 +1,25 @@
 <header>
-  <div class="hamburguer" (click)="toggleSidebarState()">
-    <span class="material-icons button-icon">menu</span>
-  </div>
-  <div 
-    class="AF-logo"
-    [routerLink]="['home']">
-    <img
-      class="AF-image"
-      src="assets/images/layout/logo.png"/>
-    <label
-      class="AF-name">
-      {{ "Header.Logo" | translate }}
-    </label>
-  </div>
-  <div class="user-picture">
-    <img 
-      class="picture" 
-      src="assets/images/user.png"/>
-  </div>
+  <mat-toolbar color="primary">
+    <div class="left-header">
+      <button mat-icon-button class="example-icon hamburguer" aria-label="Example icon-button with menu icon" 
+        (click)="toggleSidebarState()">
+        <mat-icon >menu</mat-icon>
+      </button>
+      <span class="AF-name" routerLink="/home">{{ "Header.Logo" | translate }}</span>
+    </div>
+    <div class="right-header">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-slide-toggle [checked]="isChecked" (change)="onDarkModeSwitched($event)">Dark theme</mat-slide-toggle>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          sair
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
 </header>

@@ -1,35 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, style, animate, transition } from '@angular/animations';
 import { Menu } from '../models/menu.model';
 import ApplicationMenus from '../menu-constructor';
-import { Router } from '@angular/router';
 import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-menu-sidebar',
   templateUrl: './menu-sidebar.component.html',
-  styleUrls: ['./menu-sidebar.component.scss'],
-  animations: [
-    trigger('inOutAnimation', [
-      transition(':enter', [
-        style({ height: 0, opacity: 0 }),
-        animate('0.2s ease-in-out', style({ height: '*', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        style({ height: '*', opacity: 1 }),
-        animate('0.2s ease-in-out', style({ height: 0, opacity: 0 })),
-      ]),
-    ]),
-  ],
+  styleUrls: ['./menu-sidebar.component.scss']
 })
 export class MenuSidebarComponent implements OnInit {
 
   public menus: Menu[] = ApplicationMenus;
 
-  constructor(
-    private readonly router: Router,
-    private service: SidebarService
-  ) { }
+  constructor(private service: SidebarService) { }
 
   ngOnInit(): void {
   }

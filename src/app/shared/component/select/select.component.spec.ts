@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
 
 import { SelectComponent } from './select.component';
 
@@ -15,7 +17,11 @@ describe('SelectComponent', () => {
       imports:[
         MatFormFieldModule,
         MatChipsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        TranslateModule
+      ],
+      providers: [
+        { provide: TranslateService, useClass: TranslateServiceMock }
       ]
     })
     .compileComponents();

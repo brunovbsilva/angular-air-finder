@@ -1,10 +1,8 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
-import { Menu } from '../models/menu.model';
 import { SidebarService } from '../services/sidebar.service';
 
 import { MenuSidebarComponent } from './menu-sidebar.component';

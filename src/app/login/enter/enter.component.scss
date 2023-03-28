@@ -1,0 +1,16 @@
+:host {
+    .form-field{
+        width: 100%;
+    }
+
+    .controls {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .forgot-password {
+            line-height: 36px;
+            text-align: center;
+        }
+    }
+}

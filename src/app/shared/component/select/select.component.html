@@ -2,7 +2,7 @@
   <mat-form-field class="select-list" appearance="fill" (click)="searchInput.focus()">
     <mat-label>{{ label }}</mat-label>
     <mat-chip-grid #chipGrid aria-label="selection">
-      <mat-chip-row *ngFor="let item of valuesSelected" (removed)="remove(item)">
+      <mat-chip-row *ngFor="let item of valuesSelected" (removed)="remove(item)" highlighted="true">
         {{item.name}}
         <button matChipRemove [attr.aria-label]="'remove ' + item">
           <mat-icon>cancel</mat-icon>
@@ -19,13 +19,13 @@
     </mat-option>
     <mat-option *ngIf="(searchInput.value == '') && (items.length != 0)"
       (click)="toggleSelectAll()">
-      <mat-checkbox [indeterminate]="indeterminated()" [checked]="selectAll">
+      <mat-checkbox [indeterminate]="indeterminated()" [checked]="selectAll" color="primary">
         {{ 'Components.Select.' + (!selectAll ? 'SelectAll' : 'RemoveAll') | translate }}
       </mat-checkbox>
     </mat-option>
     <mat-list-item *ngFor="let item of items | filterSearch: searchInput.value">
       <mat-option [value]="item.value" (click)="selected(item.value)">
-        <mat-checkbox [checked]="checked(item.value)">{{item.name}}</mat-checkbox>
+        <mat-checkbox [checked]="checked(item.value)" color="primary">{{item.name}}</mat-checkbox>
       </mat-option>
     </mat-list-item>
   </mat-list>
