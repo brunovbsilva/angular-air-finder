@@ -24,12 +24,75 @@
     "TestSub3": "Sub3",
     "TestSub4": "Sub4"
   },
+  "Login": {
+    "Title": {
+      "enter": "Faça seu login",
+      "create": "Crie sua conta",
+      "forgot-password": "Esqueci minha senha"
+    },
+    "Enter": {
+      "ForgotPassword": "Esqueci minha senha",
+      "CreateAccount": "Ainda não tenho uma conta"
+    },
+    "Create": {
+      "CredentialsStep": "Preencha suas credenciais",
+      "PersonalInformationStep": "Preencha suas informações",
+      "CheckStep": "Confirme suas informações"
+    },
+    "ForgotPassword": {
+      "EmailStep": "Preencha seu email",
+      "CodeStep": "Preencha o código recebido no email",
+      "ChangePasswordStep": "Escolha sua nova senha"
+    }
+  },
+  "FormFields": {
+    "Label": {
+      "Name": "Nome",
+      "Login": "Login",
+      "NewPassword": "Nova senha",
+      "Password": "Senha",
+      "ConfirmPassword": "Confirme a senha",
+      "Email": "E-mail",
+      "Birthday": "Data de aniversário",
+      "Code": "Código"
+    },
+    "Placeholder": {
+      "Name": "Digite seu nome",
+      "Login": "Digite seu login",
+      "Password": "Digite sua senha",
+      "ConfirmPassword": "Confirme sua senha",
+      "Email": "Digite seu e-mail",
+      "Birthday": "dd/mm/aaaa",
+      "Code": "Digite seu código"
+    },
+    "Validators":{
+      "invalidCharactersNumber": "Pelomenos oito caracteres",
+      "invalidPasswordUppercase": "Pelomenos uma letra maiúscula",
+      "invalidPasswordLowercase": "Pelomenos uma letra minúscula",
+      "invalidPasswordNumber": "Pelomenos um número",
+      "invalidPasswordSpecial": "Pelomenos um caractere especial",
+      "required": "Campo obrigatório",
+      "email": "Email inválido",
+      "passwordMustMatch": "Senhas diferentes",
+      "invalidCode": "Código inválido"
+    }
+  },
   "Components": {
     "Select": {
       "SelectAll": "Selecionar todos",
       "RemoveAll": "Remover todos",
       "NoResultsFound": "Não foram encontrados resultados",
       "Placeholder": "Pesquise aqui"
+    }
+  },
+  "Shared": {
+    "Button": {
+      "Next": "Próximo",
+      "Back": "Anterior",
+      "Continue": "Continuar",
+      "Send": "Enviar",
+      "Reset": "Reset",
+      "Cancel": "Cancelar"
     }
   }
 }

@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { SelectComponent } from './component/select/select.component';
 import { FilterSearchPipe } from './component/select/pipes/filter-search.pipe';
 import { MaterialModule } from './material/material.module';
+import { ItemsInViewPipe } from './component/select/pipes/items-in-view.pipe';
+import { PasswordValidatorsComponent } from './component/password-validators/password-validators.component';
 
 @NgModule({
   imports: [
@@ -21,11 +23,15 @@ import { MaterialModule } from './material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     SelectComponent,
-    FilterSearchPipe
+    FilterSearchPipe,
+    ItemsInViewPipe,
+    PasswordValidatorsComponent
   ],
   declarations: [
     SelectComponent,
-    FilterSearchPipe
+    FilterSearchPipe,
+    ItemsInViewPipe,
+    PasswordValidatorsComponent
   ],
 })
 export class SharedModule { }

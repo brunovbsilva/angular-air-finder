@@ -10,6 +10,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { LoginModule } from './login/login.module';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { CustomErrorStateMatcher } from './login/form-helpers/custom-state-matcher';
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -40,7 +42,14 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { 
+      provide: LOCALE_ID, 
+      useValue: 'pt' 
+    },
+    { 
+      provide: ErrorStateMatcher,
+      useClass: CustomErrorStateMatcher
+    },
   ],
   bootstrap: [AppComponent]
 })

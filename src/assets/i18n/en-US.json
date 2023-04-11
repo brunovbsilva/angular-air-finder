@@ -10,12 +10,75 @@
   "Breadcrumb":{
     "Home": "Home"
   },
+  "Login": {
+    "Title": {
+      "enter": "Enter your login",
+      "create": "Create your account",
+      "forgot-password": "Forgot password"
+    },
+    "Enter": {
+      "ForgotPassword": "I forgot my password",
+      "CreateAccount": "I don't have an account"
+    },
+    "Create": {
+      "CredentialsStep": "Fill out your credentials",
+      "PersonalInformationStep": "Fill out your personal information",
+      "CheckStep": "Check information"
+    },
+    "ForgotPassword": {
+      "EmailStep": "Fill out your email",
+      "CodeStep": "Fill out your code from email",
+      "ChangePasswordStep": "Change your password"
+    }
+  },
+  "FormFields": {
+    "Label": {
+      "Name": "Name",
+      "Login": "Login",
+      "NewPassword": "New password",
+      "Password": "Password",
+      "ConfirmPassword": "Confirm password",
+      "Email": "Email",
+      "Birthday": "Birthday",
+      "Code": "Code"
+    },
+    "Placeholder": {
+      "Name": "Enter your name",
+      "Login": "Enter your login",
+      "Password": "Enter your password",
+      "ConfirmPassword": "Confirm your password",
+      "Email": "Enter your email",
+      "Birthday": "Enter your birthday",
+      "Code": "Enter your code"
+    },
+    "Validators":{
+      "invalidCharactersNumber": "It is required at least eigth characters",
+      "invalidPasswordUppercase": "It is required at least one uppercase character",
+      "invalidPasswordLowercase": "It is required at least one lowercase character",
+      "invalidPasswordNumber": "It is required at least one number character",
+      "invalidPasswordSpecial": "It is required at least one special character",
+      "required": "It is required field",
+      "email": "Invalid email",
+      "passwordMustMatch": "Passwords must match",
+      "invalidCode": "Invalid code"
+    }
+  },
   "Components": {
     "Select": {
       "SelectAll": "Select all",
       "RemoveAll": "Remove all",
       "NoResultsFound": "No results found",
       "Placeholder": "Search here"
+    }
+  },
+  "Shared": {
+    "Button": {
+      "Next": "Next",
+      "Back": "Back",
+      "Continue": "Continue",
+      "Send": "Send",
+      "Reset": "Reset",
+      "Cancel": "Cancel"
     }
   }
 }
