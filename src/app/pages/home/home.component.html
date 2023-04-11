@@ -2,6 +2,25 @@
     [form]="form"
     name="teste"
     [items]="items"
-    [label]="'teste label'">
+    [itemsInView]="1"
+    [label]="'label 1'">
 </app-select>
 
+<app-select
+    [form]="form"
+    name="teste2"
+    [items]="items2"
+    [itemsInView]="1"
+    [label]="'label 2'">
+</app-select>
+
+<app-select
+    [form]="form"
+    name="teste3"
+    [items]="items3"
+    [itemsInView]="1"
+    [label]="'label 3'">
+</app-select>
+
+<button mat-raised-button color="primary" class="col-6" (click)="onClick()">click me!</button>
+<button mat-stroked-button color="warn" class="col-6" (click)="onReset()">reset!</button>

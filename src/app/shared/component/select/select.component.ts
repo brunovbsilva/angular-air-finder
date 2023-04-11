@@ -1,86 +1,139 @@
-import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SelectModel } from './models/select.model';
+import { debounceTime, distinctUntilChanged, map, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent {
+export class SelectComponent implements AfterViewInit {
 
+  @ViewChild('searchInput') searchInput!: ElementRef;
   @Input() form: FormGroup = new FormGroup({});
   @Input() label?: string;
   @Input() placeholder?: string;
-  @Input() items: SelectModel[] = []
-  @Input() name: string = ''
-  public valuesSelected: SelectModel[] = [];
-  public open: boolean = false;
+  private get _items() {
+    return of(this.items);
+  };
+  @Input() items!: SelectModel[];
+  @Input() name: string = '';
+  @Input() itemsInView: number = 3;
+  private _open: boolean = false;
+  public set open(value: boolean){
+    this._open = value;
+    setTimeout(() => {
+      this.searchInput.nativeElement.focus();
+    }, 1);
+  };
+  public get open(){
+    return this._open;
+  };
   public selectAll: boolean = false;
+  public indeterminated: boolean = false;
 
   constructor(private eRef: ElementRef) { }
 
-  remove(item: SelectModel): void {
-    const index = this.valuesSelected.indexOf(item);
-
-    if (index >= 0) {
-      this.valuesSelected.splice(index, 1);
-    }
-
-    this.form.get(this.name)?.patchValue(this.createFormFormat());
-
-    this.selectAll = this.valuesSelected.length == this.items.length
+  ngAfterViewInit(): void {
+    this.checkSelectAllState();
+    this.updateItems();
   }
 
-  selected(event: string | number): void {
-    const value = this.items.find(x => x.value == event);
-    if(!this.valuesSelected.find(x => x == value) && value){
-      this.valuesSelected.push(value);
-      this.form.get(this.name)?.patchValue(this.createFormFormat());
+  private updateForm() {
+    this._items.pipe(
+      debounceTime(10),
+      distinctUntilChanged(),
+      map((value) => value.filter(v => v.selected).map(i => i.value))
+    ).subscribe(v => {
+      this.form.get(this.name)?.patchValue(v)
+    });
+  }
+
+  private updateItems() {
+    this.form.get(this.name)?.valueChanges
+      .pipe(
+        debounceTime(10),
+        distinctUntilChanged(),
+        tap((v) => console.log(v)),
+        map((v) => v ?? []),
+        map((value: (string | number)[]) => {
+          var result = this.items;
+          result.forEach((item) => {
+            item.selected = value.find(x => x == item.value) != undefined;
+          })
+          return result;
+        })
+      ).subscribe((value: SelectModel[]) => {
+        this.items = value;
+        this.checkSelectAllState();
+      });
+  }
+
+  // Non forms changes
+  openList() {
+    this.open = true;
+  }
+
+  selectItem(value: string | number): void {
+    const index = this.items.findIndex(x => x.value == value);
+    this.items[index].selected = true;
+    this.checkSelectAllState();
+    this.updateForm();
+  }
+
+  unselectItem(value: string | number): void {
+    if(value == 'extra'){
+      this.items.filter((v) => 
+        v.selected
+      ).filter((v, index) => 
+        index >= this.itemsInView
+      ).forEach((v) => {
+        var i = this.items.findIndex(x => x == v);
+        this.items[i].selected = false;
+      })
     }
     else{
-      if(value)
-        this.remove(value);
+      const index = this.items.findIndex(x => x.value == value);
+      this.items[index].selected = false;
     }
-
-    this.selectAll = this.valuesSelected.length == this.items.length
+    this.checkSelectAllState();
+    this.updateForm();
   }
 
-  checked(value: string | number) {
-    return this.valuesSelected.find(x => x.value == value) != undefined;
-  }
-
-  indeterminated() {
-    return this.valuesSelected.length < this.items.length && this.valuesSelected.length != 0
+  toggleSelectItem(value: string | number): void {
+    const index = this.items.findIndex(x => x.value == value);
+    this.items[index].selected = !this.items[index].selected;
+    this.checkSelectAllState();
+    this.updateForm();
   }
 
   toggleSelectAll() {
-    this.selectAll = !this.selectAll;
-    if(this.selectAll){
-      this.items.forEach(item => {
-        if(this.valuesSelected.filter(x => x == item).length == 0){
-          this.valuesSelected.push(item);
-        }
-      })
+    this.items.filter(x => x.selected == this.selectAll).forEach(x => {
+      x.selected = !this.selectAll;
+    });
+    this.checkSelectAllState();
+    this.updateForm();
+  }
+
+  checkSelectAllState() {
+    const selected = this.items.filter(v => v.selected).length;
+    const all = this.items.length;
+    if(selected == all){
+      this.selectAll = true;
+      this.indeterminated = false;
     }
     else {
-      this.valuesSelected = [];
+      this.selectAll = false
+      this.indeterminated = selected != 0;
     }
-
-    this.form.get(this.name)?.patchValue(this.createFormFormat());
   }
 
-  createFormFormat() {
-    var result: (string | number)[] = [];
-    this.valuesSelected.forEach(x => {
-      result.push(x.value);
-    })
-    return result;
-  }
-
+  // Listener
   @HostListener('document:click', ['$event'])
   clickout(event : any) {
     if(!this.eRef.nativeElement.contains(event.target)) {
+      this.searchInput.nativeElement.value = null;
       this.open = false;
     }
   }
