@@ -1,0 +1,35 @@
+<form class="form" [formGroup]="form">
+    <mat-form-field appearance="fill" class="form-field email" appearance="outline" color="accent">
+        <mat-label>{{ 'FormFields.Label.Login' | translate }}</mat-label>
+        <input matInput formControlName="login" type="login" [placeholder]="'FormFields.Placeholder.Login' | translate" autocomplete="off">
+        <mat-error *ngIf="form.get('login')?.hasError('required')">
+            {{ 'FormFields.Validators.required' | translate }}
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="form-field password" appearance="outline" color="accent">
+        <mat-label>{{ 'FormFields.Label.Password' | translate }}</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"  [placeholder]="'FormFields.Placeholder.Password' | translate" autocomplete="current-password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon [color]="form.get('password')?.hasError('required') && form.dirty ? 'warn' : ''">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+            {{ 'FormFields.Validators.required' | translate }}
+        </mat-error>
+    </mat-form-field>
+
+    <div class="controls">
+        <button mat-stroked-button class="login-button" (click)="submit()">
+            {{ 'Shared.Button.Continue' | translate | uppercase }}
+        </button>
+    </div>
+
+    <div class="routes">
+        <a class="link" routerLink="forgot-password" routerLinkActive="active-page" ariaCurrentWhenActive="page">
+            {{ 'Login.Enter.ForgotPassword' | translate }}
+        </a>
+        <a class="link" routerLink="create" routerLinkActive="active-page" ariaCurrentWhenActive="page">
+            {{ 'Login.Enter.CreateAccount' | translate }}
+        </a>
+    </div>
+</form>

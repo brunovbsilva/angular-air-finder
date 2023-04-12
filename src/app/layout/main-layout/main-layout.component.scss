@@ -16,8 +16,8 @@
       background-color: transparent;
       transition: all 0.2s ease;
       flex-grow: 1;
-      height: calc(100vh - 76px);
-      margin-top: 76px;
+      height: calc(100vh - 64px);
+      margin-top: 64px;
       overflow: scroll;
 
       &.sidebar-open{
@@ -40,10 +40,12 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 599px) {
   .parent {
     .main {
       #page {
+        height: calc(100vh - 56px);
+        margin-top: 56px;
         &.sidebar-open{
           display: none;
           width: 0;

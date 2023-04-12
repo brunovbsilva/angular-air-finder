@@ -1,22 +1,26 @@
-<div *ngFor="let item of menus">
-    <div (click)="menuClick(item)" class="menu-item">
-        <span 
-            class="material-icons arrow" 
-            *ngIf="item.submenus"
-            [ngClass]="{
-                'arrow-submenu-closed': item.collapsed,
-                'arrow-submenu': !item.collapsed }">
-            expand_less
-        </span>
-        {{ item.name | translate }}
-    </div>
-    <div class="submenu" *ngIf="item.collapsed" @inOutAnimation>
-        <div
-            class="menu-subitem"
-            [ngClass]="{ 'menu-active': subitem.active }"
-            *ngFor="let subitem of item.submenus"
-            (click)="menuClick(subitem)">
-            {{ subitem.name | translate }}
-        </div>
-    </div>
-</div>
+<mat-nav-list>
+    <ng-container *ngFor="let item of menus">
+        <ng-container *ngIf="item.submenus; else single">
+            <mat-list-item class="menu-item" (click)="toggleCollapsedMenu(item)">
+                <mat-icon class="arrow" *ngIf="item.submenus"
+                    [ngClass]="{ 'arrow-submenu-closed': item.collapsed, 'arrow-submenu': !item.collapsed }">
+                    expand_less
+                </mat-icon>
+                {{ item.name | translate }}
+            </mat-list-item>
+            <ng-container *ngIf="item.collapsed">
+                <mat-list-item *ngFor="let subitem of item.submenus" class="submenu-item"
+                    [routerLink]="item.path+'/'+subitem.path" routerLinkActive="active-page"
+                    ariaCurrentWhenActive="page" (click)="activeMenu(subitem)">
+                    {{ subitem.name | translate }}
+                </mat-list-item>
+            </ng-container>
+        </ng-container>
+        <ng-template #single>
+            <mat-list-item class="menu-item" [routerLink]="item.path" routerLinkActive="active-page"
+                ariaCurrentWhenActive="page" (click)="activeMenu(item)">
+                {{ item.name | translate }}
+            </mat-list-item>
+        </ng-template>
+    </ng-container>
+</mat-nav-list>

@@ -1,0 +1,21 @@
+:host {
+    margin: auto 0;
+    overflow: auto;
+    .stepper{
+        padding: 25px 0;
+        .card-title {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .form-field{
+            width: 100%;
+        }
+    
+        .controls {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+}

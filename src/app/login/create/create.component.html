@@ -1,0 +1,106 @@
+<mat-stepper orientation="vertical" [linear]="true" #stepper class="stepper">
+    <mat-step [stepControl]="formPersonalStep" [label]="'Login.Create.PersonalInformationStep' | translate">
+        <form [formGroup]="formPersonalStep">
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.Name' | translate }}</mat-label>
+                <input matInput formControlName="name"
+                    type="text"
+                    [placeholder]="'FormFields.Placeholder.Name' | translate"
+                    autocomplete="name">
+                <mat-error *ngIf="formPersonalStep.get('name')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.Birthday' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker"
+                    formControlName="birthday"
+                    autocomplete="bday">
+                <mat-error *ngIf="formPersonalStep.get('birthday')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.Email' | translate }}</mat-label>
+                <input matInput formControlName="email"
+                    type="email"
+                    [placeholder]="'FormFields.Placeholder.Email' | translate"
+                    autocomplete="email">
+                <mat-error *ngIf="formPersonalStep.get('email')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+                <mat-error *ngIf="!formPersonalStep.get('email')?.hasError('required') && formPersonalStep.get('email')?.hasError('invalidEmail')">
+                    {{ 'FormFields.Validators.email' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <button mat-button matStepperNext>{{ 'Shared.Button.Next' | translate }}</button>
+        </form>
+    </mat-step>
+    <mat-step [label]="'Login.Create.CheckStep' | translate">
+        <p>Name: {{formPersonalStep.get('name')?.value}}</p>
+        <p>Birthday: {{formPersonalStep.get('birthday')?.value}}</p>
+        <p>Email: {{formPersonalStep.get('email')?.value}}</p>
+        <button mat-button matStepperPrevious>{{ 'Shared.Button.Back' | translate }}</button>
+        <button mat-button matStepperNext>{{ 'Shared.Button.Next' | translate }}</button>
+    </mat-step>
+    <mat-step [stepControl]="formCredentialsStep" [label]="'Login.Create.CredentialsStep' | translate">
+        <form [formGroup]="formCredentialsStep">
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.Login' | translate }}</mat-label>
+                <input matInput formControlName="login" type="text"
+                    [placeholder]="'FormFields.Placeholder.Login' | translate"
+                    autocomplete="off"
+                    (focus)="onFocus()">
+                <mat-error *ngIf="formCredentialsStep.get('login')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.Password' | translate }}</mat-label>
+                <input matInput formControlName="password"
+                    [type]="hideP ? 'password' : 'text'"
+                    [placeholder]="'FormFields.Placeholder.Password' | translate"
+                    autocomplete="off"
+                    (focus)="onFocus(0)">
+                <button mat-icon-button matSuffix 
+                    (click)="hideP = !hideP" 
+                    [attr.aria-label]="'Hide password'" 
+                    [attr.aria-pressed]="hideP">
+                    <mat-icon [color]="!formCredentialsStep.get('confirmPassword')?.valid ? 'warn' : ''">
+                        {{ hideP ? 'visibility_off' : 'visibility' }}
+                    </mat-icon>
+                </button>
+                <mat-error *ngIf="formCredentialsStep.get('password')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <app-password-validators #validatorsPassword [form]="formCredentialsStep" name="password"></app-password-validators>
+            <mat-form-field appearance="fill" class="form-field" appearance="outline" color="accent">
+                <mat-label>{{ 'FormFields.Label.ConfirmPassword' | translate }}</mat-label>
+                <input matInput formControlName="confirmPassword" 
+                    [type]="hideCP ? 'password' : 'text'"
+                    [placeholder]="'FormFields.Placeholder.ConfirmPassword' | translate" 
+                    autocomplete="off"
+                    (focus)="onFocus(1)">
+                <button mat-icon-button matSuffix (click)="hideCP = !hideCP" 
+                    [attr.aria-label]="'Hide confirm password'" 
+                    [attr.aria-pressed]="hideCP">
+                    <mat-icon [color]="!formCredentialsStep.get('confirmPassword')?.valid ? 'warn' : ''">
+                        {{ hideCP ? 'visibility_off' : 'visibility' }}
+                    </mat-icon>
+                </button>
+                <mat-error *ngIf="formCredentialsStep.get('confirmPassword')?.hasError('required')">
+                    {{ 'FormFields.Validators.required' | translate }}
+                </mat-error>
+                <mat-error *ngIf="formCredentialsStep.get('confirmPassword')?.hasError('passwordMatch')">
+                    {{ 'FormFields.Validators.passwordMustMatch' | translate }}
+                </mat-error>
+            </mat-form-field>
+            <app-password-validators #validatorsConfirmPassword [form]="formCredentialsStep" name="confirmPassword"></app-password-validators>
+            <button mat-button (click)="stepper.reset()">{{ 'Shared.Button.Cancel' | translate }}</button>
+            <button mat-button (click)="submit()">{{'Shared.Button.Send' | translate}}</button>
+        </form>
+    </mat-step>
+</mat-stepper>

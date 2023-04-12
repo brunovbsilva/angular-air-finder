@@ -2,16 +2,7 @@
 @import 'fonts';
 @import 'shadow';
 @import 'typography';
-
-*:not(.material-icons) { 
-  @include M_Body_1;
-  color: $AF_Main_Text;
-
-  span, p {
-    margin: 0;
-    padding: 0;
-  }
-}
+@import 'theme';
 
 html,
 body {
@@ -19,15 +10,8 @@ body {
   margin: 0;
 }
 
-.material-icons {
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-  -webkit-user-select: none;
-  user-select: none;
-  &.button-icon{
-      &:active {
-          background-color: $AF_Gray_100;
-      }
+*{
+  mat-form-field{
+    padding-top: 10px;
   }
 }
