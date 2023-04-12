@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
 import { CustomFormValidations } from '../form-helpers/custom-form-validations';
+import { PasswordValidatorsComponent } from 'src/app/shared/component/password-validators/password-validators.component';
 
 @Component({
   selector: 'app-create',
@@ -10,29 +11,30 @@ import { CustomFormValidations } from '../form-helpers/custom-form-validations';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  hideP = true;
-  validationsP = false;
-  hideCP = true;
-  validationsCP = false;
-  formFirstStep: FormGroup;
-  formSecondStep: FormGroup;
+
+  public hideP = true;
+  @ViewChild('validatorsPassword') passwordInput!: PasswordValidatorsComponent; 
+  public hideCP = true;
+  @ViewChild('validatorsConfirmPassword') confirmInput!: PasswordValidatorsComponent; 
+  public formCredentialsStep: FormGroup;
+  public formPersonalStep: FormGroup;
 
   constructor(
     private authenticationService: AuthenticationService, 
     private router: Router,
     private fb: FormBuilder) {
-      this.formFirstStep = this.fb.group({
+      this.formCredentialsStep = this.fb.group({
         login: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required, CustomFormValidations.passwordValidator]),
         confirmPassword: new FormControl('', [Validators.required, CustomFormValidations.passwordValidator]),
       });
-      this.formFirstStep.get('confirmPassword')?.addValidators(
+      this.formCredentialsStep.get('confirmPassword')?.addValidators(
         this.compareValidator(
-          this.formFirstStep.get('password')!,
-          this.formFirstStep.get('confirmPassword')!
+          this.formCredentialsStep.get('password')!,
+          this.formCredentialsStep.get('confirmPassword')!
         )
       )
-      this.formSecondStep = this.fb.group({
+      this.formPersonalStep = this.fb.group({
         name: new FormControl('', [Validators.required]),
         birthday: new FormControl(new Date, [Validators.required]),
         email: new FormControl('', [Validators.required, CustomFormValidations.emailValidator]),
@@ -47,15 +49,9 @@ export class CreateComponent {
     };
   }
 
-  focusPassword(number: number, set: boolean) {
-    switch(number){
-      case 0:
-        this.validationsP = set;
-        break;
-      case 1:
-        this.validationsCP = set;
-        break;
-    }
+  onFocus(number: number = -1) {
+    number == 0 ? this.passwordInput.show() : this.passwordInput.hide();
+    number == 1 ? this.confirmInput.show() : this.confirmInput.hide();
   }
 
   submit() {

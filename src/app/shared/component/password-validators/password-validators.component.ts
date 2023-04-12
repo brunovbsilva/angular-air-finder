@@ -7,7 +7,17 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./password-validators.component.scss']
 })
 export class PasswordValidatorsComponent {
+
   @Input() public form!: FormGroup;
   @Input() public name!: string;
   public validators: string[] = ['invalidCharactersNumber', 'invalidPasswordUppercase', 'invalidPasswordLowercase', 'invalidPasswordNumber', 'invalidPasswordSpecial'];
+  public hidden: boolean = true;
+
+  public hide() {
+    this.hidden = true;
+  }
+
+  public show() {
+    this.hidden = false;
+  }
 }

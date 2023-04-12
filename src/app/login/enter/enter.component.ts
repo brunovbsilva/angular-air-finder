@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
-import { CustomFormValidations } from '../form-helpers/custom-form-validations';
 
 @Component({
   selector: 'app-enter',
@@ -19,7 +18,7 @@ export class EnterComponent {
     private router: Router,
     private fb: FormBuilder) {
       this.form = this.fb.group({
-        email: new FormControl('', [Validators.required, CustomFormValidations.emailValidator]),
+        login: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
       })
   }
@@ -30,7 +29,7 @@ export class EnterComponent {
       return;
 
     this.authenticationService.login(
-      this.form.get('email')?.value, 
+      this.form.get('login')?.value, 
       this.form.get('password')?.value)
     .pipe(finalize(() => this.router.navigate(['/home'])))
     .subscribe(() => console.log('login!'));

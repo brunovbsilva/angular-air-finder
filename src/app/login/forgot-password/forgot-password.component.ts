@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomFormValidations } from '../form-helpers/custom-form-validations';
+import { PasswordValidatorsComponent } from 'src/app/shared/component/password-validators/password-validators.component';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,11 +10,13 @@ import { CustomFormValidations } from '../form-helpers/custom-form-validations';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
-  hideP: boolean = true;
-  hideCP: boolean = true;
-  formEmailStep: FormGroup;
-  formCodeStep: FormGroup;
-  formPasswordStep: FormGroup;
+  public hideP = true;
+  @ViewChild('validatorsPassword') passwordInput!: PasswordValidatorsComponent; 
+  public hideCP = true;
+  @ViewChild('validatorsConfirmPassword') confirmInput!: PasswordValidatorsComponent; 
+  public formEmailStep: FormGroup;
+  public formCodeStep: FormGroup;
+  public formPasswordStep: FormGroup;
   private code: string = '1234';
 
   constructor(
@@ -57,12 +60,17 @@ export class ForgotPasswordComponent {
     };
   }
 
+  onFocus(number: number = -1) {
+    number == 0 ? this.passwordInput.show() : this.passwordInput.hide();
+    number == 1 ? this.confirmInput.show() : this.confirmInput.hide();
+  }
+
   submit() {
     
   }
 
   private sendCode() {
-
+    
   }
 
 }

@@ -1,12 +1,9 @@
 <form class="form" [formGroup]="form">
     <mat-form-field appearance="fill" class="form-field email" appearance="outline" color="accent">
-        <mat-label>{{ 'FormFields.Label.Email' | translate }}</mat-label>
-        <input matInput formControlName="email" type="email" [placeholder]="'FormFields.Placeholder.Email' | translate" autocomplete="email">
-        <mat-error *ngIf="form.get('email')?.hasError('required')">
+        <mat-label>{{ 'FormFields.Label.Login' | translate }}</mat-label>
+        <input matInput formControlName="login" type="login" [placeholder]="'FormFields.Placeholder.Login' | translate" autocomplete="off">
+        <mat-error *ngIf="form.get('login')?.hasError('required')">
             {{ 'FormFields.Validators.required' | translate }}
-        </mat-error>
-        <mat-error *ngIf="!form.get('email')?.hasError('required') && form.get('email')?.hasError('invalidEmail')">
-            {{ 'FormFields.Validators.email' | translate }}
         </mat-error>
     </mat-form-field>
     
