@@ -9,20 +9,18 @@
     "Test":{
       "Name": "Teste",
       "Submenus": {
-        "TestSub1": "TesteSub1",
-        "TestSub2": "TesteSub2",
-        "TestSub3": "TesteSub3",
-        "TestSub4": "TesteSub4"
+        "QRCodeGenerator": "Gerarador de QRCode",
+        "QRCodeReader": "Leitor de QRCode"
       }
     }
   },
   "Breadcrumb":{
     "Home": "Home",
     "Test": "Test",
-    "TestSub1": "Sub1",
-    "TestSub2": "Sub2",
-    "TestSub3": "Sub3",
-    "TestSub4": "Sub4"
+    "Test1": "Sub1",
+    "Test2": "Sub2",
+    "Test3": "Sub3",
+    "Test4": "Sub4"
   },
   "Login": {
     "Title": {

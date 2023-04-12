@@ -5,6 +5,13 @@
   "Sidebar": {
     "Home":{
       "Name": "Home"
+    },
+    "Test":{
+      "Name": "Test",
+      "Submenus": {
+        "QRCodeWriter": "QRCode Generator",
+        "QRCodeReader": "QRCode Reader"
+      }
     }
   },
   "Breadcrumb":{

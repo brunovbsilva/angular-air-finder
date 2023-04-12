@@ -6,20 +6,16 @@ export default [
     path: 'home',
   },
   {
-    name: 'test',
+    name: 'Sidebar.Test.Name',
     path: 'test',
     submenus: [
       {
-        name: 'test1',
-        path: 'test1',
+        name: 'Sidebar.Test.Submenus.QRCodeGenerator',
+        path: 'qrcode-generator',
       },
       {
-        name: 'test2',
-        path: 'test2',
-      },
-      {
-        name: 'test3',
-        path: 'test3',
+        name: 'Sidebar.Test.Submenus.QRCodeReader',
+        path: 'qrcode-reader',
       },
     ]
   },

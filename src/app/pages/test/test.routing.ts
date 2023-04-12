@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Test1Component } from './test1/test1.component';
-import { Test2Component } from './test2/test2.component';
-import { Test3Component } from './test3/test3.component';
+import { QrcodeGeneratorComponent } from './qrcode-generator/qrcode-generator.component';
+import { QrcodeReaderComponent } from './qrcode-reader/qrcode-reader.component';
 
 export const routes: Routes = [
   {
@@ -12,25 +11,18 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'test1',
+        path: 'qrcode-generator',
         data: {
-          title: 'Test Sub 1',
+          title: 'QRCode Generator',
         },
-        component: Test1Component,
+        component: QrcodeGeneratorComponent,
       },
       {
-        path: 'test2',
+        path: 'qrcode-reader',
         data: {
-          title: 'Test Sub 2',
+          title: 'QRCode Reader',
         },
-        component: Test2Component,
-      },
-      {
-        path: 'test3',
-        data: {
-          title: 'Test Sub 3',
-        },
-        component: Test3Component,
+        component: QrcodeReaderComponent,
       },
     ]
   }
