@@ -7,6 +7,7 @@ import { FilterSearchPipe } from './component/select/pipes/filter-search.pipe';
 import { MaterialModule } from './material/material.module';
 import { ItemsInViewPipe } from './component/select/pipes/items-in-view.pipe';
 import { PasswordValidatorsComponent } from './component/password-validators/password-validators.component';
+import { KeysPipe } from './pipe/keys.pipe';
 
 @NgModule({
   imports: [
@@ -25,13 +26,15 @@ import { PasswordValidatorsComponent } from './component/password-validators/pas
     SelectComponent,
     FilterSearchPipe,
     ItemsInViewPipe,
-    PasswordValidatorsComponent
+    PasswordValidatorsComponent,
+    KeysPipe
   ],
   declarations: [
     SelectComponent,
     FilterSearchPipe,
     ItemsInViewPipe,
-    PasswordValidatorsComponent
+    PasswordValidatorsComponent,
+    KeysPipe
   ],
 })
 export class SharedModule { }

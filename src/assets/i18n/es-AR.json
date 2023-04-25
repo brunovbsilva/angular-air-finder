@@ -1,36 +1,95 @@
 {
-    "Header": {
-      "Logo": "AirFinder"
+  "Header": {
+    "Logo": "AirFinder"
+  },
+  "Sidebar": {
+    "Home": {
+      "Name": "Inicio"
     },
-    "Sidebar": {
-      "Home":{
-        "Name": "Home"
-      },
-      "Test":{
-        "Name": "Test",
-        "Submenus": {
-          "TestSub1": "TestSub1",
-          "TestSub2": "TestSub2",
-          "TestSub3": "TestSub3",
-          "TestSub4": "TestSub4"
-        }
-      }
-    },
-    "Breadcrumb":{
-      "Home": "Home",
-      "Test": "Test",
-      "TestSub1": "Sub1",
-      "TestSub2": "Sub2",
-      "TestSub3": "Sub3",
-      "TestSub4": "Sub4"
-    },
-    "Components": {
-      "Select": {
-        "SelectAll": "Seleccionar todo",
-        "RemoveAll": "Eliminar todo",
-        "NoResultsFound": "No se han encontrado resultados",
-        "Placeholder": "Busca aquí"
+    "Test": {
+      "Name": "Prueba",
+      "Submenus": {
+        "QRCodeGenerator": "Generador de código QR",
+        "QRCodeReader": "Lector de código QR"
       }
     }
+  },
+  "Breadcrumb": {
+    "Home": "Inicio",
+    "Test": "Prueba",
+    "Qrcode-generator": "Generador de código QR",
+    "Qrcode-reader": "Lector de código QR"
+  },
+  "Login": {
+    "Title": {
+      "enter": "Ingrese",
+      "create": "Crear cuenta",
+      "forgot-password": "Olvidé mi contraseña"
+    },
+    "Enter": {
+      "ForgotPassword": "Olvidé mi contraseña",
+      "CreateAccount": "No tengo una cuenta"
+    },
+    "Create": {
+      "PersonalInformationStep": "Complete sus datos",
+      "CheckStep": "Confirme sus datos",
+      "CredentialsStep": "Crear credenciales"
+    },
+    "ForgotPassword": {
+      "EmailStep": "Ingrese su correo electrónico",
+      "CodeStep": "Ingrese el código recibido por correo electrónico",
+      "ChangePasswordStep": "Elija su nueva contraseña"
+    }
+  },
+  "FormFields": {
+    "Label": {
+      "Name": "Nombre",
+      "Login": "Usuario",
+      "NewPassword": "Nueva contraseña",
+      "Password": "Contraseña",
+      "ConfirmPassword": "Confirmar contraseña",
+      "Email": "Correo electrónico",
+      "Birthday": "Fecha de cumpleaños",
+      "Code": "Código"
+    },
+    "Placeholder": {
+      "Name": "Ingrese su nombre",
+      "Login": "Ingrese su usuario",
+      "Password": "Ingrese su contraseña",
+      "ConfirmPassword": "Confirme su contraseña",
+      "Email": "Ingrese su correo electrónico",
+      "Birthday": "dd/mm/aaaa",
+      "Code": "Ingrese su código"
+    },
+    "Validators": {
+      "itIsRequired": "Es requerido:",
+      "minlength": "Ocho caracteres",
+      "invalidPasswordUppercase": "Mayúscula",
+      "invalidPasswordLowercase": "Minúscula",
+      "invalidPasswordNumber": "Número",
+      "invalidPasswordSpecial": "Carácter especial",
+      "required": "Campo obligatorio",
+      "email": "Correo electrónico inválido",
+      "passwordMustMatch": "Las contraseñas no coinciden",
+      "invalidCode": "Código inválido"
+    }
+  },
+  "Components": {
+    "Select": {
+      "SelectAll": "Seleccionar todos",
+      "RemoveAll": "Quitar todos",
+      "NoResultsFound": "No se encontraron resultados",
+      "Placeholder": "Buscar aquí"
+    }
+  },
+  "Shared": {
+    "Button": {
+      "Next": "Siguiente",
+      "Back": "Atrás",
+      "Continue": "Continuar",
+      "Send": "Enviar",
+      "Reset": "Reiniciar",
+      "Cancel": "Cancelar"
+    }
   }
-  
+}

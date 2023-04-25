@@ -10,7 +10,7 @@ export class PasswordValidatorsComponent {
 
   @Input() public form!: FormGroup;
   @Input() public name!: string;
-  public validators: string[] = ['invalidCharactersNumber', 'invalidPasswordUppercase', 'invalidPasswordLowercase', 'invalidPasswordNumber', 'invalidPasswordSpecial'];
+  public validators: string[] = ['minlength', 'invalidPasswordUppercase', 'invalidPasswordLowercase', 'invalidPasswordNumber', 'invalidPasswordSpecial'];
   public hidden: boolean = true;
 
   public hide() {

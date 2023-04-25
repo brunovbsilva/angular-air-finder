@@ -1,60 +1,69 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
-import { CustomFormValidations } from '../form-helpers/custom-form-validations';
-import { PasswordValidatorsComponent } from 'src/app/shared/component/password-validators/password-validators.component';
+import { CredentialsForm } from '../../shared/form/components/create-credentials/credentials.form';
+import { PersonalForm } from '../../shared/form/components/personal-information/personal.form';
+import { UserService } from 'src/app/core/security/services/user.service';
+import { UserRequest } from './model/user-request';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
 
+  public form: FormGroup = new FormGroup({
+    credentials: new CredentialsForm(),
+    personal: new PersonalForm()
+  });
   public hideP = true;
-  @ViewChild('validatorsPassword') passwordInput!: PasswordValidatorsComponent; 
   public hideCP = true;
-  @ViewChild('validatorsConfirmPassword') confirmInput!: PasswordValidatorsComponent; 
-  public formCredentialsStep: FormGroup;
-  public formPersonalStep: FormGroup;
+  public loading = false;
+
+  get personal(): PersonalForm {
+    return this.form.get('personal')! as PersonalForm;
+  }
+  get credentials(): CredentialsForm {
+    return this.form.get('credentials')! as CredentialsForm;
+  }
 
   constructor(
     private authenticationService: AuthenticationService, 
     private router: Router,
-    private fb: FormBuilder) {
-      this.formCredentialsStep = this.fb.group({
-        login: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required, CustomFormValidations.passwordValidator]),
-        confirmPassword: new FormControl('', [Validators.required, CustomFormValidations.passwordValidator]),
-      });
-      this.formCredentialsStep.get('confirmPassword')?.addValidators(
-        this.compareValidator(
-          this.formCredentialsStep.get('password')!,
-          this.formCredentialsStep.get('confirmPassword')!
-        )
-      )
-      this.formPersonalStep = this.fb.group({
-        name: new FormControl('', [Validators.required]),
-        birthday: new FormControl(new Date, [Validators.required]),
-        email: new FormControl('', [Validators.required, CustomFormValidations.emailValidator]),
-      });
-  }
+    private userService: UserService) {}
 
-  compareValidator(controlOne: AbstractControl, controlTwo: AbstractControl) {
-    return () => {
-      if (controlOne.value !== controlTwo.value && controlOne.value != '' && controlTwo.value != '')
-        return { passwordMatch: true };
-      return null;
-    };
-  }
-
-  onFocus(number: number = -1) {
-    number == 0 ? this.passwordInput.show() : this.passwordInput.hide();
-    number == 1 ? this.confirmInput.show() : this.confirmInput.hide();
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(v => {
+      console.log(v);
+    });
   }
 
   submit() {
+    var request = new UserRequest();
 
+    request.name = this.personal.name.value;
+    request.birthday = this.personal.birthday.value;
+    request.cpf = this.personal.CPF.value;
+    request.phone = this.personal.phone.value;
+    //request.gender = this.personal.gender.value;
+    request.email = this.personal.email.value;
+    request.login = this.credentials.login.value;
+    request.password = this.credentials.password.value;
+
+    this.loading = true;
+    this.userService
+      .createUser(request)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe({
+        next: () => this.router.navigate(['/home']),
+        error: () => {}
+      });
+  }
+
+  getKeys(obj: any) {
+    return obj ? Object.keys(obj) : [];
   }
 }

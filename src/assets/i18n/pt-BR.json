@@ -3,10 +3,10 @@
     "Logo": "AirFinder"
   },
   "Sidebar": {
-    "Home":{
+    "Home": {
       "Name": "Home"
     },
-    "Test":{
+    "Test": {
       "Name": "Teste",
       "Submenus": {
         "QRCodeGenerator": "Gerarador de QRCode",
@@ -14,7 +14,7 @@
       }
     }
   },
-  "Breadcrumb":{
+  "Breadcrumb": {
     "Home": "Home",
     "Test": "Test",
     "Test1": "Sub1",
@@ -63,9 +63,9 @@
       "Birthday": "dd/mm/aaaa",
       "Code": "Digite seu código"
     },
-    "Validators":{
+    "Validators": {
       "itIsRequired": "É requerido:",
-      "invalidCharactersNumber": "Oito caracteres",
+      "minlength": "Oito caracteres",
       "invalidPasswordUppercase": "Letra maiúscula",
       "invalidPasswordLowercase": "Letra minúscula",
       "invalidPasswordNumber": "Número",
@@ -95,4 +95,3 @@
     }
   }
 }
-  

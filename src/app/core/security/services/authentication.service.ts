@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { User } from 'src/app/login/enter/model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ export class AuthenticationService {
 
   constructor() { }
 
-  login(user: string, password: string) {
-    if(user != '' && password != '')
-      localStorage.setItem('user', user);
+  login(user: User) {
+    if(user)
+      localStorage.setItem('user', JSON.stringify(user));
     return this.isAuthenticated();
   }
 

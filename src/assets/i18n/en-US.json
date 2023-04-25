@@ -3,39 +3,42 @@
     "Logo": "AirFinder"
   },
   "Sidebar": {
-    "Home":{
+    "Home": {
       "Name": "Home"
     },
-    "Test":{
+    "Test": {
       "Name": "Test",
       "Submenus": {
-        "QRCodeWriter": "QRCode Generator",
-        "QRCodeReader": "QRCode Reader"
+        "QRCodeGenerator": "QR Code Generator",
+        "QRCodeReader": "QR Code Reader"
       }
     }
   },
-  "Breadcrumb":{
-    "Home": "Home"
+  "Breadcrumb": {
+      "Home": "Home",
+      "Test": "Test",
+      "Qrcode-generator": "QR Code Generator",
+      "Qrcode-reader": "QR Code Reader"
   },
   "Login": {
     "Title": {
-      "enter": "Enter your login",
-      "create": "Create your account",
-      "forgot-password": "Forgot password"
+      "enter": "Log in",
+      "create": "Create Account",
+      "forgot-password": "Forgot Password"
     },
     "Enter": {
-      "ForgotPassword": "I forgot my password",
-      "CreateAccount": "I don't have an account"
+      "ForgotPassword": "Forgot Password",
+      "CreateAccount": "Don't have an account yet?"
     },
     "Create": {
-      "PersonalInformationStep": "Fill out your personal information",
-      "CheckStep": "Check information",
+      "PersonalInformationStep": "Fill in your information",
+      "CheckStep": "Confirm your information",
       "CredentialsStep": "Create your credentials"
     },
     "ForgotPassword": {
-      "EmailStep": "Fill out your email",
-      "CodeStep": "Fill out your code from email",
-      "ChangePasswordStep": "Change your password"
+      "EmailStep": "Enter your email",
+      "CodeStep": "Enter the code received in your email",
+      "ChangePasswordStep": "Choose your new password"
     }
   },
   "FormFields": {
@@ -55,17 +58,17 @@
       "Password": "Enter your password",
       "ConfirmPassword": "Confirm your password",
       "Email": "Enter your email",
-      "Birthday": "Enter your birthday",
+      "Birthday": "dd/mm/yyyy",
       "Code": "Enter your code"
     },
-    "Validators":{
-      "itIsRequired": "It is required:",
-      "invalidCharactersNumber": "Eigth characters",
+    "Validators": {
+      "itIsRequired": "Required:",
+      "minlength": "Eight characters",
       "invalidPasswordUppercase": "Uppercase letter",
-      "invalidPasswordLowercase": "Lowercase character",
-      "invalidPasswordNumber": "Number character",
+      "invalidPasswordLowercase": "Lowercase letter",
+      "invalidPasswordNumber": "Number",
       "invalidPasswordSpecial": "Special character",
-      "required": "It is required field",
+      "required": "Required field",
       "email": "Invalid email",
       "passwordMustMatch": "Passwords must match",
       "invalidCode": "Invalid code"

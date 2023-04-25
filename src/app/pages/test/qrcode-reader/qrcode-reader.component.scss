@@ -1,0 +1,9 @@
+::ng-deep .origin-overlay {
+    span{
+        display: none !important;
+    }
+}
+
+::ng-deep .qrcode-tooltip-temp {
+    display: none !important;
+}

@@ -1,1 +1,12 @@
-<p>qrcode-reader works!</p>
+<ngx-scanner-qrcode 
+    #action="scanner"
+    [config]="config"
+    (event)="setOutput($event)"
+    (error)="onError($event)">
+</ngx-scanner-qrcode>
+
+<p *ngIf="action.isLoading">⌛ Loading...</p>
+
+<p>{{ output }}</p>
+
+<button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>

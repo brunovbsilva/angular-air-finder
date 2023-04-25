@@ -1,4 +1,4 @@
-import { NgModule, isDevMode, LOCALE_ID } from '@angular/core';
+import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { LoginModule } from './login/login.module';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { CustomErrorStateMatcher } from './login/form-helpers/custom-state-matcher';
+import { CustomErrorStateMatcher } from './shared/form/form-helpers/custom-state-matcher';
+import { AppConfigService } from './app-config.service';
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
+
+export const configFactory = (configService: AppConfigService) => {
+  return () => configService.loadAppConfig();
+};
 
 @NgModule({
   declarations: [
@@ -49,6 +54,13 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     { 
       provide: ErrorStateMatcher,
       useClass: CustomErrorStateMatcher
+    },
+    AppConfigService,
+    {
+      provide   : APP_INITIALIZER,
+      useFactory: configFactory,
+      deps      : [AppConfigService],
+      multi     : true
     },
   ],
   bootstrap: [AppComponent]

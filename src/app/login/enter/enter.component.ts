@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
+import { LoginRequest } from './model/login-request';
+import { UserService } from 'src/app/core/security/services/user.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-enter',
@@ -14,7 +16,8 @@ export class EnterComponent {
   form: FormGroup;
 
   constructor(
-    private authenticationService: AuthenticationService, 
+    private authenticationService: AuthenticationService,
+    private userService: UserService, 
     private router: Router,
     private fb: FormBuilder) {
       this.form = this.fb.group({
@@ -24,14 +27,20 @@ export class EnterComponent {
   }
 
   submit() {
-    console.log('try');
-    if(this.form.status != 'VALID')
-      return;
+    if(!this.form.valid) return;
 
-    this.authenticationService.login(
-      this.form.get('login')?.value, 
-      this.form.get('password')?.value)
-    .pipe(finalize(() => this.router.navigate(['/home'])))
-    .subscribe(() => console.log('login!'));
+    var request = new LoginRequest()
+    request.login = this.form.get('login')?.value,
+    request.password = this.form.get('password')?.value
+
+    this.userService.login(request)
+      .subscribe({
+        next: (response) => {
+          this.authenticationService
+            .login(response.user)
+            .pipe(finalize(() => this.router.navigate(['/home'])))
+            .subscribe(() => console.log('login!'));
+        }
+      });
   }
 }
