@@ -7,7 +7,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { finalize } from 'rxjs';
 import { VerifyTokenRequest } from './model/verify-token-request';
 import { ChangePasswordRequest } from './model/change-password-request';
-import { UserService } from 'src/app/core/security/services/user.service';
+import { LoginService } from 'src/app/login/services/login.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -38,7 +38,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private userService: UserService) {
+    private loginService: LoginService) {
       this.form = this.fb.group({
         'email': new FormControl('', [ Validators.required, CustomFormValidations.emailValidator ]),
         'code': new FormControl('', [ Validators.required ]),
@@ -55,7 +55,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     this.emailLoading = true;
-    this.userService.sendToken(this.emailControl.value)
+    this.loginService.sendToken(this.emailControl.value)
       .pipe(finalize(() => this.emailLoading = false))
       .subscribe({
         next: () => this.stepper.next(),
@@ -75,7 +75,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.codeLoading = true;
 
-    this.userService.verifyToken(request)
+    this.loginService.verifyToken(request)
       .pipe(finalize(() => this.codeLoading = false))
       .subscribe({
         next: () => this.stepper.next(),
@@ -93,7 +93,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.passwordLoading = true;
 
-    this.userService.changePasswordToken(request)
+    this.loginService.changePasswordToken(request)
       .pipe(finalize(() => this.passwordLoading = false))
       .subscribe({
         next: () => this.router.navigate(['/home']),

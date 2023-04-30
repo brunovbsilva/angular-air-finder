@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
 import { CredentialsForm } from '../../shared/form/components/create-credentials/credentials.form';
 import { PersonalForm } from '../../shared/form/components/personal-information/personal.form';
-import { UserService } from 'src/app/core/security/services/user.service';
+import { LoginService } from 'src/app/login/services/login.service';
 import { UserRequest } from './model/user-request';
 import { finalize } from 'rxjs';
 
@@ -33,13 +33,9 @@ export class CreateComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService, 
     private router: Router,
-    private userService: UserService) {}
+    private loginService: LoginService) {}
 
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(v => {
-      console.log(v);
-    });
-  }
+  ngOnInit(): void { }
 
   submit() {
     var request = new UserRequest();
@@ -54,11 +50,11 @@ export class CreateComponent implements OnInit {
     request.password = this.credentials.password.value;
 
     this.loading = true;
-    this.userService
+    this.loginService
       .createUser(request)
       .pipe(finalize(() => this.loading = false))
       .subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => this.router.navigate(['']),
         error: () => {}
       });
   }

@@ -8,9 +8,6 @@ import { QRCodeForm } from './form/qrcode.form';
   styleUrls: ['./qrcode-generator.component.scss']
 })
 export class QrcodeGeneratorComponent {
-<<<<<<< Updated upstream
-
-=======
   form = new QRCodeForm();
   data: any;
 
@@ -20,5 +17,4 @@ export class QrcodeGeneratorComponent {
     if(!this.form.valid) return;
     this.data = this.form.getValues();
   }
->>>>>>> Stashed changes
 }

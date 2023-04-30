@@ -55,7 +55,6 @@ export class SelectComponent implements AfterViewInit {
       .pipe(
         debounceTime(10),
         distinctUntilChanged(),
-        tap((v) => console.log(v)),
         map((v) => v ?? []),
         map((value: (string | number)[]) => {
           var result = this.items;

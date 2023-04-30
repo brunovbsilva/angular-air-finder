@@ -35,7 +35,7 @@ export class LoginComponent implements AfterViewInit {
 
   private changeTitle(url: string) {
     const splitedRoutes = url.split('/').filter(route => route !== '');
-    this.currentPage = splitedRoutes[1] ?? 'enter'
+    this.currentPage = splitedRoutes[0] == 'login' ? 'enter' : splitedRoutes[0];
   }
 
   setTheme() {

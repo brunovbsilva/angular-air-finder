@@ -1,8 +1,6 @@
 import { inject, NgModule } from '@angular/core';
-import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
-import { map } from 'rxjs';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthenticationService } from './core/security/services/authentication.service';
-import { ScopePermissionsService } from './core/security/services/scope-permissions.service';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { CreateComponent } from './login/create/create.component';
 import { EnterComponent } from './login/enter/enter.component';
@@ -10,50 +8,37 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { 
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [() => {
-      const router = inject(Router);
-      return inject(AuthenticationService).isAuthenticated().pipe(
-        map(isAuth => !isAuth || router.createUrlTree(['home']))
-      );
-    }],
-    children: [
-      { path: '', component: EnterComponent },
-      { path: 'create', component: CreateComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent }
-    ]
-  },
   {
     path: '', 
     component: MainLayoutComponent,
-    canMatch: [() => {
-      const router = inject(Router);
-      return inject(AuthenticationService).isAuthenticated().pipe(
-        map(isAuth => isAuth || router.createUrlTree(['login']))
-      );
-    }],
+    canMatch: [() => inject(AuthenticationService).isAuthenticated()],
     children: [
-      { path: 'home', children:[
-        {
-          path: '',
-          loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
-        }
-      ]},
-      {
-        path: '',
-        canActivateChild: [() => inject(ScopePermissionsService).hasPermission$ ],
-        children: [
-          {
-            path: 'test',
-            loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule)
-          },
+      { 
+        path: 'home', 
+        children:[
+          { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) }
         ]
       },
+      {
+        path: 'test',
+        children: [
+          { path: '', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
+        ]
+      },
+      { path: '**', redirectTo: 'home' }
     ]
-  }
+  },
+  { 
+    path: '',
+    component: LoginComponent,
+    children: [
+      { path: 'login', component: EnterComponent },
+      { path: 'create', component: CreateComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: '**', redirectTo: 'login' }
+    ]
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

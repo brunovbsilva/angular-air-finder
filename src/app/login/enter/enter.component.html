@@ -20,15 +20,19 @@
 
     <div class="controls">
         <button mat-stroked-button class="login-button" (click)="submit()">
-            {{ 'Shared.Button.Continue' | translate | uppercase }}
+            {{ loadingLogin ? '' : 'Shared.Button.Continue' | translate | uppercase }}
+            <mat-progress-spinner *ngIf="loadingLogin"
+                mode="indeterminate"
+                diameter="21">
+            </mat-progress-spinner>
         </button>
     </div>
 
     <div class="routes">
-        <a class="link" routerLink="forgot-password" routerLinkActive="active-page" ariaCurrentWhenActive="page">
+        <a class="link" routerLink="/forgot-password" routerLinkActive="active-page" ariaCurrentWhenActive="page">
             {{ 'Login.Enter.ForgotPassword' | translate }}
         </a>
-        <a class="link" routerLink="create" routerLinkActive="active-page" ariaCurrentWhenActive="page">
+        <a class="link" routerLink="/create" routerLinkActive="active-page" ariaCurrentWhenActive="page">
             {{ 'Login.Enter.CreateAccount' | translate }}
         </a>
     </div>

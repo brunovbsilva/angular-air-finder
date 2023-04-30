@@ -3,8 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
 import { LoginRequest } from './model/login-request';
-import { UserService } from 'src/app/core/security/services/user.service';
-import { finalize } from 'rxjs';
+import { LoginService } from 'src/app/login/services/login.service';
+import { finalize, tap } from 'rxjs';
+import { SessionUserService } from 'src/app/core/security/services/session-user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-enter',
@@ -13,13 +15,15 @@ import { finalize } from 'rxjs';
 })
 export class EnterComponent {
   hide = true;
+  loadingLogin = false;
   form: FormGroup;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService, 
+    private loginService: LoginService, 
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private sessionUser: SessionUserService) {
       this.form = this.fb.group({
         login: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required])
@@ -29,17 +33,21 @@ export class EnterComponent {
   submit() {
     if(!this.form.valid) return;
 
+    this.loadingLogin = true;
     var request = new LoginRequest()
     request.login = this.form.get('login')?.value,
     request.password = this.form.get('password')?.value
 
-    this.userService.login(request)
+    this.loginService.login(request)
+      .pipe(
+        finalize(() => this.loadingLogin = false)
+      )
       .subscribe({
         next: (response) => {
           this.authenticationService
-            .login(response.user)
-            .pipe(finalize(() => this.router.navigate(['/home'])))
-            .subscribe(() => console.log('login!'));
+            .login(response.token)
+            .pipe(finalize(() => this.router.navigate([''])))
+            .subscribe(() => console.log(this.sessionUser.get()));
         }
       });
   }

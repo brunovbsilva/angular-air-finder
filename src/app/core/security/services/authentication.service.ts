@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { of } from 'rxjs';
-import { User } from 'src/app/login/enter/model/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
+  private readonly JWTKey = 'token';
+
   constructor() { }
 
-  login(user: User) {
-    if(user)
-      localStorage.setItem('user', JSON.stringify(user));
+  login(token: string) {
+    localStorage.setItem(this.JWTKey, token);
     return this.isAuthenticated();
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem(this.JWTKey);
     return this.isAuthenticated();
   }
 
   isAuthenticated() {
-    return of(localStorage.getItem('user') != undefined);
+    const helper = new JwtHelperService();
+    const token = localStorage.getItem(this.JWTKey);
+    const valid = token && !helper.isTokenExpired(token);
+    return of(valid ?? false);
   }
 }

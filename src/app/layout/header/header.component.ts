@@ -37,6 +37,6 @@ export class HeaderComponent {
   logout() {
     this.authenticationService.logout()
       .pipe(finalize(() => this.router.navigate(['/login'])))
-      .subscribe(() => console.log('logout!'))
+      .subscribe(() => {})
   }
 }
