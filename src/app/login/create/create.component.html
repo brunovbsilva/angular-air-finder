@@ -1,57 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-stepper orientation="vertical" [linear]="true" #stepper class="stepper">
         <mat-step [label]="'Login.Create.PersonalInformationStep' | translate" formGroupName="personal" [stepControl]="personal">
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Name' | translate }}</mat-label>
-                <input matInput formControlName="name"
-                    type="text"
-                    [placeholder]="'FormFields.Placeholder.Name' | translate"
-                    autocomplete="name">
-                <mat-error *ngFor="let error of getKeys(personal.name.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Birthday' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker"
-                    formControlName="birthday"
-                    autocomplete="bday">
-                <mat-error *ngFor="let error of getKeys(personal.birthday.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Email' | translate }}</mat-label>
-                <input matInput formControlName="email"
-                    type="email"
-                    [placeholder]="'FormFields.Placeholder.Email' | translate"
-                    autocomplete="email">
-                <mat-error *ngFor="let error of getKeys(personal.email.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Phone' | translate }}</mat-label>
-                <input matInput formControlName="phone"
-                    type="text"
-                    [placeholder]="'FormFields.Placeholder.Phone' | translate"
-                    autocomplete="off">
-                <mat-error *ngFor="let error of getKeys(personal.phone.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.CPF' | translate }}</mat-label>
-                <input matInput formControlName="CPF"
-                    type="text"
-                    [placeholder]="'FormFields.Placeholder.CPF' | translate"
-                    autocomplete="off">
-                <mat-error *ngFor="let error of getKeys(personal.CPF.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
+            <personal-information-form [personal]="personal"></personal-information-form>
             <button mat-button matStepperNext type="button">{{ 'Shared.Button.Next' | translate }}</button>
         </mat-step>
         <mat-step [label]="'Login.Create.CheckStep' | translate">
@@ -60,37 +10,7 @@
             <button mat-button matStepperNext type="button">{{ 'Shared.Button.Next' | translate }}</button>
         </mat-step>
         <mat-step [label]="'Login.Create.CredentialsStep' | translate" formGroupName="credentials" [stepControl]="credentials">
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Login' | translate }}</mat-label>
-                <input matInput formControlName="login" type="text" [placeholder]="'FormFields.Placeholder.Login' | translate" autocomplete="off">
-                <mat-error *ngFor="let error of getKeys(credentials.login.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.Password' | translate }}</mat-label>
-                <input matInput #password="matInput" formControlName="password" [type]="hideP ? 'password' : 'text'" [placeholder]="'FormFields.Placeholder.Password' | translate" autocomplete="off">
-                <button mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP" type="button">
-                    <mat-icon [color]="password.errorState ? 'warn' : ''">
-                        {{ hideP ? 'visibility_off' : 'visibility' }}
-                    </mat-icon>
-                </button>
-                <mat-error *ngFor="let error of getKeys(credentials.password.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-field" appearance="outline" color="accent">
-                <mat-label>{{ 'FormFields.Label.ConfirmPassword' | translate }}</mat-label>
-                <input matInput #confirmPassword="matInput" formControlName="confirm-password" [type]="hideCP ? 'password' : 'text'" [placeholder]="'FormFields.Placeholder.ConfirmPassword' | translate" autocomplete="off">
-                <button mat-icon-button matSuffix (click)="hideCP = !hideCP" [attr.aria-label]="'Hide confirm password'" [attr.aria-pressed]="hideCP" type="button">
-                    <mat-icon [color]="confirmPassword.errorState ? 'warn' : ''">
-                        {{ hideCP ? 'visibility_off' : 'visibility' }}
-                    </mat-icon>
-                </button>
-                <mat-error *ngFor="let error of getKeys(credentials.confirmPassword.errors)">
-                    {{ 'FormFields.Validators.'+error | translate }}
-                </mat-error>
-            </mat-form-field>
+            <credentials-form [credentials]="credentials"></credentials-form>
             <button mat-button (click)="stepper.reset()" type="button">{{ 'Shared.Button.Cancel' | translate }}</button>
             <button mat-button type="submit">{{'Shared.Button.Send' | translate}}</button>
         </mat-step>

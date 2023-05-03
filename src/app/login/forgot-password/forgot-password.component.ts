@@ -15,10 +15,8 @@ import { LoginService } from 'src/app/login/services/login.service';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  public hideP = true;
-  public hideCP = true;
-  public form: FormGroup;
   @ViewChild('stepper') stepper!: MatStepper;
+  public form: FormGroup;
   public emailLoading = false;
   public codeLoading = false;
   public passwordLoading = false;
@@ -35,15 +33,17 @@ export class ForgotPasswordComponent implements OnInit {
     return this.form.get('update-password')! as UpdatePasswordForm;
   }
 
-  constructor(
+  constructor (
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService) {
-      this.form = this.fb.group({
-        'email': new FormControl('', [ Validators.required, CustomFormValidations.emailValidator ]),
-        'code': new FormControl('', [ Validators.required ]),
-        'update-password': new UpdatePasswordForm()
-      })
+    private loginService: LoginService
+  ) 
+  {
+    this.form = this.fb.group({
+      'email': new FormControl('', [ Validators.required, CustomFormValidations.emailValidator ]),
+      'code': new FormControl('', [ Validators.required ]),
+      'update-password': new UpdatePasswordForm()
+    })
   }
 
   ngOnInit():void { }

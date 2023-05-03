@@ -24,7 +24,8 @@ export class UpdatePasswordForm extends FormGroup {
             CustomFormValidations.uppercaseValidator,
             CustomFormValidations.lowercaseValidator,
             CustomFormValidations.numberValidator,
-            CustomFormValidations.specialValidator
+            CustomFormValidations.specialValidator,
+            CustomFormValidations.spaceValidator
         ]));
         this.addControl('confirm-new-password', new FormControl('', [ 
             Validators.required,
@@ -32,7 +33,8 @@ export class UpdatePasswordForm extends FormGroup {
             CustomFormValidations.uppercaseValidator,
             CustomFormValidations.lowercaseValidator,
             CustomFormValidations.numberValidator,
-            CustomFormValidations.specialValidator
+            CustomFormValidations.specialValidator,
+            CustomFormValidations.spaceValidator
         ]));
         this.addValidators(
             this.mustMatchValidator(
@@ -51,6 +53,13 @@ export class UpdatePasswordForm extends FormGroup {
                 return value1 != value2 ? { valuesMustMatch: true } : null
             }
             return null;
+        }
+    }
+
+    public getValues() {
+        return {
+            newPassword: this.password.value,
+            confirmPassword: this.confirmPassword.value,
         }
     }
 }

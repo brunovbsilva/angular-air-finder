@@ -1,0 +1,58 @@
+<form [formGroup]="personal">
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.Name' | translate }}</mat-label>
+        <input matInput formControlName="name"
+            type="text"
+            [placeholder]="'FormFields.Placeholder.Name' | translate"
+            autocomplete="name">
+        <mat-error *ngFor="let error of personal.name.errors | keys">
+            {{ 'FormFields.Validators.'+error | translate }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.Birthday' | translate }}</mat-label>
+        <input matInput [matDatepicker]="picker"
+            formControlName="birthday"
+            autocomplete="bday">
+        <mat-error *ngFor="let error of personal.birthday.errors | keys">
+            {{ 'FormFields.Validators.'+error | translate }}
+        </mat-error>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.Email' | translate }}</mat-label>
+        <input matInput formControlName="email"
+            type="email"
+            [placeholder]="'FormFields.Placeholder.Email' | translate"
+            autocomplete="email">
+        <mat-error *ngFor="let error of personal.email.errors | keys">
+            {{ 'FormFields.Validators.'+error | translate }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.Phone' | translate }}</mat-label>
+        <input matInput formControlName="phone"
+            type="text"
+            [placeholder]="'FormFields.Placeholder.Phone' | translate"
+            autocomplete="off">
+        <mat-error *ngFor="let error of personal.phone.errors | keys">
+            {{ 'FormFields.Validators.'+error | translate }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.CPF' | translate }}</mat-label>
+        <input matInput formControlName="CPF"
+            type="text"
+            [placeholder]="'FormFields.Placeholder.CPF' | translate"
+            autocomplete="off">
+        <mat-error *ngFor="let error of personal.CPF.errors | keys">
+            {{ 'FormFields.Validators.'+error | translate }}
+        </mat-error>
+    </mat-form-field>
+    <mat-radio-group formControlName="gender">
+        <mat-radio-button [value]="1">{{'male'}}</mat-radio-button>
+        <mat-radio-button [value]="2">{{'male'}}</mat-radio-button>
+        <mat-radio-button [value]="3" checked="true">{{'unknow'}}</mat-radio-button>
+    </mat-radio-group>
+</form>

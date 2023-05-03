@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { SessionUserService } from 'src/app/core/security/services/session-user.service';
+import { AdmViewComponent } from './adm-view/adm-view.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 export const routes: Routes = [
   {
     path: '',
-    data: {
-      title: 'Home',
-    },
-    component: HomeComponent,
+    canMatch: [() => inject(SessionUserService).get().scopes.includes('Adm_Roll')],
+    data: { title: 'Home' }, 
+    component: AdmViewComponent
+  },
+  { 
+    path: '',
+    data: { title: 'Home' },
+    component: UserViewComponent
   },
 ];
 

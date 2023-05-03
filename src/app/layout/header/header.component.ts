@@ -5,6 +5,8 @@ import { finalize, map } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
 import { ThemeService } from 'src/app/core/themes/theme.service';
 import { SidebarService } from '../sidebar/services/sidebar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordDialogComponent } from 'src/app/shared/component/change-password-dialog/change-password-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +22,10 @@ export class HeaderComponent {
     private sidebarService: SidebarService, 
     private authenticationService: AuthenticationService, 
     private router: Router,
-    private themeService: ThemeService) {
+    private themeService: ThemeService,
+    public dialog: MatDialog
+  ) 
+  {
     this.isChecked = themeService.getTheme() == 'dark-theme';
   }
 
@@ -32,6 +37,12 @@ export class HeaderComponent {
     const theme = checked ? 'dark-theme' : 'light-theme';
     this.themeService.setTheme(theme);
     this.darkModeToggle.emit();
+  }
+
+  openChangePasswordDialog() {
+    this.dialog.open(ChangePasswordDialogComponent, {
+      minWidth: 'auto'
+    })
   }
 
   logout() {

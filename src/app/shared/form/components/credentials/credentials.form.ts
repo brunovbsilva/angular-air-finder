@@ -28,7 +28,8 @@ export class CredentialsForm extends FormGroup {
             CustomFormValidations.uppercaseValidator,
             CustomFormValidations.lowercaseValidator,
             CustomFormValidations.numberValidator,
-            CustomFormValidations.specialValidator
+            CustomFormValidations.specialValidator,
+            CustomFormValidations.spaceValidator
         ]));
         this.addControl('confirm-password', new FormControl('', [
             Validators.required,
@@ -36,14 +37,15 @@ export class CredentialsForm extends FormGroup {
             CustomFormValidations.uppercaseValidator,
             CustomFormValidations.lowercaseValidator,
             CustomFormValidations.numberValidator,
-            CustomFormValidations.specialValidator
+            CustomFormValidations.specialValidator,
+            CustomFormValidations.spaceValidator
         ]));
         this.addValidators(
             this.compareValidator(
                 this.get('password')!,
                 this.get('confirm-password')!
             )
-        )
+        );
     }
 
     public getValues() {

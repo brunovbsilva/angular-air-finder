@@ -1,14 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SelectModel } from 'src/app/shared/component/select/models/select.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-adm-view',
+  templateUrl: './adm-view.component.html',
+  styleUrls: ['./adm-view.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
-
+export class AdmViewComponent {
   items: SelectModel[] = [
     { name: 'Pessoa 1', value: 1, selected: true },
     { name: 'Pessoa 2', value: 2, selected: true },
@@ -47,10 +46,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ]
   form: FormGroup = new FormGroup({})
 
+  formControl = new FormControl('123');
+
   ngOnInit(): void {
     this.form.addControl('teste', new FormControl([]));
     this.form.addControl('teste2', new FormControl([]));
     this.form.addControl('teste3', new FormControl([]));
+    this.form.addControl('teste4', new FormControl('', [Validators.required]));
+
+    this.form.get('teste4')?.valueChanges.subscribe(v => console.log(this.form.get('teste4')))
   }
 
   ngAfterViewInit(): void {

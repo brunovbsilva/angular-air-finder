@@ -1,24 +1,28 @@
 {
-  "Header": {
-    "Logo": "AirFinder"
-  },
-  "Sidebar": {
-    "Home": {
-      "Name": "Home"
+  "Layout": {
+    "Header": {
+      "Logo": "AirFinder",
+      "ChangePassword": "Change password",
+      "Logout": "Logout"
     },
-    "Test": {
-      "Name": "Test",
-      "Submenus": {
-        "QRCodeGenerator": "QR Code Generator",
-        "QRCodeReader": "QR Code Reader"
+    "Sidebar": {
+      "Home": {
+        "Name": "Home"
+      },
+      "Test": {
+        "Name": "Test",
+        "Submenus": {
+          "QRCodeGenerator": "QR Code Generator",
+          "QRCodeReader": "QR Code Reader"
+        }
       }
-    }
-  },
-  "Breadcrumb": {
+    },
+    "Breadcrumb": {
       "Home": "Home",
       "Test": "Test",
       "Qrcode-generator": "QR Code Generator",
       "Qrcode-reader": "QR Code Reader"
+    }
   },
   "Login": {
     "Title": {
@@ -45,21 +49,24 @@
     "Label": {
       "Name": "Name",
       "Login": "Login",
+      "CurrentPassword": "Current password",
       "NewPassword": "New password",
-      "Password": "Password",
       "ConfirmPassword": "Confirm password",
       "Email": "Email",
       "Birthday": "Birthday",
-      "Code": "Code"
+      "Code": "Code",
+      "Filter": "Filter"
     },
     "Placeholder": {
       "Name": "Enter your name",
       "Login": "Enter your login",
-      "Password": "Enter your password",
+      "CurrentPassword": "Enter your current password",
+      "newPassword": "Enter your new password",
       "ConfirmPassword": "Confirm your password",
       "Email": "Enter your email",
       "Birthday": "dd/mm/yyyy",
-      "Code": "Enter your code"
+      "Code": "Enter your code",
+      "Filter": "Search here"
     },
     "Validators": {
       "itIsRequired": "Required:",
@@ -71,7 +78,11 @@
       "required": "Required field",
       "email": "Invalid email",
       "passwordMustMatch": "Passwords must match",
-      "invalidCode": "Invalid code"
+      "invalidCode": "Invalid code",
+      "invalidSpace": "Spaces are not allowed",
+      "incorrectPassword": "Incorrect password",
+      "valuesMustNotMatch": "New password can't be equal current password",
+      "valuesMustMatch": "Must match new password"
     }
   },
   "Components": {
@@ -80,6 +91,16 @@
       "RemoveAll": "Remove all",
       "NoResultsFound": "No results found",
       "Placeholder": "Search here"
+    }
+  },
+  "Snackbar": {
+    "ChangePassword": {
+      "Success": "Password change successfully"
+    }
+  },
+  "Dialog": {
+    "Title": {
+      "ChangePassword": "Change your password"
     }
   },
   "Shared": {

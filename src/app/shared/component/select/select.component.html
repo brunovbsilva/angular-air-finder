@@ -3,46 +3,39 @@
   <mat-label>{{ label }}</mat-label>
 
   <mat-chip-grid #chipGrid aria-label="selection">
-
-      <mat-chip-row *ngFor="let item of items | itemsInView: itemsInView" (removed)="unselectItem(item.value)" highlighted="true"
-        #tooltip="matTooltip" matTooltip="{{item.name}}" matTooltipHideDelay="200" matTooltipPosition="above" class="display-less-letters">
-        <div>{{item.name}}</div>
-        <button matChipRemove [attr.aria-label]="'remove ' + item">
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip-row>
-
-      <mat-chip-row *ngIf="(items | itemsInView).length > (items | itemsInView: itemsInView).length" (removed)="unselectItem('extra')" highlighted="true">
-        +{{(items | itemsInView).length - (items | itemsInView: itemsInView).length}}
-        <button matChipRemove [attr.aria-label]="'remove extra'">
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip-row>
-
+    <mat-chip-row *ngFor="let item of items | itemsInView: itemsInView" (removed)="unselectItem(item.value)" highlighted="true"
+      #tooltip="matTooltip" matTooltip="{{item.name}}" matTooltipHideDelay="200" matTooltipPosition="above" class="display-less-letters">
+      <div>{{item.name}}</div>
+      <button matChipRemove [attr.aria-label]="'remove ' + item">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+    <mat-chip-row *ngIf="(items | itemsInView).length > (items | itemsInView: itemsInView).length" (removed)="unselectItem('extra')" highlighted="true">
+      +{{(items | itemsInView).length - (items | itemsInView: itemsInView).length}}
+      <button matChipRemove [attr.aria-label]="'remove extra'">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
   </mat-chip-grid>
-
   <input #searchInput [matChipInputFor]="chipGrid" [placeholder]="placeholder ?? ('Components.Select.Placeholder' | translate)" [ngClass]="{'ocult-item': !open}"/>
 
 </mat-form-field>
-
 <mat-list class="list mat-app-background" *ngIf="open">
-
   <mat-option *ngIf="(items | filterSearch: searchInput.value).length == 0">
     {{'Components.Select.NoResultsFound' | translate}}
   </mat-option>
-
   <mat-option *ngIf="(searchInput.value == '') && (items.length != 0)"
     (click)="toggleSelectAll()">
     <mat-checkbox [indeterminate]="indeterminated" [checked]="selectAll" color="primary">
       {{ 'Components.Select.' + (!selectAll ? 'SelectAll' : 'RemoveAll') | translate }}
     </mat-checkbox>
   </mat-option>
-
   <mat-option *ngFor="let item of items | filterSearch: searchInput.value" [value]="item.value" (click)="toggleSelectItem(item.value)">
     <mat-checkbox [checked]="item.selected" color="primary">{{item.name}}</mat-checkbox>
   </mat-option>
-
 </mat-list>
+
+
 
 
 

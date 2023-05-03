@@ -1,0 +1,10 @@
+<mat-form-field [formGroup]="form" (click)="openSelectDialog()" [floatLabel]="value.length > 0 ? 'always' : 'auto'">
+    <mat-label>{{ label }}</mat-label>
+    <span class="display">
+        {{trigger[0] || ''}}
+        <span *ngIf="(trigger?.length || 0) > 1" class="additional-selection">
+            (+{{(trigger.length || 0) - 1}} {{trigger.length === 2 ? 'other' : 'others'}})
+        </span>
+    </span>
+    <mat-select [formControlName]="name"></mat-select>
+</mat-form-field>

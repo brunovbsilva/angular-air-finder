@@ -1,6 +1,6 @@
 import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -14,6 +14,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomErrorStateMatcher } from './shared/form/form-helpers/custom-state-matcher';
 import { AppConfigService } from './app-config.service';
 import { HttpInterceptorsProviders } from './core/security/interceptor';
+import { MaterialProviders } from './shared/material/providers';
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -22,8 +23,6 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 export const configFactory = (configService: AppConfigService) => {
   return () => configService.loadAppConfig();
 };
-
-
 
 @NgModule({
   declarations: [
@@ -58,6 +57,7 @@ export const configFactory = (configService: AppConfigService) => {
       provide: ErrorStateMatcher,
       useClass: CustomErrorStateMatcher
     },
+    MaterialProviders,
     HttpInterceptorsProviders,
     AppConfigService,
     {
