@@ -19,6 +19,10 @@
           <mat-icon>lock_reset</mat-icon>
           {{ 'Layout.Header.ChangePassword' | translate }}
         </button>
+        <button mat-menu-item (click)="openQRCodeDialog()">
+          <mat-icon>qr_code_scanner</mat-icon>
+          {{ 'Layout.Header.ScanQRCode' | translate }}
+        </button>
         <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
           {{ 'Layout.Header.Logout' | translate }}

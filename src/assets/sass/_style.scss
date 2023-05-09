@@ -16,25 +16,6 @@ body {
   }
 }
 
-.cdk-scrollable {
-  overflow-y: auto;
-  scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
-  scrollbar-width: thin;
-}
-
-.cdk-scrollable::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.cdk-scrollable::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-.cdk-scrollable::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
 ::-webkit-scrollbar {
   height: 7px;
   width: 7px;
@@ -47,12 +28,12 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $AF_primary;
+  background: $AF_Gray;
   border-radius: 3.5px;
   background-clip: content-box;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: $AF_Dark_Gray;
   background-clip: content-box;
 }

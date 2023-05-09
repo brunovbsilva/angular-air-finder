@@ -1,4 +1,5 @@
 import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
+import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER, forwardRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -66,6 +67,7 @@ export const configFactory = (configService: AppConfigService) => {
       deps      : [AppConfigService],
       multi     : true
     },
+    //{ provide: MatSelect, useExisting: forwardRef(() => CustomOpenDirective), multi: true }
   ],
   bootstrap: [AppComponent]
 })

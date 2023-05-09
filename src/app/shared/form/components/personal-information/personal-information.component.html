@@ -50,9 +50,15 @@
             {{ 'FormFields.Validators.'+error | translate }}
         </mat-error>
     </mat-form-field>
-    <mat-radio-group formControlName="gender">
-        <mat-radio-button [value]="1">{{'male'}}</mat-radio-button>
-        <mat-radio-button [value]="2">{{'male'}}</mat-radio-button>
-        <mat-radio-button [value]="3" checked="true">{{'unknow'}}</mat-radio-button>
-    </mat-radio-group>
+    <mat-form-field class="form-field">
+        <mat-label>{{ 'FormFields.Label.Gender' | translate }}</mat-label>
+        <mat-select 
+            customOpen 
+            [placeholder]="'FormFields.Placeholder.Gender' | translate"
+            formControlName="gender">
+            <mat-option [value]="1">{{ 'Shared.Gender.Male' | translate }}</mat-option>
+            <mat-option [value]="2">{{ 'Shared.Gender.Female' | translate }}</mat-option>
+            <mat-option [value]="3">{{ 'Shared.Gender.Unknow' | translate }}</mat-option>
+        </mat-select>
+    </mat-form-field>
 </form>

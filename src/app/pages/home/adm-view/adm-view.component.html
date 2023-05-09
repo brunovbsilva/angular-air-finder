@@ -1,27 +1,22 @@
-<app-select
-    [form]="form"
-    name="teste"
-    [items]="items"
-    [itemsInView]="1"
-    [label]="'label 1'">
-</app-select>
-
-<app-select
-    [form]="form"
-    name="teste2"
-    [items]="items2"
-    [itemsInView]="1"
-    [label]="'label 2'">
-</app-select>
-
-<app-select
-    [form]="form"
-    name="teste3"
-    [items]="items3"
-    [itemsInView]="1"
-    [label]="'label 3'">
-</app-select>
-
-
-<button mat-raised-button color="primary" class="col-6" (click)="onClick()">click me!</button>
-<button mat-stroked-button color="warn" class="col-6" (click)="onReset()">reset!</button>
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3" *ngFor="let card of cards">
+        <mat-card>
+            <mat-card-header>
+                <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+                <mat-card-title>{{card.name}}</mat-card-title>
+                <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+                <mat-chip highlighted class="end">{{card.date}}</mat-chip>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <!-- <mat-card-content>
+                <span>{{card.details}}</span>
+            </mat-card-content> -->
+            <mat-card-actions>
+                <button mat-flat-button>apply</button>
+            </mat-card-actions>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

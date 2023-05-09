@@ -12,11 +12,7 @@ export default [
       {
         name: 'Layout.Sidebar.Test.Submenus.QRCodeGenerator',
         path: 'qrcode-generator',
-      },
-      {
-        name: 'Layout.Sidebar.Test.Submenus.QRCodeReader',
-        path: 'qrcode-reader',
-      },
+      }
     ]
   },
 ] as Menu[];

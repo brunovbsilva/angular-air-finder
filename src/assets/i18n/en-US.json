@@ -3,6 +3,7 @@
     "Header": {
       "Logo": "AirFinder",
       "ChangePassword": "Change password",
+      "ScanQRCode": "Scan QRCode",
       "Logout": "Logout"
     },
     "Sidebar": {
@@ -12,16 +13,14 @@
       "Test": {
         "Name": "Test",
         "Submenus": {
-          "QRCodeGenerator": "QR Code Generator",
-          "QRCodeReader": "QR Code Reader"
+          "QRCodeGenerator": "QR Code Generator"
         }
       }
     },
     "Breadcrumb": {
       "Home": "Home",
       "Test": "Test",
-      "Qrcode-generator": "QR Code Generator",
-      "Qrcode-reader": "QR Code Reader"
+      "Qrcode-generator": "QR Code Generator"
     }
   },
   "Login": {
@@ -49,24 +48,32 @@
     "Label": {
       "Name": "Name",
       "Login": "Login",
+      "Password": "Password",
       "CurrentPassword": "Current password",
       "NewPassword": "New password",
       "ConfirmPassword": "Confirm password",
       "Email": "Email",
       "Birthday": "Birthday",
       "Code": "Code",
-      "Filter": "Filter"
+      "Filter": "Filter",
+      "Phone": "Phone",
+      "CPF": "CPF",
+      "Gender": "Gender"
     },
     "Placeholder": {
       "Name": "Enter your name",
       "Login": "Enter your login",
+      "Password": "Enter your password",
       "CurrentPassword": "Enter your current password",
-      "newPassword": "Enter your new password",
+      "NewPassword": "Enter your new password",
       "ConfirmPassword": "Confirm your password",
       "Email": "Enter your email",
       "Birthday": "dd/mm/yyyy",
       "Code": "Enter your code",
-      "Filter": "Search here"
+      "Filter": "Search here",
+      "Phone": "Enter your phone",
+      "CPF": "Enter your CPF",
+      "Gender": "Select your gender"
     },
     "Validators": {
       "itIsRequired": "Required:",
@@ -111,6 +118,11 @@
       "Send": "Send",
       "Reset": "Reset",
       "Cancel": "Cancel"
+    },
+    "Gender": {
+      "Male": "Male",
+      "Female": "Female",
+      "Unknow": "I prefer not to answer"
     }
   }
 }

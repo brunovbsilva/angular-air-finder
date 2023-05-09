@@ -46,9 +46,16 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
+import { SelectDialogComponent } from './custom-components/mat-select/select-dialog/select-dialog.component';
+import { FilterSearchPipe } from './custom-components/mat-select/pipe/filter-search.pipe';
+import { CustomOpenDirective } from './custom-components/mat-select/directives/custom-open.directive';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
+    CommonModule,
+    TranslateModule,
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,
@@ -147,6 +154,14 @@ import {DialogModule} from '@angular/cdk/dialog';
     PortalModule,
     ScrollingModule,
     DialogModule,
+    SelectDialogComponent,
+    FilterSearchPipe,
+    CustomOpenDirective
+  ],
+  declarations: [
+    SelectDialogComponent,
+    FilterSearchPipe,
+    CustomOpenDirective
   ]
 })
 export class MaterialModule {}

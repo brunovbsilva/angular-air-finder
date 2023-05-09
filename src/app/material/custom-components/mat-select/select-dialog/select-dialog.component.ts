@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SelectModel } from '../../select/models/select.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSelectionList } from '@angular/material/list';
+import { MatOption } from '@angular/material/core';
 
 @Component({
   selector: 'app-select-dialog',
@@ -17,8 +16,9 @@ export class SelectDialogComponent implements OnInit, AfterViewInit {
   constructor(
     public dialogRef: MatDialogRef<SelectDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {
-      items: SelectModel[],
-      label: string
+      options: MatOption[],
+      placeholder: string,
+      multiple: boolean
     }
   ) {}
 
@@ -33,27 +33,31 @@ export class SelectDialogComponent implements OnInit, AfterViewInit {
   }
 
   public subscribeResults() {
-    this.dialogRef.close(
-      this.data.items.filter(x => x.selected).map(x => x.value)
-    );
+    this.dialogRef.close();
   }
 
-  public toggleSelectItem(value: string | number): void {
-    const index = this.data.items.findIndex(x => x.value == value);
-    this.data.items[index].selected = !this.data.items[index].selected;
-    this.checkSelectAllState();
+  public toggleSelectItem(value: MatOption): void {
+    if(this.data.multiple) {
+      !value.selected ? value.select() : value.deselect();
+      this.checkSelectAllState();
+    }
+    else {
+      if(!value.selected) value.select();
+      this.subscribeResults();
+    }
   }
 
   public toggleSelectAll() {
-    this.data.items.filter(x => x.selected == this.selectAll).forEach(x => {
-      x.selected = !this.selectAll;
+    this.data.options.filter(x => x.selected == this.selectAll).forEach(x => {
+      this.selectAll ? x.deselect() : x.select();
     });
     this.checkSelectAllState();
   }
 
   private checkSelectAllState() {
-    const selected = this.data.items.filter(v => v.selected).length;
-    const all = this.data.items.length;
+    const selected = this.data.options.filter(v => v.selected).length;
+    const all = this.data.options.length;
+    
     if(selected == all){
       this.selectAll = true;
       this.indeterminated = false;

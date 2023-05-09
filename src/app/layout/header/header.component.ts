@@ -7,6 +7,7 @@ import { ThemeService } from 'src/app/core/themes/theme.service';
 import { SidebarService } from '../sidebar/services/sidebar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordDialogComponent } from 'src/app/shared/component/change-password-dialog/change-password-dialog.component';
+import { ReadQrcodeDialogComponent } from 'src/app/shared/component/read-qrcode-dialog/read-qrcode-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -42,7 +43,17 @@ export class HeaderComponent {
   openChangePasswordDialog() {
     this.dialog.open(ChangePasswordDialogComponent, {
       minWidth: 'auto'
-    })
+    });
+  }
+
+  openQRCodeDialog() {
+    const QRCODE_DIALOG = this.dialog.open(ReadQrcodeDialogComponent, {
+      minWidth: 'auto'
+    });
+
+    QRCODE_DIALOG.afterClosed().subscribe({
+      next: v => alert(v.result)
+    });
   }
 
   logout() {
