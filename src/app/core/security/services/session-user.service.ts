@@ -7,7 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class SessionUserService {
 
-  public readonly tokenKey = 'tokenJWT';
+  public readonly tokenKey = 'token';
 
   constructor() { }
 
@@ -17,6 +17,7 @@ export class SessionUserService {
     let user: SessionUser = new SessionUser();
 
     user.login = decodedToken?.login.toLowerCase();
+    user.name = decodedToken?.name;
     user.userId = decodedToken?.userId;
     user.scopes = decodedToken?.scopes ?? [];
 

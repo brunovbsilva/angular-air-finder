@@ -1,6 +1,6 @@
-import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
+import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER, forwardRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -8,12 +8,14 @@ import { LayoutModule } from './layout/layout.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material/material.module';
+import { MaterialModule } from './material/material.module';
 import { LoginModule } from './login/login.module';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CustomErrorStateMatcher } from './shared/form/form-helpers/custom-state-matcher';
 import { AppConfigService } from './app-config.service';
 import { HttpInterceptorsProviders } from './core/security/interceptor';
+import { MaterialProviders } from './material/providers';
+import { SharedModule } from './shared/shared.module';
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -22,8 +24,6 @@ function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 export const configFactory = (configService: AppConfigService) => {
   return () => configService.loadAppConfig();
 };
-
-
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ export const configFactory = (configService: AppConfigService) => {
     LayoutModule,
     LoginModule,
     MaterialModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,6 +50,10 @@ export const configFactory = (configService: AppConfigService) => {
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
+  exports: [
+    MaterialModule,
+    SharedModule
+  ],
   providers: [
     { 
       provide: LOCALE_ID, 
@@ -58,6 +63,7 @@ export const configFactory = (configService: AppConfigService) => {
       provide: ErrorStateMatcher,
       useClass: CustomErrorStateMatcher
     },
+    MaterialProviders,
     HttpInterceptorsProviders,
     AppConfigService,
     {
@@ -66,6 +72,7 @@ export const configFactory = (configService: AppConfigService) => {
       deps      : [AppConfigService],
       multi     : true
     },
+    //{ provide: MatSelect, useExisting: forwardRef(() => CustomOpenDirective), multi: true }
   ],
   bootstrap: [AppComponent]
 })

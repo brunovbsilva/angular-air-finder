@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field class="form-field col-6" appearance="outline" color="accent">
+    <mat-form-field class="form-field col-6">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="name"
             type="text"
@@ -9,7 +9,7 @@
             {{ 'FormFields.Validators.'+error | translate }}
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="form-field col-6" appearance="outline" color="accent">
+    <mat-form-field class="form-field col-6">
         <mat-label>Mensagem</mat-label>
         <input matInput formControlName="message"
             type="text"

@@ -20,6 +20,9 @@ export class PersonalForm extends FormGroup {
     public get birthday() {
         return this.get('birthday')!;
     }
+    public get gender() {
+        return this.get('gender')!;
+    }
 
     constructor() {
         super({});
@@ -32,15 +35,17 @@ export class PersonalForm extends FormGroup {
         this.addControl('CPF', new FormControl('', [Validators.required]));
         this.addControl('phone', new FormControl('', [Validators.required]));
         this.addControl('birthday', new FormControl(new Date(), [Validators.required]));
+        this.addControl('gender', new FormControl(-1, Validators.required));
     }
 
     public getValues() {
         return {
             name: this.name.value,
             email: this.email.value,
-            CPF: this.CPF.value,
+            cpf: this.CPF.value,
             phone: this.phone.value,
-            birthday: this.birthday.value
+            birthday: this.birthday.value,
+            gender: this.gender.value
         }
     }
 }

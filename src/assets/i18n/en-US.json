@@ -1,24 +1,27 @@
 {
-  "Header": {
-    "Logo": "AirFinder"
-  },
-  "Sidebar": {
-    "Home": {
-      "Name": "Home"
+  "Layout": {
+    "Header": {
+      "Logo": "AirFinder",
+      "ChangePassword": "Change password",
+      "ScanQRCode": "Scan QRCode",
+      "Logout": "Logout"
     },
-    "Test": {
-      "Name": "Test",
-      "Submenus": {
-        "QRCodeGenerator": "QR Code Generator",
-        "QRCodeReader": "QR Code Reader"
+    "Sidebar": {
+      "Home": {
+        "Name": "Home"
+      },
+      "Test": {
+        "Name": "Test",
+        "Submenus": {
+          "QRCodeGenerator": "QR Code Generator"
+        }
       }
-    }
-  },
-  "Breadcrumb": {
+    },
+    "Breadcrumb": {
       "Home": "Home",
       "Test": "Test",
-      "Qrcode-generator": "QR Code Generator",
-      "Qrcode-reader": "QR Code Reader"
+      "Qrcode-generator": "QR Code Generator"
+    }
   },
   "Login": {
     "Title": {
@@ -45,21 +48,32 @@
     "Label": {
       "Name": "Name",
       "Login": "Login",
-      "NewPassword": "New password",
       "Password": "Password",
+      "CurrentPassword": "Current password",
+      "NewPassword": "New password",
       "ConfirmPassword": "Confirm password",
       "Email": "Email",
       "Birthday": "Birthday",
-      "Code": "Code"
+      "Code": "Code",
+      "Filter": "Filter",
+      "Phone": "Phone",
+      "CPF": "CPF",
+      "Gender": "Gender"
     },
     "Placeholder": {
       "Name": "Enter your name",
       "Login": "Enter your login",
       "Password": "Enter your password",
+      "CurrentPassword": "Enter your current password",
+      "NewPassword": "Enter your new password",
       "ConfirmPassword": "Confirm your password",
       "Email": "Enter your email",
       "Birthday": "dd/mm/yyyy",
-      "Code": "Enter your code"
+      "Code": "Enter your code",
+      "Filter": "Search here",
+      "Phone": "Enter your phone",
+      "CPF": "Enter your CPF",
+      "Gender": "Select your gender"
     },
     "Validators": {
       "itIsRequired": "Required:",
@@ -71,7 +85,11 @@
       "required": "Required field",
       "email": "Invalid email",
       "passwordMustMatch": "Passwords must match",
-      "invalidCode": "Invalid code"
+      "invalidCode": "Invalid code",
+      "invalidSpace": "Spaces are not allowed",
+      "incorrectPassword": "Incorrect password",
+      "valuesMustNotMatch": "New password can't be equal current password",
+      "valuesMustMatch": "Must match new password"
     }
   },
   "Components": {
@@ -82,6 +100,16 @@
       "Placeholder": "Search here"
     }
   },
+  "Snackbar": {
+    "ChangePassword": {
+      "Success": "Password change successfully"
+    }
+  },
+  "Dialog": {
+    "Title": {
+      "ChangePassword": "Change your password"
+    }
+  },
   "Shared": {
     "Button": {
       "Next": "Next",
@@ -90,6 +118,11 @@
       "Send": "Send",
       "Reset": "Reset",
       "Cancel": "Cancel"
+    },
+    "Gender": {
+      "Male": "Male",
+      "Female": "Female",
+      "Unknow": "I prefer not to answer"
     }
   }
 }

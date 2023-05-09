@@ -13,6 +13,14 @@ export class CustomFormValidations extends Validators {
         return null;
     }
 
+    static spaceValidator(control: FormControl): ValidationErrors | null {
+        const value = control.value;
+        if(value && value != '') {
+            return value.includes(' ') ? { invalidSpace: true } : null;
+        }
+        return null
+    }
+
     //#region password
     static uppercaseValidator(control: FormControl): ValidationErrors | null {
         const value = control.value;

@@ -31,7 +31,7 @@ export class BreadcrumbComponent implements OnInit {
     for (let route of splitedRoutes) {
       if (route.includes('?')) route = route.slice(0, route.indexOf('?'));
 
-      this.routes.push('Breadcrumb.' + this.toFirstLetterUpperCase(route));
+      this.routes.push('Layout.Breadcrumb.' + this.toFirstLetterUpperCase(route));
     }
   }
 

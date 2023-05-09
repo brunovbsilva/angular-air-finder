@@ -44,6 +44,7 @@
   .parent {
     .main {
       #page {
+        padding: 0 20px;
         height: calc(100vh - 56px);
         margin-top: 56px;
         &.sidebar-open{
@@ -59,26 +60,4 @@
       }
     }
   }
-}
-
-::-webkit-scrollbar {
-  height: 7px;
-  width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background-clip: content-box;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $AF_primary;
-  border-radius: 3.5px;
-  background-clip: content-box;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  background-clip: content-box;
 }

@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { MenuSidebarComponent } from './sidebar/menu-sidebar/menu-sidebar.component';
-import { MaterialModule } from '../shared/material/material.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [

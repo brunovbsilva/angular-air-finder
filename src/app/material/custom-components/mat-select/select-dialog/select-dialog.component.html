@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>
+  {{ data.placeholder }}
+  <mat-form-field class="form-field">
+    <mat-label>{{ 'FormFields.Label.Filter' | translate }}</mat-label>
+    <input #matInput matInput [placeholder]="'FormFields.Placeholder.Filter' | translate">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</h1>
+<div mat-dialog-content>
+    <mat-selection-list class="select-list">
+        <mat-list-item
+          *ngIf="(data.options | filterSearch: matInput.value).length == 0">
+          {{ 'Components.Select.NoResultsFound' | translate }}
+        </mat-list-item>
+        <mat-list-item 
+          *ngIf="(matInput.value == '') && (data.options.length != 0) && data.multiple"
+          (click)="toggleSelectAll()">
+          <mat-checkbox
+            [indeterminate]="indeterminated" 
+            [checked]="selectAll">
+            {{ 'Components.Select.' + (!selectAll ? 'SelectAll' : 'RemoveAll') }}
+          </mat-checkbox>
+        </mat-list-item>
+        <mat-list-item 
+          *ngFor="let item of data.options | filterSearch: matInput.value"
+          togglePosition="before"
+          (click)="toggleSelectItem(item)"
+          color="primary">
+          <mat-checkbox *ngIf="data.multiple" [checked]="item.selected" [value]="item.value"></mat-checkbox>
+          {{item.viewValue}}
+        </mat-list-item>
+    </mat-selection-list>
+</div>

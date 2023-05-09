@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: '', 
     component: MainLayoutComponent,
-    canMatch: [() => inject(AuthenticationService).isAuthenticated()],
+    // canMatch: [() => inject(AuthenticationService).isAuthenticated()],
     children: [
       { 
         path: 'home', 

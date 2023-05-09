@@ -18,16 +18,18 @@ export class EnterComponent {
   loadingLogin = false;
   form: FormGroup;
 
-  constructor(
+  constructor (
     private authenticationService: AuthenticationService,
     private loginService: LoginService, 
     private router: Router,
     private fb: FormBuilder,
-    private sessionUser: SessionUserService) {
-      this.form = this.fb.group({
-        login: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required])
-      })
+    private sessionUser: SessionUserService
+  ) 
+  {
+    this.form = this.fb.group({
+      login: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    })
   }
 
   submit() {

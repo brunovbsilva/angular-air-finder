@@ -1,5 +1,6 @@
 <form class="form" [formGroup]="form">
-    <mat-form-field appearance="fill" class="form-field email" appearance="outline" color="accent">
+
+    <mat-form-field class="form-field email">
         <mat-label>{{ 'FormFields.Label.Login' | translate }}</mat-label>
         <input matInput formControlName="login" type="login" [placeholder]="'FormFields.Placeholder.Login' | translate" autocomplete="off">
         <mat-error *ngIf="form.get('login')?.hasError('required')">
@@ -7,7 +8,7 @@
         </mat-error>
     </mat-form-field>
     
-    <mat-form-field appearance="fill" class="form-field password" appearance="outline" color="accent">
+    <mat-form-field class="form-field password">
         <mat-label>{{ 'FormFields.Label.Password' | translate }}</mat-label>
         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"  [placeholder]="'FormFields.Placeholder.Password' | translate" autocomplete="current-password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
