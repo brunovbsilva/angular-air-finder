@@ -1,8 +1,8 @@
 
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, Inject, Renderer2 } from '@angular/core';
-import { ThemeService } from '../core/themes/theme.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { ThemeService } from 'src/app/core/themes/theme.service';
 
 @Component({
   selector: 'app-login',
@@ -22,15 +22,15 @@ export class LoginComponent implements AfterViewInit {
     this.updateOnRouteChange(route);
   }
 
+  ngAfterViewInit(): void {
+    this.setTheme();
+  }
+
   private updateOnRouteChange(route: Router): void {
     route.events.subscribe(evt => {
       if (evt instanceof NavigationEnd)
         this.changeTitle(evt.urlAfterRedirects);
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.setTheme();
   }
 
   private changeTitle(url: string) {

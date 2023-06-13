@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
-import { LoginRequest } from './model/login-request';
-import { LoginService } from 'src/app/login/services/login.service';
+import { LoginRequest } from './model/login-request.model';
+import { LoginService } from 'src/app/pages/login/services/login.service';
 import { finalize, tap } from 'rxjs';
 import { SessionUserService } from 'src/app/core/security/services/session-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -36,9 +36,10 @@ export class EnterComponent {
     if(!this.form.valid) return;
 
     this.loadingLogin = true;
-    var request = new LoginRequest()
-    request.login = this.form.get('login')?.value,
-    request.password = this.form.get('password')?.value
+    var request: LoginRequest = {
+      login: this.form.get('login')?.value,
+      password: this.form.get('password')?.value
+    };
 
     this.loginService.login(request)
       .pipe(

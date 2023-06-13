@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomFormValidations } from '../../shared/form/form-helpers/custom-form-validations';
-import { UpdatePasswordForm } from '../../shared/form/components/update-password/update-password.form';
 import { MatStepper } from '@angular/material/stepper';
 import { finalize } from 'rxjs';
-import { VerifyTokenRequest } from './model/verify-token-request';
-import { ChangePasswordRequest } from './model/change-password-request';
-import { LoginService } from 'src/app/login/services/login.service';
+import { VerifyTokenRequest } from './model/verify-token-request.model';
+import { LoginService } from 'src/app/pages/login/services/login.service';
+import { UpdatePasswordForm } from 'src/app/shared/form/components/update-password/update-password.form';
+import { CustomFormValidations } from 'src/app/shared/form/form-helpers/custom-form-validations';
+import { ChangePasswordRequest } from './model/change-password-request.model';
 
 @Component({
   selector: 'app-forgot-password',
@@ -96,8 +96,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.loginService.changePasswordToken(request)
       .pipe(finalize(() => this.passwordLoading = false))
       .subscribe({
-        next: () => this.router.navigate(['/home']),
-        error: () => {}
+        next: () => this.router.navigate(['/home'])
     });
   }
 

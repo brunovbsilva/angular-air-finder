@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CredentialsForm } from '../../shared/form/components/credentials/credentials.form';
-import { PersonalForm } from '../../shared/form/components/personal-information/personal.form';
-import { LoginService } from 'src/app/login/services/login.service';
+import { LoginService } from 'src/app/pages/login/services/login.service';
 import { finalize } from 'rxjs';
 import { CreateMapper } from './mapper/create.mapper';
+import { CredentialsForm } from 'src/app/shared/form/components/credentials/credentials.form';
+import { PersonalForm } from 'src/app/shared/form/components/personal-information/personal.form';
 
 @Component({
   selector: 'app-create',

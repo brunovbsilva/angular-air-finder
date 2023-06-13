@@ -1,16 +1,15 @@
 import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
 import { AppConfigService } from 'src/app/app-config.service';
 import { skipBearerToken } from 'src/app/core/security/interceptor/app.http-interceptor';
-import { CreateUserResponse } from 'src/app/login/create/model/create-user-response';
-import { UserRequest } from 'src/app/login/create/model/user-request';
-import { LoginRequest } from 'src/app/login/enter/model/login-request';
-import { LoginResponse } from 'src/app/login/enter/model/login-response';
-import { ChangePasswordRequest } from 'src/app/login/forgot-password/model/change-password-request';
-import { VerifyTokenRequest } from 'src/app/login/forgot-password/model/verify-token-request';
+import { LoginRequest } from 'src/app/pages/login/enter/model/login-request.model';
+import { ChangePasswordRequest } from 'src/app/pages/login/forgot-password/model/change-password-request.model';
+import { VerifyTokenRequest } from 'src/app/pages/login/forgot-password/model/verify-token-request.model';
 import { BaseResponse } from 'src/app/shared/models/response/base-response';
 import { QueryString } from 'src/app/shared/utils/query-string.extention';
+import { UserRequest } from '../create/model/user-request';
+import { CreateUserResponse } from '../create/model/create-user-response';
+import { LoginResponse } from '../enter/model/login-response.model';
 
 @Injectable({
   providedIn: 'root'

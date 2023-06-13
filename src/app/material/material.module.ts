@@ -51,6 +51,7 @@ import { FilterSearchPipe } from './custom-components/mat-select/pipe/filter-sea
 import { CustomOpenDirective } from './custom-components/mat-select/directives/custom-open.directive';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { StylePaginatorDirective } from './custom-components/mat-paginator/directives/style-paginator.directive';
 
 @NgModule({
   imports: [
@@ -156,12 +157,14 @@ import { TranslateModule } from '@ngx-translate/core';
     DialogModule,
     SelectDialogComponent,
     FilterSearchPipe,
-    CustomOpenDirective
+    CustomOpenDirective,
+    StylePaginatorDirective
   ],
   declarations: [
     SelectDialogComponent,
     FilterSearchPipe,
-    CustomOpenDirective
+    CustomOpenDirective,
+    StylePaginatorDirective
   ]
 })
 export class MaterialModule {}
