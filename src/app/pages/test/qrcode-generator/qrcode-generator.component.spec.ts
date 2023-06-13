@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QrcodeGeneratorComponent } from './qrcode-generator.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 describe('QrcodeGeneratorComponent', () => {
   let component: QrcodeGeneratorComponent;
@@ -8,7 +9,12 @@ describe('QrcodeGeneratorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QrcodeGeneratorComponent ]
+      declarations: [
+        QrcodeGeneratorComponent
+      ],
+      imports: [
+        QRCodeModule
+      ]
     })
     .compileComponents();
 

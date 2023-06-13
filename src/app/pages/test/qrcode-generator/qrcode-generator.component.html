@@ -1,26 +1,2 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field class="form-field col-6">
-        <mat-label>Nome</mat-label>
-        <input matInput formControlName="name"
-            type="text"
-            placeholder="Digite seu nome completo"
-            autocomplete="off">
-        <mat-error *ngFor="let error of form.name.errors | keys">
-            {{ 'FormFields.Validators.'+error | translate }}
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field class="form-field col-6">
-        <mat-label>Mensagem</mat-label>
-        <input matInput formControlName="message"
-            type="text"
-            placeholder="Digite a mensagem"
-            autocomplete="off">
-        <mat-error *ngFor="let error of form.message.errors | keys">
-            {{ 'FormFields.Validators.'+error | translate }}
-        </mat-error>
-    </mat-form-field>
-
-    <button mat-button type="submit">Criar QRCode</button>
-</form>
-
-<qrcode *ngIf="data" [qrdata]="data | json" [errorCorrectionLevel]="'M'"></qrcode>
+<h1>Who am I?</h1>
+<qrcode [qrdata]="user | json" [errorCorrectionLevel]="'M'"></qrcode>
