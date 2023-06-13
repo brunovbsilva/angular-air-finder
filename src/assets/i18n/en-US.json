@@ -10,6 +10,9 @@
       "Home": {
         "Name": "Home"
       },
+      "Games": {
+        "Name": "Games"
+      },
       "Test": {
         "Name": "Test",
         "Submenus": {
@@ -44,6 +47,13 @@
       "ChangePasswordStep": "Choose your new password"
     }
   },
+  "Home": {
+    "Banner": {
+      "GamesPlayed": "Games played",
+      "WeekStreak": "Week streak",
+      "Points": "Points"
+    }
+  },
   "FormFields": {
     "Label": {
       "Name": "Name",
@@ -58,7 +68,20 @@
       "Filter": "Filter",
       "Phone": "Phone",
       "CPF": "CPF",
-      "Gender": "Gender"
+      "Gender": "Gender",
+      "GameName": "Name",
+      "GameDescription": "Description",
+      "BattlegroundSelect": "Battleground",
+      "DateTime": "Datetime",
+      "BGName": "Battleground name",
+      "CEP": "CEP",
+      "Address": "Address",
+      "Number": "Number",
+      "Neighborhood": "Neighborhood",
+      "City": "City",
+      "State": "State",
+      "Country": "Country"
+
     },
     "Placeholder": {
       "Name": "Enter your name",
@@ -73,7 +96,19 @@
       "Filter": "Search here",
       "Phone": "Enter your phone",
       "CPF": "Enter your CPF",
-      "Gender": "Select your gender"
+      "Gender": "Select your gender",
+      "GameName": "Enter the game name",
+      "GameDescription": "Enter the description",
+      "BattlegroundSelect": "Select the battleground",
+      "DateTime": "Select the date",
+      "BGName": "Enter the battleground name",
+      "CEP": "Enter the CEP",
+      "Address": "Enter the address",
+      "Number": "Enter the number",
+      "Neighborhood": "Enter the neighborhood",
+      "City": "Enter the city",
+      "State": "Enter the state",
+      "Country": "Enter the country"
     },
     "Validators": {
       "itIsRequired": "Required:",
@@ -107,7 +142,10 @@
   },
   "Dialog": {
     "Title": {
-      "ChangePassword": "Change your password"
+      "ChangePassword": "Change your password",
+      "CreateBattleground": "Create battleground",
+      "CreateGame": "Create game",
+      "SelectBattleground": "Select battleground"
     }
   },
   "Shared": {
@@ -123,6 +161,7 @@
       "Male": "Male",
       "Female": "Female",
       "Unknow": "I prefer not to answer"
-    }
+    },
+    "NoResultsFound": "No results found"
   }
 }

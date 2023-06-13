@@ -1,91 +1,28 @@
 @use '@angular/material' as mat;
+@import 'typography';
+@import 'palette';
+
 @include mat.core();
-
-$md-primary: (
-    50 : #e2f0e6,
-    100 : #b7dac0,
-    200 : #88c196,
-    300 : #58a86c,
-    400 : #34964d,
-    500 : #10832d,
-    600 : #0e7b28,
-    700 : #0c7022,
-    800 : #09661c,
-    900 : #055311,
-    A100 : #86ff91,
-    A200 : #53ff63,
-    A400 : #20ff34,
-    A700 : #07ff1d,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
-
-$md-accent: (
-    50 : #fff2e0,
-    100 : #ffdeb3,
-    200 : #ffc980,
-    300 : #ffb34d,
-    400 : #ffa226,
-    500 : #ff9200,
-    600 : #ff8a00,
-    700 : #ff7f00,
-    800 : #ff7500,
-    900 : #ff6300,
-    A100 : #ffffff,
-    A200 : #fff6f2,
-    A400 : #ffd4bf,
-    A700 : #ffc3a6,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #000000,
-        600 : #000000,
-        700 : #000000,
-        800 : #000000,
-        900 : #000000,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
 
 $dark-theme: mat.define-dark-theme((
     color: (
-        primary: mat.define-palette($md-primary, 900),
-        accent: mat.define-palette($md-accent, 900),
+        primary: mat.define-palette($AF-green, 900, A100, A400),
+        accent: mat.define-palette($AF-blue, A200, A100, A400),
     ),
-    typography: mat.define-typography-config(),
+    typography: mat.define-typography-config($my-font-name),
     density: 0,
 ));
 
 $light-theme: mat.define-light-theme((
     color: (
-        primary: mat.define-palette($md-primary, 400),
-        accent: mat.define-palette($md-accent, 900),
+        primary: mat.define-palette($AF-green, 400),
+        accent: mat.define-palette($AF-orange, A200, A100, 700),
     ),
 ));
 
-.dark-theme{
-    @include mat.all-component-themes($dark-theme);
-}
+@include mat.all-component-themes($dark-theme);
+
 .light-theme{
     @include mat.all-component-colors($light-theme);
 }
+
