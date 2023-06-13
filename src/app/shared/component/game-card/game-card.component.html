@@ -1,17 +1,12 @@
 <mat-card>
-    <mat-card-header>
-        <img mat-card-avatar [src]="model.avatar">
-        <mat-card-title>{{model.name}}</mat-card-title>
-        <mat-card-subtitle>{{model.title}}</mat-card-subtitle>
-        <mat-chip highlighted class="end">{{model.date}}</mat-chip>
-    </mat-card-header>
-    <img mat-card-image [src]="model.image">
-    <mat-card-content>
-        <mat-card-subtitle>{{model.body}}</mat-card-subtitle>
+    <img mat-card-image [src]="model.imageUrl">
+    <mat-card-content class="content">
+        <mat-chip [highlighted]="highlighted" [color]="color" class="chip">{{ model.date | date: 'dd-MM-YYYY' }}</mat-chip>
+        <div class="card-details">
+            <mat-card-title class="card-title">{{model.name}}</mat-card-title>
+            <mat-card-subtitle class="card-title">{{model.id}}</mat-card-subtitle>
+        </div>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-flat-button (click)="model.loading = !model.loading">apply</button>
-    </mat-card-actions>
     <mat-card-footer *ngIf="model.loading">
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer>

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameCardComponent } from './game-card.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { GameCardModel } from './model/game-card.model';
 
 describe('GameCardComponent', () => {
   let component: GameCardComponent;
@@ -8,12 +11,19 @@ describe('GameCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameCardComponent ]
+      declarations: [
+        GameCardComponent,
+      ],
+      imports: [
+        MatCardModule,
+        MatChipsModule
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(GameCardComponent);
     component = fixture.componentInstance;
+    component.model = new GameCardModel();
     fixture.detectChanges();
   });
 

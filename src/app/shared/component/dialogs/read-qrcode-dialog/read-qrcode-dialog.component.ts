@@ -49,7 +49,7 @@ export class ReadQrcodeDialogComponent implements OnInit, OnDestroy {
   }
 
   onError(e: any) {
-    alert(e);
+    window.alert(e);
   }
 
 }

@@ -1,0 +1,13 @@
+.empty-list-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  .alert-icon {
+      line-height: 100px;
+      font-size: 100px;
+  }
+  .alert-message {
+      line-height: 30px;
+      font-size: 24px;
+  }
+}

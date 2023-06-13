@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { InternalUpdatePasswordForm } from '../../form/components/internal-update-password/internal-update-password.form';
-import { ChangePasswordService } from './service/change-password.service';
-import { ChangePasswordDialogMapper } from './mapper/change-password-dialog.mapper';
 import { finalize } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { InternalUpdatePasswordForm } from 'src/app/shared/form/components/internal-update-password/internal-update-password.form';
+import { ChangePasswordService } from './services/change-password.service';
 
 @Component({
   selector: 'app-change-password-dialog',
@@ -20,7 +19,6 @@ export class ChangePasswordDialogComponent {
   constructor (
     public dialogRef: MatDialogRef<ChangePasswordDialogComponent>,
     private service: ChangePasswordService,
-    private mapper: ChangePasswordDialogMapper,
     private _snackBar: MatSnackBar,
     private translate: TranslateService
   ) { }
@@ -30,7 +28,6 @@ export class ChangePasswordDialogComponent {
       this.updatePassword.currentPassword.markAsDirty();
       this.updatePassword.newPassword.markAsDirty();
       this.updatePassword.confirmPassword.markAsDirty();
-      console.log(Object.keys(this.updatePassword.errors ?? []))
       const keys = Object.keys(this.updatePassword.errors ?? []);
       if(keys.includes('valuesMustNotMatch')) {
         this.openSnackBar('valuesMustNotMatch');
@@ -44,8 +41,7 @@ export class ChangePasswordDialogComponent {
     }
       
     this.loading = true;
-    const request = this.mapper.mapInternalChangePasswordRequestForm(this.updatePassword);
-    this.service.changePassword(request)
+    this.service.changePassword(this.updatePassword.getValues())
       .pipe(finalize(() => this.loading = false))
       .subscribe({
         next: (res) => {

@@ -1,0 +1,21 @@
+:host {
+  .top-content {
+    position: relative;
+    display: flex;
+    height: 62px;
+    .form-field {
+      width: calc(100% - 48px);
+      padding-top: 6px;
+    }
+    >button {
+      position: absolute;
+      right: -10px;
+      top: 10px;
+    }
+  }
+  
+  .list-content {
+    max-height: 260px;
+    overflow-y: scroll;
+  }
+}

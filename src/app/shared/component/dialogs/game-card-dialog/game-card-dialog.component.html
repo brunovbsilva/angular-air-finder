@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{ data.gameName }}</h1>
+<div mat-dialog-content>
+      <h1>{{ data.creator }}</h1>
+      <span>{{ data.gamePlace }}</span>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="okClick()" type="submit" [disabled]="loading">
+    {{ 'Apply' }} 
+    <mat-progress-spinner *ngIf="loading"
+      mode="indeterminate"
+      diameter="21">
+    </mat-progress-spinner>
+  </button>
+  <button mat-button (click)="cancelClick()" cdkFocusInitial type="button" [disabled]="loading">{{ 'Cancel' }}</button>
+</div>

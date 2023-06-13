@@ -1,0 +1,10 @@
+<div class="content mb-2" (click)="onClick()">
+  <div class="data">
+    <p class="caption">{{ firstLine }}</p>
+    <p class="mat-h6">{{ battleground | address1 }}</p>
+    <p class="caption">{{ battleground | address2 }}</p>
+  </div>
+  <button mat-icon-button (click)="onIconClick($event)">
+    <mat-icon>{{ icon }}</mat-icon>
+  </button>
+</div>

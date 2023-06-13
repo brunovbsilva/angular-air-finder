@@ -8,8 +8,10 @@ import { GameCardModel } from './model/game-card.model';
 })
 export class GameCardComponent implements OnInit {
   @Input() model!: GameCardModel;
+  @Input() color: string = 'primary';
+  @Input() highlighted: string = 'true';
 
   ngOnInit(): void {
-    if(!this.model.avatar) this.model.avatar = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+    if(!this.model.imageUrl) this.model.imageUrl = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
   }
 }

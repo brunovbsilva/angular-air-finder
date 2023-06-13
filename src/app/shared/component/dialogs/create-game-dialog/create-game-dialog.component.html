@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>
+  <button mat-icon-button *ngIf="dialogType >= 1" (click)="setDialogType(dialogType-1)" class="arrow-back-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  {{ 
+    (
+      dialogType == typeEnum.createGame         ? 'Dialog.Title.CreateGame'         :
+      dialogType == typeEnum.selectBattleground ? 'Dialog.Title.SelectBattleground' :
+      dialogType == typeEnum.createBattleground ? 'Dialog.Title.CreateBattleground' : ''
+    ) | translate
+  }}
+</h1>
+<div mat-dialog-content>
+  <div *ngIf="dialogType == typeEnum.createGame">
+    <div *ngIf="!selectedBattleground"
+      class="empty-battleground mb-2"
+      (click)="setDialogType(typeEnum.selectBattleground)">
+      <span>Select a battleground</span>
+      <button mat-icon-button>
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+    </div>
+    <app-select-battleground-field *ngIf="selectedBattleground"
+      (onClickEvent)="setDialogType(typeEnum.selectBattleground)"
+      (onIconClickEvent)="setDialogType(typeEnum.selectBattleground)"
+      [firstLine]="('Game at: ' | translate) + selectedBattleground.name"
+      [battleground]="selectedBattleground"
+      icon="restart_alt">
+    </app-select-battleground-field>
+    <mat-divider></mat-divider>
+    <game-form [createGameForm]="gameForm"></game-form>
+  </div>
+
+  <div *ngIf="dialogType == typeEnum.selectBattleground">
+    <app-select-battleground
+      [battlegrounds]="battlegrounds"
+      (onSelect)="selectedBattleground = $event; setDialogType(typeEnum.createGame)"
+      (onDelete)="onDeleteEvent($event)"
+      (onIconClickEvent)="setDialogType(typeEnum.createBattleground)">
+    </app-select-battleground>
+  </div>
+
+  <div *ngIf="dialogType == typeEnum.createBattleground">
+    <battleground-form [createBGForm]="battlegroundForm"></battleground-form>
+  </div>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button *ngIf="showOkButton()" (click)="okClick()" type="submit" [disabled]="battlegroundLoading">
+    <span *ngIf="!battlegroundLoading">{{ 'Ok' | translate }}</span>
+    <mat-progress-spinner *ngIf="battlegroundLoading" mode="indeterminate" diameter="21"></mat-progress-spinner>
+  </button>
+  <button mat-button cdkFocusInitial (click)="cancelClick()" type="button" [disabled]="battlegroundLoading || gameLoading">{{ 'Cancel' | translate }}</button>
+</div>
