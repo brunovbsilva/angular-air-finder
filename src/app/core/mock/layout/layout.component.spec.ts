@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-main-layout',
   template: ''
 })
-export class MainLayoutComponentSpec {
-  sidebarCollapsed: boolean = true;
-}
+export class LayoutComponentSpec { }

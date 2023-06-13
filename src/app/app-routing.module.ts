@@ -1,23 +1,25 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
+import { GamesComponent } from './pages/games/games.component';
 import { AuthenticationService } from './core/security/services/authentication.service';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
-import { CreateComponent } from './login/create/create.component';
-import { EnterComponent } from './login/enter/enter.component';
-import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
     path: '', 
-    component: MainLayoutComponent,
-    // canMatch: [() => inject(AuthenticationService).isAuthenticated()],
+    component: LayoutComponent,
+    canMatch: [() => inject(AuthenticationService).isAuthenticated()],
     children: [
       { 
         path: 'home', 
         children:[
           { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) }
         ]
+      },
+      {
+        path: 'games',
+        component: GamesComponent
       },
       {
         path: 'test',
@@ -32,10 +34,7 @@ const routes: Routes = [
     path: '',
     component: LoginComponent,
     children: [
-      { path: 'login', component: EnterComponent },
-      { path: 'create', component: CreateComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: '**', redirectTo: 'login' }
+      { path: '', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) }
     ]
   },
   { path: '**', redirectTo: '' }

@@ -1,9 +1,13 @@
-import { Menu } from './models/menu.model';
+import { Menu } from './menu.model';
 
 export default [
   {
     name: 'Layout.Sidebar.Home.Name',
     path: 'home',
+  },
+  {
+    name: 'Layout.Sidebar.Games.Name',
+    path: 'games',
   },
   {
     name: 'Layout.Sidebar.Test.Name',

@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list class="nav">
     <ng-container *ngFor="let item of menus">
         <ng-container *ngIf="item.submenus; else single">
             <mat-list-item class="menu-item" (click)="toggleCollapsedMenu(item)">
@@ -24,3 +24,7 @@
         </ng-template>
     </ng-container>
 </mat-nav-list>
+<div class="copyright">
+    <div> Copyright {{ currentYear }} </div>
+    <div> Todos os direitos reservados </div>
+</div>
