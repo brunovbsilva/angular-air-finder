@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GameCardModel } from 'src/app/shared/component/game-card/model/game-card.model';
 
 @Component({
   selector: 'app-user-view',
@@ -7,10 +6,10 @@ import { GameCardModel } from 'src/app/shared/component/game-card/model/game-car
   styleUrls: ['./user-view.component.scss']
 })
 export class UserViewComponent {
-
-  cards: GameCardModel[] = [
-    { name: 'Arnaldo', title: 'Admin', body: "Teste sem imagem", date: '13-05-2023'},
-    { name: 'Bernaldo', title: 'Teste', body: "Teste sem imagem", date: '13-05-2023'},
-    { name: 'Cernaldo', image: 'https://material.angular.io/assets/img/examples/shiba2.jpg', body: "Teste com imagem", date: '13-05-2023'},
-  ]
+  public bannerItems = {
+    gamesPlayed: 27,
+    weekStreak: 5,
+    points: 2300
+  };
+  public currentPage: any = 1;
 }

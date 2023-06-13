@@ -11,7 +11,8 @@ import { UserViewComponent } from './user-view/user-view.component';
   ],
   imports: [
     SharedModule,
-    HomeRoutingModule 
-  ]
+    HomeRoutingModule
+  ],
+  providers: []
 })
 export class HomeModule {}
