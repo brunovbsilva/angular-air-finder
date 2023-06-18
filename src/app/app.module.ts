@@ -9,14 +9,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { LoginModule } from './pages/login/login.module';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { CustomErrorStateMatcher } from './shared/form/form-helpers/custom-state-matcher';
 import { AppConfigService } from './app-config.service';
 import { HttpInterceptorsProviders } from './core/security/interceptor';
 import { MaterialProviders } from './material/providers';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { GamesModule } from './pages/games/games.module';
 
@@ -43,6 +41,7 @@ export const configFactory = (configService: AppConfigService) => {
     LoginModule,
     MaterialModule,
     SharedModule,
+    GamesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -62,11 +61,7 @@ export const configFactory = (configService: AppConfigService) => {
   providers: [
     { 
       provide: LOCALE_ID, 
-      useValue: 'pt' 
-    },
-    { 
-      provide: ErrorStateMatcher,
-      useClass: CustomErrorStateMatcher
+      useValue: 'pt'
     },
     MaterialProviders,
     HttpInterceptorsProviders,
@@ -77,7 +72,7 @@ export const configFactory = (configService: AppConfigService) => {
       deps      : [AppConfigService],
       multi     : true
     },
-    //{ provide: MatSelect, useExisting: forwardRef(() => CustomOpenDirective), multi: true }
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

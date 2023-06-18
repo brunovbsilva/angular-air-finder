@@ -15,13 +15,15 @@ import { CreateBattlegroundComponent } from './form/components/create-battlegrou
 import { CreateGameComponent } from './form/components/create-game/create-game.component';
 import { CreateGameDialogComponent } from './component/dialogs/create-game-dialog/create-game-dialog.component';
 import { SelectBattlegroundComponent } from './component/dialogs/create-game-dialog/select-battleground/select-battleground.component';
-import { SelectBattlegroundFieldComponent } from './component/dialogs/create-game-dialog/select-battleground-field/select-battleground-field.component';
-import { Address1Pipe } from './component/dialogs/create-game-dialog/select-battleground-field/pipe/address-1.pipe';
-import { Address2Pipe } from './component/dialogs/create-game-dialog/select-battleground-field/pipe/address-2.pipe';
-import { FilterBattlegroundListPipe } from './component/dialogs/create-game-dialog/select-battleground/pipe/filter-battleground-list.pipe';
 import { EmptyListComponent } from './component/empty-list/empty-list.component';
 import { ChangePasswordDialogComponent } from './component/dialogs/change-password-dialog/change-password-dialog.component';
 import { GameCardDialogComponent } from './component/dialogs/game-card-dialog/game-card-dialog.component';
+import { FilterBattlegroundListPipe } from './component/dialogs/create-game-dialog/pipe/filter-battleground-list.pipe';
+import { AddressPipe } from './component/dialogs/create-game-dialog/pipe/address.pipe';
+import { ItemListComponent } from './component/item-list/item-list.component';
+import { MiniIconButtonComponent } from './component/mini-icon-button/mini-icon-button.component';
+import { ConfirmDialogComponent } from './component/dialogs/confirm-dialog/confirm-dialog.component';
+import { UpdateGameDialogComponent } from './component/dialogs/update-game-dialog/update-game-dialog.component';
 
 @NgModule({
   imports: [
@@ -46,6 +48,10 @@ import { GameCardDialogComponent } from './component/dialogs/game-card-dialog/ga
     GameCardComponent,
     CreateBattlegroundComponent,
     EmptyListComponent,
+    FilterBattlegroundListPipe,
+    AddressPipe,
+    ConfirmDialogComponent,
+    UpdateGameDialogComponent
   ],
   declarations: [
     KeysPipe,
@@ -61,11 +67,13 @@ import { GameCardDialogComponent } from './component/dialogs/game-card-dialog/ga
     CreateGameComponent,
     CreateGameDialogComponent,
     SelectBattlegroundComponent,
-    SelectBattlegroundFieldComponent,
-    Address1Pipe,
-    Address2Pipe,
-    FilterBattlegroundListPipe,
     EmptyListComponent,
-  ],
+    FilterBattlegroundListPipe,
+    AddressPipe,
+    ItemListComponent,
+    MiniIconButtonComponent,
+    ConfirmDialogComponent,
+    UpdateGameDialogComponent
+  ]
 })
 export class SharedModule { }

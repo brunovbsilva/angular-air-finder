@@ -9,15 +9,19 @@
   </button>
 </div>
 <div class="list-content">
-  <div *ngFor="let battleground of battlegrounds | filterBattlegroundList: matInput.value" class="mb-2">
-    <app-select-battleground-field
-      [firstLine]="battleground.name"
-      icon="delete"
-      [battleground]="battleground"
-      (onClickEvent)="selectBattleground($event)"
-      (onIconClickEvent)="deleteBattleground($event)">
-    </app-select-battleground-field>
-    <mat-divider></mat-divider>
+  <div *ngFor="let battleground of battlegrounds | filterBattlegroundList: matInput.value">
+    <div class="item-list">
+      <app-item-list
+        icon="location_on"
+        [name]="battleground.name"
+        [description]="battleground | address"
+        (click)="selectBattleground(battleground)">
+      </app-item-list>
+      <button mat-icon-button (click)="deleteBattleground(battleground.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <mat-divider class="mb-2 mt-2"></mat-divider>
   </div>
   <app-empty-list *ngIf="(battlegrounds | filterBattlegroundList: matInput.value).length == 0"></app-empty-list>
 </div>

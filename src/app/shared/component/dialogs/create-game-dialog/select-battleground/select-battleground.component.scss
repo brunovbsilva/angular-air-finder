@@ -17,5 +17,15 @@
   .list-content {
     max-height: 260px;
     overflow-y: scroll;
+    div {
+      .item-list {
+        display: flex;
+        justify-content: space-between;
+        app-item-list {
+          flex: 1 1 auto;
+          margin: auto 0;
+        }
+      }
+    }
   }
 }

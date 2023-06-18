@@ -2,12 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Battleground } from 'src/app/pages/games/models/dtos/battleground.model';
 
 @Pipe({
-  name: 'address2'
+  name: 'address'
 })
-export class Address2Pipe implements PipeTransform {
+export class AddressPipe implements PipeTransform {
 
   transform(value: Battleground): string {
-    return `${value.city}, ${value.state}`;
+    return `${value.address}, n° ${value.number}, ${value.city}, ${value.state}`;
   }
 
 }

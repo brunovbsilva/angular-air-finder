@@ -1,7 +1,19 @@
-<h1 mat-dialog-title>{{ data.gameName }}</h1>
+<h1 mat-dialog-title>{{ data.name }}</h1>
 <div mat-dialog-content>
-      <h1>{{ data.creator }}</h1>
-      <span>{{ data.gamePlace }}</span>
+  <mat-divider class="mb-2"></mat-divider>
+  <app-item-list
+    icon="location_on"
+    [name]="data.battleGround.name"
+    [description]="data.battleGround.address + ', n° ' + data.battleGround.number + ', ' + data.battleGround.city + ', ' + data.battleGround.state">
+  </app-item-list>
+  <mat-divider class="mt-2 mb-2"></mat-divider>
+  <app-item-list
+    icon="event"
+    name="Data e hora do evento"
+    [description]="(data.date | date: 'dd-MM-YYYY HH:mm' : 'UTC')!">
+  </app-item-list>
+  <mat-divider class="mt-2 mb-2"></mat-divider>
+  <p class="mat-h5">{{ data.description }}</p>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="okClick()" type="submit" [disabled]="loading">

@@ -12,22 +12,20 @@
 </h1>
 <div mat-dialog-content>
   <div *ngIf="dialogType == typeEnum.createGame">
-    <div *ngIf="!selectedBattleground"
-      class="empty-battleground mb-2"
-      (click)="setDialogType(typeEnum.selectBattleground)">
-      <span>Select a battleground</span>
-      <button mat-icon-button>
-        <mat-icon>restart_alt</mat-icon>
-      </button>
-    </div>
-    <app-select-battleground-field *ngIf="selectedBattleground"
-      (onClickEvent)="setDialogType(typeEnum.selectBattleground)"
-      (onIconClickEvent)="setDialogType(typeEnum.selectBattleground)"
-      [firstLine]="('Game at: ' | translate) + selectedBattleground.name"
-      [battleground]="selectedBattleground"
-      icon="restart_alt">
-    </app-select-battleground-field>
-    <mat-divider></mat-divider>
+    <app-item-list *ngIf="!selectedBattleground"
+      class="battleground"
+      (click)="setDialogType(typeEnum.selectBattleground)"
+      icon="location_on"
+      name="Select a battleground">
+    </app-item-list>
+    <app-item-list *ngIf="selectedBattleground"
+      class="battleground"
+      (click)="setDialogType(typeEnum.selectBattleground)"
+      icon="location_on"
+      [name]="selectedBattleground.name"
+      [description]="selectedBattleground | address">
+    </app-item-list>
+    <mat-divider class="mt-3"></mat-divider>
     <game-form [createGameForm]="gameForm"></game-form>
   </div>
 

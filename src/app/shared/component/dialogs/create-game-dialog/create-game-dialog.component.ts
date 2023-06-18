@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
 import { GameService } from 'src/app/pages/games/service/game.service';
@@ -8,6 +8,7 @@ import { CreateGameForm } from 'src/app/shared/form/components/create-game/creat
 import { CreateGameEnum } from './enum/create-game-enum.model';
 import { BattlegroundService } from 'src/app/pages/games/service/battleground.service';
 import { Battleground } from 'src/app/pages/games/models/dtos/battleground.model';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-create-game-dialog',
@@ -36,7 +37,8 @@ export class CreateGameDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateGameDialogComponent>,
     private gameService: GameService,
     private battlegroundService: BattlegroundService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -94,7 +96,6 @@ export class CreateGameDialogComponent implements OnInit {
       ...this.gameForm.getValues(),
       idBattleground: this.selectedBattleground!.id
     };
-    console.log(values);
     this.gameService.createGame(values)
       .pipe(finalize(() => this.gameLoading = false))
       .subscribe({
@@ -104,10 +105,20 @@ export class CreateGameDialogComponent implements OnInit {
 
   // region Select Battleground
   onDeleteEvent(id: string) {
-    this.battlegroundService.deleteBattleGround(id).subscribe({
-      next: () => this.populateBattlegrounds()
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      'maxWidth': '300px',
+      'width': '94%',
+      'data': 'Are you sure?'
     });
-    if(this.selectedBattleground!.id == id) this.selectedBattleground = this.battlegrounds[0] ?? undefined;
+
+    dialogRef.afterClosed().subscribe({
+      next: confirm => { if(confirm) {
+        this.battlegroundService.deleteBattleGround(id).subscribe({
+          next: () => this.populateBattlegrounds()
+        });
+        if(this.selectedBattleground!.id == id) this.selectedBattleground = this.battlegrounds[0] ?? undefined;
+      }}
+    });
   }
   
   // region Create Battleground
@@ -119,7 +130,6 @@ export class CreateGameDialogComponent implements OnInit {
 
     this.battlegroundLoading = true;
     const values = this.battlegroundForm.getValues();
-    console.log(values);
     this.battlegroundService.createBattleGround(values)
       .pipe(finalize(() => this.battlegroundLoading = false))
       .subscribe({
