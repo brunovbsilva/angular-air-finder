@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{ data.name }}</h1>
+<div mat-dialog-content>
+  <mat-divider class="mb-2"></mat-divider>
+  <app-item-list
+    icon="location_on"
+    [name]="data.battleGround.name"
+    [description]="data.battleGround.address + ', n° ' + data.battleGround.number + ', ' + data.battleGround.city + ', ' + data.battleGround.state">
+  </app-item-list>
+  <mat-divider class="mt-2 mb-2"></mat-divider>
+  <app-item-list
+    icon="event"
+    name="Data e hora do evento"
+    [description]="(data.date | date: 'dd-MM-YYYY HH:mm' : 'UTC')!">
+  </app-item-list>
+  <mat-divider class="mt-2 mb-2"></mat-divider>
+  <p class="mat-h5">{{ data.description }}</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="okClick()" type="submit" [disabled]="loading">
+    {{ 'Apply' }} 
+    <mat-progress-spinner *ngIf="loading"
+      mode="indeterminate"
+      diameter="21">
+    </mat-progress-spinner>
+  </button>
+  <button mat-button (click)="cancelClick()" cdkFocusInitial type="button" [disabled]="loading">{{ 'Cancel' }}</button>
+</div>

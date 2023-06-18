@@ -1,21 +1,24 @@
-import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER, forwardRef } from '@angular/core';
+import { NgModule, isDevMode, LOCALE_ID, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { LayoutModule } from './layout/layout.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { LoginModule } from './login/login.module';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { CustomErrorStateMatcher } from './shared/form/form-helpers/custom-state-matcher';
+import { LoginModule } from './pages/login/login.module';
 import { AppConfigService } from './app-config.service';
 import { HttpInterceptorsProviders } from './core/security/interceptor';
 import { MaterialProviders } from './material/providers';
 import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { GamesModule } from './pages/games/games.module';
+
+registerLocaleData(localePt);
 
 function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -38,6 +41,7 @@ export const configFactory = (configService: AppConfigService) => {
     LoginModule,
     MaterialModule,
     SharedModule,
+    GamesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -52,16 +56,12 @@ export const configFactory = (configService: AppConfigService) => {
   ],
   exports: [
     MaterialModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     { 
       provide: LOCALE_ID, 
-      useValue: 'pt' 
-    },
-    { 
-      provide: ErrorStateMatcher,
-      useClass: CustomErrorStateMatcher
+      useValue: 'pt'
     },
     MaterialProviders,
     HttpInterceptorsProviders,
@@ -72,7 +72,7 @@ export const configFactory = (configService: AppConfigService) => {
       deps      : [AppConfigService],
       multi     : true
     },
-    //{ provide: MatSelect, useExisting: forwardRef(() => CustomOpenDirective), multi: true }
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

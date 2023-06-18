@@ -1,0 +1,23 @@
+:host {
+    user-select: none;
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    width: 100vw;
+    .content {
+        flex: 1 1 auto;
+        .mat-drawer {
+            width: 240px;
+        }
+        #page {
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .mat-drawer {
+        width: 100% !important;
+    }
+}

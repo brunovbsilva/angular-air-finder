@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { QRCodeForm } from './form/qrcode.form';
+import { Component, OnInit } from '@angular/core';
+import { SessionUserService } from 'src/app/core/security/services/session-user.service';
 
 @Component({
   selector: 'app-qrcode-generator',
   templateUrl: './qrcode-generator.component.html',
   styleUrls: ['./qrcode-generator.component.scss']
 })
-export class QrcodeGeneratorComponent {
-  form = new QRCodeForm();
-  data: any;
+export class QrcodeGeneratorComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  user: any;
 
-  submit() {
-    if(!this.form.valid) return;
-    this.data = this.form.getValues();
+  constructor(
+    private sessionUser: SessionUserService
+  ) {
+    this.user = sessionUser.get();
+  }
+
+  ngOnInit(): void {
   }
 }

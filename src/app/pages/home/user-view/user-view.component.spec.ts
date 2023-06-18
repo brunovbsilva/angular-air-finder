@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserViewComponent } from './user-view.component';
+import { MatCardModule } from '@angular/material/card';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import { MatDividerModule } from '@angular/material/divider';
 
 describe('UserViewComponent', () => {
   let component: UserViewComponent;
@@ -8,7 +12,17 @@ describe('UserViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserViewComponent ]
+      declarations: [
+        UserViewComponent
+      ],
+      imports: [
+        MatCardModule,
+        MatDividerModule,
+        TranslateModule
+      ],
+      providers: [
+        { provide: TranslateService, useClass: TranslateServiceMock }
+      ]
     })
     .compileComponents();
 

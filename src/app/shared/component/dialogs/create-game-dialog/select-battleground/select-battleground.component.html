@@ -1,0 +1,28 @@
+<div class="top-content mb-3">
+  <mat-form-field class="form-field">
+    <mat-label>{{ 'FormFields.Label.Filter' | translate }}</mat-label>
+    <input #matInput matInput [placeholder]="'FormFields.Placeholder.Filter' | translate">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <button mat-icon-button (click)="onIconClick()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div class="list-content">
+  <div *ngFor="let battleground of battlegrounds | filterBattlegroundList: matInput.value">
+    <div class="item-list">
+      <app-item-list
+        icon="location_on"
+        [name]="battleground.name"
+        [description]="battleground | address"
+        (click)="selectBattleground(battleground)">
+      </app-item-list>
+      <button mat-icon-button (click)="deleteBattleground(battleground.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <mat-divider class="mb-2 mt-2"></mat-divider>
+  </div>
+  <app-empty-list *ngIf="(battlegrounds | filterBattlegroundList: matInput.value).length == 0"></app-empty-list>
+</div>
+

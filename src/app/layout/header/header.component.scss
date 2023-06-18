@@ -1,36 +1,6 @@
-@import '../../../assets/sass/style';
-
-header {
-  position: fixed;
-  width: 100%;
-  mat-toolbar{
-    display: flex;
-    justify-content: space-between;
-    .left-header {
-      display: flex;
-      gap: 10px;
-      .hamburguer {
-        display: none;
-      }
-      .AF-name {
-        cursor: pointer;
-        @include M_Headline_1_Bold;
-      }
-    }
-    .right-header{
-      justify-content: flex-end;
-    }
-  }
-}
-
-@media only screen and (max-width: 599px) {
-  header{
-    mat-toolbar{
-      .left-header{
-        .hamburguer {
-          display: block;
-        }
-      }
-    }
+mat-toolbar {
+  gap: 10px;
+  .spacer {
+    flex: 1 1 auto;
   }
 }

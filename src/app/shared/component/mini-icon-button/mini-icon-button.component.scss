@@ -1,0 +1,12 @@
+.mini-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    background-color: rgba($color: white, $alpha: 0.1);
+  }
+}

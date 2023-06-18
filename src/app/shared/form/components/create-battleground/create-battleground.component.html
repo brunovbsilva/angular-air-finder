@@ -1,0 +1,77 @@
+<form [formGroup]="createBGForm">
+    <div class="row">
+        <div class="col-12">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.BGName' | translate }}</mat-label>
+                <input matInput formControlName="name" type="text" [placeholder]="'FormFields.Placeholder.BGName' | translate" autocomplete="off">
+                <mat-error *ngFor="let error of createBGForm.name.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.CEP' | translate }}</mat-label>
+                <input matInput formControlName="cep" type="text" [placeholder]="'FormFields.Placeholder.CEP' | translate" autocomplete="off" maxlength="8">
+                <mat-error *ngFor="let error of createBGForm.cep.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-8">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.Address' | translate }}</mat-label>
+                <input matInput formControlName="address" type="text" [placeholder]="'FormFields.Placeholder.Address' | translate">
+                <mat-error *ngFor="let error of createBGForm.address.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.Number' | translate }}</mat-label>
+                <input matInput formControlName="number" type="text" [placeholder]="'FormFields.Placeholder.Number' | translate" autocomplete="off">
+                <mat-error *ngFor="let error of createBGForm.number.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.Neighborhood' | translate }}</mat-label>
+                <input matInput formControlName="neighborhood" type="text" [placeholder]="'FormFields.Placeholder.Neighborhood' | translate" autocomplete="off" [readonly]="true">
+                <mat-error *ngFor="let error of createBGForm.neighborhood.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.City' | translate }}</mat-label>
+                <input matInput formControlName="city" type="text" [placeholder]="'FormFields.Placeholder.City' | translate" autocomplete="off" [readonly]="true">
+                <mat-error *ngFor="let error of createBGForm.city.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.State' | translate }}</mat-label>
+                <input matInput formControlName="state" type="text" [placeholder]="'FormFields.Placeholder.State' | translate" autocomplete="off" [readonly]="true">
+                <mat-error *ngFor="let error of createBGForm.state.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+            <mat-form-field class="form-field">
+                <mat-label>{{ 'FormFields.Label.Country' | translate }}</mat-label>
+                <input matInput formControlName="country" type="text" [placeholder]="'FormFields.Placeholder.Country' | translate" autocomplete="off" [readonly]="true">
+                <mat-error *ngFor="let error of createBGForm.country.errors | keys">
+                    {{ 'FormFields.Validators.'+error | translate }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <input type="file" formControlName="base64">
+    </div>
+</form>

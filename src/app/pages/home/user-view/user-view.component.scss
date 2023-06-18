@@ -1,0 +1,14 @@
+:host {
+    .card-content {
+        display: flex;
+        text-align: center;
+        .col-4 {
+            >h4, >h1 {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            padding-top: 12px;
+        }
+    }
+}

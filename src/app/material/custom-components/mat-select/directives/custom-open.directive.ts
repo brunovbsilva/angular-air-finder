@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 import { SelectDialogComponent } from '../select-dialog/select-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Directive({
   selector: '[customOpen]',
 })
-export class CustomOpenDirective {
+export class CustomOpenDirective implements AfterViewInit {
 
   private isDialogOpen = false;
   
@@ -36,8 +36,6 @@ export class CustomOpenDirective {
         multiple: this.matSelect.multiple
       }
     });
-
-    console.log(this.matSelect.options.toArray());
 
     dialogRef.afterClosed().subscribe(() => {
       this.isDialogOpen = false;

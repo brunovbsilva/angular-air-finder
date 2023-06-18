@@ -28,12 +28,8 @@ export class SelectDialogComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dialogRef.backdropClick().subscribe(() => {
-      this.subscribeResults();
+      this.dialogRef.close();
     })
-  }
-
-  public subscribeResults() {
-    this.dialogRef.close();
   }
 
   public toggleSelectItem(value: MatOption): void {
@@ -43,7 +39,7 @@ export class SelectDialogComponent implements OnInit, AfterViewInit {
     }
     else {
       if(!value.selected) value.select();
-      this.subscribeResults();
+      this.dialogRef.close();
     }
   }
 
