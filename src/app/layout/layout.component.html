@@ -1,7 +1,7 @@
 <app-header (menuToggle)="drawer.toggle()"></app-header>
 <mat-drawer-container class="content" [hasBackdrop]="true">
   <mat-drawer #drawer mode="side">
-    <app-nav-list></app-nav-list>
+    <app-nav-list (onSelect)="drawer.close()"></app-nav-list>
   </mat-drawer>
   <div id="page">
     <!-- <app-breadcrumb></app-breadcrumb> -->

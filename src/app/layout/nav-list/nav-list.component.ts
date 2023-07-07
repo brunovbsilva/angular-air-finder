@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Menu } from 'src/app/layout/nav-list/models/menu.model';
 import ApplicationMenus from '../../layout/nav-list/models/menu-constructor';
 
@@ -10,6 +10,7 @@ import ApplicationMenus from '../../layout/nav-list/models/menu-constructor';
 export class NavListComponent {
   public currentYear = new Date().getFullYear();
   public menus: Menu[] = ApplicationMenus;
+  @Output() onSelect: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
@@ -32,5 +33,6 @@ export class NavListComponent {
   activeMenu(menu: Menu) {
     this.deactivateActiveMenus();
     menu.active = true;
+    this.onSelect.emit();
   }
 }
