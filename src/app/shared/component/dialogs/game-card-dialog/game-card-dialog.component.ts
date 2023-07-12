@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { GameDetails } from 'src/app/pages/games/models/get-details-response.model';
+import { GameDetails } from 'src/app/pages/games/models/responses/get-details-response.model';
 
 @Component({
   selector: 'app-game-card-dialog',

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GameLogStatus } from './models/enums/game-log-status.enum';
 import { GameTab } from './models/game-tab/game-tab.model';
 import { GameStatus } from './models/enums/game-status.enum';
 
@@ -15,36 +14,23 @@ export class GamesComponent {
       name: 'Next games', 
       options: {
         title: 'Next Games',
-        gameStatusList: [
-          GameStatus.Created,
-          GameStatus.Started
-        ],
+        gameStatus: GameStatus.Created,
         canFilter: true,
-        canCreateGame: true,
-        fromDate: new Date(),
+        canCreateGame: true
       }
     },
     { 
       name: 'Applyed games', 
       options: {
         title: 'Applyed Games',
-        gameStatusList: [
-          GameStatus.Created,
-          GameStatus.Started
-        ],
-        joinStatusList: [
-          GameLogStatus.Joined,
-          GameLogStatus.PaidOut,
-          GameLogStatus.Validated
-        ]
+        gameStatus: GameStatus.Started
       }
     },
     { 
       name: 'Played games', 
       options: {
         title: 'Played Games',
-        gameStatusList: [ GameStatus.Finished ],
-        joinStatusList: [ GameLogStatus.Finished ]
+        gameStatus: GameStatus.Finished
       }
     },
   ]

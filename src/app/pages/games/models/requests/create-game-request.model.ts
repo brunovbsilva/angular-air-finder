@@ -1,6 +1,8 @@
 export class CreateGameRequest {
   name: string;
   description: string;
-  date: number;
+  dateFrom: number;
+  dateUpTo: number;
+  maxPlayers?: number;
   idBattleground: string;
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GameService } from '../service/game.service';
-import { ListGamesRequest } from '../models/list-games-request.model';
+import { ListGamesRequest } from '../models/requests/list-games-request.model';
 import { PageEvent } from '@angular/material/paginator';
 import { PageConfig } from 'src/app/material/models/page-config.model';
 import { finalize } from 'rxjs';
@@ -10,7 +10,11 @@ import { GameCardDialogComponent } from 'src/app/shared/component/dialogs/game-c
 import { GameTabOptions } from '../models/game-tab/game-tab-options.model';
 import { ConfirmDialogComponent } from 'src/app/shared/component/dialogs/confirm-dialog/confirm-dialog.component';
 import { UpdateGameDialogComponent } from 'src/app/shared/component/dialogs/update-game-dialog/update-game-dialog.component';
-import { GameCard } from '../models/game-card.model';
+import { UpdateGameRequest } from '../models/requests/update-game-request.model';
+import { GameStatus } from '../models/enums/game-status.enum';
+import { CardOptions } from 'src/app/shared/component/game-card/models/card-options.model';
+import { GamePaymentStatus } from '../models/enums/game-payment-status.enum';
+import { GameCard } from '../models/responses/get-list-response.model';
 
 @Component({
   selector: 'app-game-list',
@@ -36,9 +40,8 @@ export class GameListComponent implements OnInit {
   getList(request: ListGamesRequest = new ListGamesRequest()) {
     this.loading = true;
     this.pageConfig.pageSize = request.itemsPerPage;
-    request.fromDate = this.options.fromDate?.getTime() ?? undefined;
-    request.upToDate = this.options.upToDate?.getTime() ?? undefined;
-    this.service.listGames(request, this.options.gameStatusList, this.options.joinStatusList)
+    request.gameStatus = this.options.gameStatus;
+    this.service.listGames(request)
       .pipe(finalize(() => this.loading = false))
       .subscribe({
         next: (response) => {
@@ -50,7 +53,7 @@ export class GameListComponent implements OnInit {
   }
 
   updatePage(e: PageEvent) {
-    const request: ListGamesRequest = { pageIndex: e.pageIndex, itemsPerPage: this.pageConfig.pageSize }
+    const request: ListGamesRequest = { pageIndex: e.pageIndex, itemsPerPage: this.pageConfig.pageSize, gameStatus: GameStatus.Created }
     this.getList(request)
   }
 
@@ -67,6 +70,14 @@ export class GameListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.getList();
     })
+  }
+
+  getOptions(gameCard: GameCard): CardOptions {
+    return {
+      color: ([GamePaymentStatus.Joined, GamePaymentStatus.Paid].includes(gameCard.gamePaymentStatus) || gameCard.canDelete) ? 'primary' : 'accent',
+      highlighted: this.options.gameStatus != GameStatus.Finished,
+      showActions: this.options.gameStatus != GameStatus.Finished,
+    }
   }
 
   onDelete(id: string) {
@@ -89,25 +100,23 @@ export class GameListComponent implements OnInit {
       .pipe(finalize(() => this.games.find(x => x.id == gameId)!.loading = false))
       .subscribe({
         next: res => {
+          const request: UpdateGameRequest = {
+            id: gameId,
+            ...res.game
+          }
           const dialogRef = this.dialog.open(UpdateGameDialogComponent, {
             'maxWidth': '1000px',
             'width': '94%',
-            'data': { gameId: gameId, gameName: res.game.name, gameDescription: res.game.description, gameDate: res.game.date }
+            'data': request
           });
       
-          dialogRef.afterClosed().subscribe({
-            next: confirm => { if(confirm) this.getList() }
-          })
+          dialogRef.afterClosed().subscribe({next: confirm => { if(confirm) this.getList() }});
         }
     })
     
   }
 
   onInfo(id:string) {
-    this.openDialog(id);
-  }
-
-  private openDialog(id: string) {
     this.service.getDetails(id).subscribe({
       next: response => {
         const dialogRef = this.dialog.open(GameCardDialogComponent, {
@@ -131,6 +140,8 @@ export class GameListComponent implements OnInit {
   }
 
   onPay(id: string) {
-    console.log(`paid out: ${id}`);
+    this.service.payGame(id).subscribe({
+      next: () => this.getList()
+    });
   }
 }

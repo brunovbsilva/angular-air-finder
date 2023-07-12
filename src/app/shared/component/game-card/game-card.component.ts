@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GameLogStatus } from 'src/app/pages/games/models/enums/game-log-status.enum';
+import { GamePaymentStatus } from 'src/app/pages/games/models/enums/game-payment-status.enum';
 import { GameStatus } from 'src/app/pages/games/models/enums/game-status.enum';
-import { GameCard } from 'src/app/pages/games/models/game-card.model';
+import { CardOptions } from './models/card-options.model';
+import { GameCard } from 'src/app/pages/games/models/responses/get-list-response.model';
 
 @Component({
   selector: 'app-game-card',
@@ -10,8 +11,7 @@ import { GameCard } from 'src/app/pages/games/models/game-card.model';
 })
 export class GameCardComponent implements OnInit {
   @Input() model!: GameCard;
-  @Input() color: string = 'primary';
-  @Input() highlighted: string = 'true';
+  @Input() options: CardOptions = new CardOptions();
   @Output() onDelete: EventEmitter<void> = new EventEmitter<void>();
   @Output() onUpdate: EventEmitter<void> = new EventEmitter<void>();
   @Output() onJoin: EventEmitter<void> = new EventEmitter<void>();
@@ -20,20 +20,18 @@ export class GameCardComponent implements OnInit {
 
   get gameStatus() {
     return {
-      None: GameStatus.None,
+      All: GameStatus.All,
       Created: GameStatus.Created,
       Started: GameStatus.Started,
       Finished: GameStatus.Finished
     }
   }
 
-  get joinStatus() {
+  get GamePaymentStatus() {
     return {
-      None: GameLogStatus.None,
-      Joined: GameLogStatus.Joined,
-      PaidOut: GameLogStatus.PaidOut,
-      Validated: GameLogStatus.Validated,
-      Finished: GameLogStatus.Finished
+      NotJoined: GamePaymentStatus.NotJoined,
+      Joined: GamePaymentStatus.Joined,
+      Paid: GamePaymentStatus.Paid
     }
   }
 
@@ -52,15 +50,19 @@ export class GameCardComponent implements OnInit {
     event.stopPropagation();
     this.onUpdate.emit();
   }
-
-  onButtonClick(event: MouseEvent, isJoin: boolean) {
-    event.stopPropagation();
-    if(isJoin) this.onJoin.emit();
-    else this.onLeave.emit();
-  }
   
   emitOnPay(event: MouseEvent) {
     event.stopPropagation();
     this.onPay.emit();
+  }
+  
+  emitOnJoin(event: MouseEvent) {
+    event.stopPropagation();
+    this.onJoin.emit();
+  }
+  
+  emitOnLeave(event: MouseEvent) {
+    event.stopPropagation();
+    this.onLeave.emit();
   }
 }

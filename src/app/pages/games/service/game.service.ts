@@ -2,16 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfigService } from 'src/app/app-config.service';
 import { QueryString } from 'src/app/shared/utils/query-string.extention';
-import { ListGamesRequest } from '../models/list-games-request.model';
-import { GetListResponse } from '../models/get-list-response.model';
-import { GetDetailsResponse } from '../models/get-details-response.model';
-import { QueryStringArray } from 'src/app/shared/utils/query-string-array.extention';
-import { GameLogStatus } from '../models/enums/game-log-status.enum';
-import { CreateGameRequest } from '../models/create-game-request.model';
+import { ListGamesRequest } from '../models/requests/list-games-request.model';
+import { GetListResponse } from '../models/responses/get-list-response.model';
+import { GetDetailsResponse } from '../models/responses/get-details-response.model';
+import { CreateGameRequest } from '../models/requests/create-game-request.model';
 import { BaseResponse } from 'src/app/shared/models/response/base-response';
-import { UpdateGameRequest } from '../models/update-game-request.model';
-import { JoinGameRequest } from '../models/join-game-request.model';
-import { GameStatus } from '../models/enums/game-status.enum';
+import { UpdateGameRequest } from '../models/requests/update-game-request.model';
+import { ValidateGameJoinRequest } from '../models/requests/validate-game-join-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +25,9 @@ export class GameService {
       .post<BaseResponse>(url, request);
   }
 
-  public listGames(request: ListGamesRequest, gameStatusList?: GameStatus[], joinStatusList?: GameLogStatus[]) {
+  public listGames(request: ListGamesRequest) {
     const queryString = QueryString.toString(request);
-    const queryJoinStatusArray = joinStatusList ? '&joinStatusList='+QueryStringArray.toString(joinStatusList) : '';
-    const queryGameStatusArray = gameStatusList ? '&gameStatusList='+QueryStringArray.toString(gameStatusList) : '';
-    const url = `${this.appConfig.config?.url_api}api/game?${queryString}${queryGameStatusArray}${queryJoinStatusArray}`;
+    const url = `${this.appConfig.config?.url_api}api/game?${queryString}`;
     return this.http
       .get<GetListResponse>(url);
   }
@@ -67,7 +62,13 @@ export class GameService {
       .delete<BaseResponse>(url, undefined);
   }
 
-  public validateQRCode(request: any) {
+  public payGame(id: string) {
+    const url = `${this.appConfig.config?.url_api}api/game/pay/${id}`;
+    return this.http
+      .post<BaseResponse>(url, undefined);
+  }
+
+  public validateGameJoin(request: ValidateGameJoinRequest) {
     const url = `${this.appConfig.config?.url_api}api/game/validate`;
     return this.http
       .post<BaseResponse>(url, request);

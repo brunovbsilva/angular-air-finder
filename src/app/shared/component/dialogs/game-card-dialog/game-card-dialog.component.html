@@ -10,7 +10,7 @@
   <app-item-list
     icon="event"
     name="Data e hora do evento"
-    [description]="(data.date | date: 'dd-MM-YYYY HH:mm' : 'UTC')!">
+    [description]="(data.dateFrom | date: 'dd-MM-YYYY HH:mm' : 'UTC')! + ' - ' + (data.dateUpTo | date: 'HH:mm' : 'UTC')!">
   </app-item-list>
   <mat-divider class="mt-2 mb-2"></mat-divider>
   <p class="mat-h5">{{ data.description }}</p>

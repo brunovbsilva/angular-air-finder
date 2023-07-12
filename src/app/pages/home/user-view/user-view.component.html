@@ -1,4 +1,4 @@
-<mat-card class="mt-3 mb-3" appearance="raised">
+<mat-card class="data-card mt-3 mb-3" appearance="raised">
     <mat-card-content class="card-content">
         <div class="col-6">
             <h4 color="primary">{{ 'Home.Banner.GamesPlayed' | translate | uppercase }}</h4>
@@ -12,10 +12,8 @@
     </mat-card-content>
 </mat-card>
 
-<div class="row">
-    <div class="col-12 col-md-4 mb-3" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
-        <mat-card>
-            <img src="https://material.angular.io/assets/img/examples/shiba2.jpg"/>
-        </mat-card>
-    </div>
+<div class="content-cards">
+    <mat-card class="mb-3" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"/>
+    </mat-card>
 </div>

@@ -2,5 +2,7 @@ export class UpdateGameRequest {
   id: string;
   name: string;
   description: string;
-  date: number;
+  dateFrom: number;
+  dateUpTo: number;
+  maxPlayers?: number;
 }
