@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -6,20 +7,24 @@ import { of } from 'rxjs';
 })
 export class AuthenticationService {
 
+  private readonly JWTKey = 'token';
+
   constructor() { }
 
-  login(user: string, password: string) {
-    if(user != '' && password != '')
-      localStorage.setItem('user', user);
+  login(token: string) {
+    localStorage.setItem(this.JWTKey, token);
     return this.isAuthenticated();
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem(this.JWTKey);
     return this.isAuthenticated();
   }
 
   isAuthenticated() {
-    return of(localStorage.getItem('user') != undefined);
+    const helper = new JwtHelperService();
+    const token = localStorage.getItem(this.JWTKey);
+    const valid = token && !helper.isTokenExpired(token);
+    return of(valid ?? false);
   }
 }

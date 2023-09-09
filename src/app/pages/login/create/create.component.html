@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-stepper orientation="vertical" [linear]="true" #stepper class="stepper">
+        <mat-step [label]="'Login.Create.PersonalInformationStep' | translate" formGroupName="personal" [stepControl]="personal">
+            <personal-information-form [personal]="personal"></personal-information-form>
+            <button mat-button matStepperNext type="button">{{ 'Shared.Button.Next' | translate }}</button>
+        </mat-step>
+        <mat-step [label]="'Login.Create.CheckStep' | translate">
+            <p>{{ personal.getValues() | json }}</p>
+            <button mat-button matStepperPrevious type="button">{{ 'Shared.Button.Back' | translate }}</button>
+            <button mat-button matStepperNext type="button">{{ 'Shared.Button.Next' | translate }}</button>
+        </mat-step>
+        <mat-step [label]="'Login.Create.CredentialsStep' | translate" formGroupName="credentials" [stepControl]="credentials">
+            <credentials-form [credentials]="credentials"></credentials-form>
+            <button mat-button (click)="stepper.reset()" type="button">{{ 'Shared.Button.Cancel' | translate }}</button>
+            <button mat-button type="submit">{{'Shared.Button.Send' | translate}}</button>
+        </mat-step>
+    </mat-stepper>
+</form>

@@ -1,0 +1,37 @@
+:host {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 15px 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-card {
+    width: 100%;
+    .card-content {
+        display: flex;
+        text-align: center;
+        h4, h1 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.content-cards {
+    columns: 3;
+    gap: 15px;
+}
+
+img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 992px) {
+    .content-cards {
+        columns: 2;
+    }
+}

@@ -6,7 +6,9 @@ import { Inject, Injectable, Renderer2 } from '@angular/core';
 })
 export class ThemeService {
 
-  constructor() { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document
+  ) { }
 
   getTheme() {
     const defaultTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-theme' : 'light-theme';
@@ -16,9 +18,15 @@ export class ThemeService {
   setTheme(theme: string) {
     this.removeTheme();
     localStorage.setItem('theme', theme);
+    this.updateTheme();
   }
 
   removeTheme() {
+    this.document.body.classList.remove(this.getTheme());
     localStorage.removeItem('theme');
+  }
+
+  updateTheme() {
+    this.document.body.classList.add(this.getTheme());
   }
 }

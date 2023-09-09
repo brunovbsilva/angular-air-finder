@@ -1,0 +1,199 @@
+{
+    "Layout": {
+        "Header": {
+            "Logo": "AirFinder",
+            "ChangePassword": "パスワードの変更",
+            "ScanQRCode": "QRコードをスキャン",
+            "LightMode": "ライトモード",
+            "DarkMode": "ダークモード",
+            "Logout": "ログアウト"
+        },
+        "Sidebar": {
+            "Home": {
+                "Name": "ホーム"
+            },
+            "Games": {
+                "Name": "ゲーム"
+            },
+            "Test": {
+                "Name": "テスト",
+                "Submenus": {
+                    "QRCodeGenerator": "QRコードジェネレータ"
+                }
+            },
+            "AllRightsReserved": "全著作権所有"
+        },
+        "Breadcrumb": {
+            "Home": "ホーム",
+            "Test": "テスト",
+            "Qrcode-generator": "QRコードジェネレータ"
+        }
+    },
+    "Login": {
+        "Title": {
+            "enter": "ログイン",
+            "create": "アカウント作成",
+            "forgot-password": "パスワードを忘れた場合"
+        },
+        "Enter": {
+            "ForgotPassword": "パスワードを忘れました",
+            "CreateAccount": "まだアカウントをお持ちでない方はこちら"
+        },
+        "Create": {
+            "PersonalInformationStep": "情報を入力してください",
+            "CheckStep": "情報を確認してください",
+            "CredentialsStep": "資格情報を作成してください"
+        },
+        "ForgotPassword": {
+            "EmailStep": "メールアドレスを入力してください",
+            "CodeStep": "メールで受け取ったコードを入力してください",
+            "ChangePasswordStep": "新しいパスワードを選択してください"
+        }
+    },
+    "Home": {
+        "Banner": {
+            "GamesPlayed": "プレイしたゲーム",
+            "WeekStreak": "週の連続記録",
+            "Points": "ポイント"
+        }
+    },
+    "GameList": {
+        "Tabs": {
+            "GameList": "ゲームリスト",
+            "ApplyedGames": "申し込まれたゲーム",
+            "History": "履歴"
+        },
+        "Titles": {
+            "GameList": "ゲームリスト",
+            "ApplyedGames": "申し込まれたゲーム",
+            "History": "履歴"
+        }
+    },
+    "FormFields": {
+        "Label": {
+            "Name": "名前",
+            "Login": "ログイン",
+            "Password": "パスワード",
+            "CurrentPassword": "現在のパスワード",
+            "NewPassword": "新しいパスワード",
+            "ConfirmPassword": "パスワードの確認",
+            "Email": "メールアドレス",
+            "Birthday": "誕生日",
+            "Code": "コード",
+            "Filter": "検索",
+            "Phone": "電話番号",
+            "CPF": "CPF",
+            "Gender": "性別",
+            "GameName": "ゲーム名",
+            "GameDescription": "説明",
+            "BattlegroundSelect": "バトルグラウンド",
+            "DateTime": "日時",
+            "BGName": "バトルグラウンド名",
+            "CEP": "CEP",
+            "Address": "住所",
+            "Number": "番号",
+            "Neighborhood": "地区",
+            "City": "市区町村",
+            "State": "都道府県",
+            "Country": "国",
+            "MaxPlayers": "最大プレイ人数",
+            "Date": "日付",
+            "TimeFrom": "開始時間",
+            "TimeUpTo": "終了時間"
+        },
+        "Placeholder": {
+            "Name": "お名前を入力してください",
+            "Login": "ログインを入力してください",
+            "Password": "パスワードを入力してください",
+            "CurrentPassword": "現在のパスワードを入力してください",
+            "NewPassword": "新しいパスワードを入力してください",
+            "ConfirmPassword": "パスワードを確認してください",
+            "Email": "メールアドレスを入力してください",
+            "Birthday": "dd/mm/yyyy",
+            "Code": "コードを入力してください",
+            "Filter": "ここで検索",
+            "Phone": "電話番号を入力してください",
+            "CPF": "CPFを入力してください",
+            "Gender": "性別を選択してください",
+            "GameName": "ゲーム名を入力してください",
+            "GameDescription": "説明を入力してください",
+            "BattlegroundSelect": "バトルグラウンドを選択してください",
+            "DateTime": "日付を選択してください",
+            "BGName": "バトルグラウンド名を入力してください",
+            "CEP": "CEPを入力してください",
+            "Address": "住所を入力してください",
+            "Number": "番号を入力してください",
+            "Neighborhood": "地区を入力してください",
+            "City": "市区町村を入力してください",
+            "State": "都道府県を入力してください",
+            "Country": "国を入力してください",
+            "MaxPlayers": "最大プレイ人数を入力してください",
+            "Date": "日付を選択してください"
+        },
+        "Validators": {
+            "itIsRequired": "必須:",
+            "minlength": "8文字以上",
+            "invalidPasswordUppercase": "大文字の英字",
+            "invalidPasswordLowercase": "小文字の英字",
+            "invalidPasswordNumber": "数字",
+            "invalidPasswordSpecial": "特殊文字",
+            "required": "入力必須項目",
+            "email": "無効なメールアドレス",
+            "passwordMustMatch": "パスワードが一致しません",
+            "invalidCode": "無効なコード",
+            "invalidSpace": "スペースは使用できません",
+            "incorrectPassword": "パスワードが正しくありません",
+            "valuesMustNotMatch": "新しいパスワードは現在のパスワードと異なる必要があります",
+            "valuesMustMatch": "新しいパスワードと一致する必要があります",
+            "invalidTimeUpTo": "終了時間は開始時間よりも後である必要があります",
+            "matDatepickerParse": "日付の形式が正しくありません"
+        }
+    },
+    "Components": {
+        "Select": {
+            "SelectAll": "すべて選択",
+            "RemoveAll": "すべて削除",
+            "NoResultsFound": "該当する結果がありません",
+            "Placeholder": "ここで検索"
+        }
+    },
+    "Snackbar": {
+        "ChangePassword": {
+            "Success": "パスワードが正常に変更されました"
+        }
+    },
+    "Dialog": {
+        "Title": {
+            "ChangePassword": "パスワードを変更する",
+            "CreateBattleground": "バトルグラウンドを作成する",
+            "CreateGame": "ゲームを作成する",
+            "SelectBattleground": "バトルグラウンドを選択する"
+        }
+    },
+    "Shared": {
+        "Button": {
+            "Next": "次へ",
+            "Back": "戻る",
+            "Continue": "続行",
+            "Send": "送信",
+            "Reset": "リセット",
+            "Cancel": "キャンセル",
+            "Edit": "編集",
+            "Delete": "削除",
+            "Join": "参加",
+            "Leave": "退席",
+            "Pay": "支払う",
+            "Apply": "適用する",
+            "Ok": "OK",
+            "Yes": "はい",
+            "No": "いいえ"
+        },
+        "Gender": {
+            "Male": "男性",
+            "Female": "女性",
+            "Unknow": "回答しない"
+        },
+        "NoResultsFound": "該当する結果がありません",
+        "Verified": "確認済み"
+    }
+}

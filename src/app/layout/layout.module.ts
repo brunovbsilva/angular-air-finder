@@ -3,20 +3,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { BreadcrumbComponent } from '../layout/breadcrumb/breadcrumb.component';
+import { MaterialModule } from '../material/material.module';
+import { LayoutComponent } from './layout.component';
+import { NavListComponent } from './nav-list/nav-list.component';
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { MenuSidebarComponent } from './sidebar/menu-sidebar/menu-sidebar.component';
-import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
   declarations: [
-    MainLayoutComponent,
-    HeaderComponent,
-    SidebarComponent,
-    MenuSidebarComponent,
+    LayoutComponent,
     BreadcrumbComponent,
+    HeaderComponent,
+    NavListComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +24,7 @@ import { MaterialModule } from '../shared/material/material.module';
     MaterialModule
   ],
   exports: [
-    MainLayoutComponent
+    LayoutComponent,
   ],
 })
 export class LayoutModule {}

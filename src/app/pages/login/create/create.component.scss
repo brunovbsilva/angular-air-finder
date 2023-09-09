@@ -1,0 +1,22 @@
+:host {
+    margin: auto 0;
+    overflow: auto;
+    .stepper{
+        padding: 25px 0;
+        .card-title {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .controls {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+}
+
+::ng-deep .mat-mdc-form-field-error-wrapper {
+    position: relative !important;
+    margin-top: -22px;
+}

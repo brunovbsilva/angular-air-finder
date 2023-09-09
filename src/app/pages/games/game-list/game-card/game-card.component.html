@@ -1,0 +1,32 @@
+<mat-card>
+    <img mat-card-image [src]="model.imageUrl">
+    <mat-card-content class="content">
+        <mat-chip [highlighted]="options.highlighted" [color]="options.color" class="chip mat-small">{{ model.dateFrom | date: 'dd-MM-YYYY' : 'UTC' }}</mat-chip>
+        <mat-chip [highlighted]="options.highlighted" [color]="options.color" class="chip-2 mat-small">{{ model.players + '/' + model.maxPlayers }}</mat-chip>
+        <app-mini-icon-button *ngIf="model.verified" class="assigned" icon="verified" [tooltip]="'Shared.Verified' | translate" (click)="$event.stopPropagation()"></app-mini-icon-button>
+        <div class="card-details">
+            <p class="card-name">{{model.name}}</p>
+            <p class="card-local">{{model.local}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions align="end" *ngIf="options.showActions" class="actions">
+        <app-mini-icon-button icon="payments" [tooltip]="'Shared.Button.Pay' | translate" class="payments" 
+            *ngIf="!model.canDelete && model.gamePaymentStatus == GamePaymentStatus.Joined" (click)="emitOnPay($event)">
+        </app-mini-icon-button>
+        <app-mini-icon-button icon="person_remove" [tooltip]="'Shared.Button.Leave' | translate" color="warn"
+            *ngIf="!model.canDelete && [GamePaymentStatus.Joined, GamePaymentStatus.Paid].includes(model.gamePaymentStatus)" (click)="emitOnLeave($event)">
+        </app-mini-icon-button>
+        <app-mini-icon-button icon="person_add" [tooltip]="'Shared.Button.Join' | translate" 
+            *ngIf="!model.canDelete && model.gamePaymentStatus == GamePaymentStatus.NotJoined" (click)="emitOnJoin($event)">
+        </app-mini-icon-button>
+        <app-mini-icon-button icon="edit" [tooltip]="'Shared.Button.Edit' | translate" 
+            *ngIf="model.canDelete" (click)="emitOnUpdate($event)">
+        </app-mini-icon-button>
+        <app-mini-icon-button icon="delete_outline" [tooltip]="'Shared.Button.Delete' | translate"
+            *ngIf="model.canDelete" (click)="emitOnDelete($event)">
+        </app-mini-icon-button>
+    </mat-card-actions>
+    <mat-card-footer *ngIf="model.loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+</mat-card>

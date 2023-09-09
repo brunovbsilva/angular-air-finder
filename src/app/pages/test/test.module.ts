@@ -2,16 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TestRoutingModule } from './test.routing';
-import { Test1Component } from './test1/test1.component';
-import { Test2Component } from './test2/test2.component';
-import { Test3Component } from './test3/test3.component';
+import { QrcodeGeneratorComponent } from './qrcode-generator/qrcode-generator.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 
 @NgModule({
   declarations: [
-    Test1Component,
-    Test2Component,
-    Test3Component
+    QrcodeGeneratorComponent
   ],
-  imports: [CommonModule, SharedModule, TestRoutingModule]
+  imports: [
+    CommonModule,
+    SharedModule,
+    TestRoutingModule,
+    QRCodeModule,
+    NgxScannerQrcodeModule
+  ]
 })
 export class TestModule {}

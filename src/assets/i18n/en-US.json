@@ -1,67 +1,152 @@
 {
-  "Header": {
-    "Logo": "AirFinder"
-  },
-  "Sidebar": {
-    "Home":{
-      "Name": "Home"
+  "Layout": {
+    "Header": {
+      "Logo": "AirFinder",
+      "ChangePassword": "Change password",
+      "ScanQRCode": "Scan QRCode",
+      "LightMode": "Light mode",
+      "DarkMode": "Dark mode",
+      "Logout": "Logout"
+    },
+    "Sidebar": {
+      "Home": {
+        "Name": "Home"
+      },
+      "Games": {
+        "Name": "Games"
+      },
+      "Test": {
+        "Name": "Test",
+        "Submenus": {
+          "QRCodeGenerator": "QR Code Generator"
+        }
+      },
+      "AllRightsReserved": "All rights reserved"
+    },
+    "Breadcrumb": {
+      "Home": "Home",
+      "Test": "Test",
+      "Qrcode-generator": "QR Code Generator"
     }
-  },
-  "Breadcrumb":{
-    "Home": "Home"
   },
   "Login": {
     "Title": {
-      "enter": "Enter your login",
-      "create": "Create your account",
-      "forgot-password": "Forgot password"
+      "enter": "Log in",
+      "create": "Create Account",
+      "forgot-password": "Forgot Password"
     },
     "Enter": {
-      "ForgotPassword": "I forgot my password",
-      "CreateAccount": "I don't have an account"
+      "ForgotPassword": "Forgot Password",
+      "CreateAccount": "Don't have an account yet?"
     },
     "Create": {
-      "PersonalInformationStep": "Fill out your personal information",
-      "CheckStep": "Check information",
+      "PersonalInformationStep": "Fill in your information",
+      "CheckStep": "Confirm your information",
       "CredentialsStep": "Create your credentials"
     },
     "ForgotPassword": {
-      "EmailStep": "Fill out your email",
-      "CodeStep": "Fill out your code from email",
-      "ChangePasswordStep": "Change your password"
+      "EmailStep": "Enter your email",
+      "CodeStep": "Enter the code received in your email",
+      "ChangePasswordStep": "Choose your new password"
+    }
+  },
+  "Home": {
+    "Banner": {
+      "GamesPlayed": "Games played",
+      "WeekStreak": "Week streak",
+      "Points": "Points"
+    }
+  },
+  "GameList": {
+    "Tabs": {
+      "GameList": "Game list",
+      "ApplyedGames": "Applyed games",
+      "History": "History"
+    },
+    "Titles": {
+      "GameList": "Game list",
+      "ApplyedGames": "Applyed games",
+      "History": "History"
     }
   },
   "FormFields": {
     "Label": {
       "Name": "Name",
       "Login": "Login",
-      "NewPassword": "New password",
       "Password": "Password",
+      "CurrentPassword": "Current password",
+      "NewPassword": "New password",
       "ConfirmPassword": "Confirm password",
       "Email": "Email",
       "Birthday": "Birthday",
-      "Code": "Code"
+      "Code": "Code",
+      "Filter": "Filter",
+      "Phone": "Phone",
+      "CPF": "CPF",
+      "Gender": "Gender",
+      "GameName": "Name",
+      "GameDescription": "Description",
+      "BattlegroundSelect": "Battleground",
+      "DateTime": "Datetime",
+      "BGName": "Battleground name",
+      "CEP": "CEP",
+      "Address": "Address",
+      "Number": "Number",
+      "Neighborhood": "Neighborhood",
+      "City": "City",
+      "State": "State",
+      "Country": "Country",
+      "MaxPlayers": "Max players",
+      "Date": "Date",
+      "TimeFrom": "From",
+      "TimeUpTo": "Up to"
     },
     "Placeholder": {
       "Name": "Enter your name",
       "Login": "Enter your login",
       "Password": "Enter your password",
+      "CurrentPassword": "Enter your current password",
+      "NewPassword": "Enter your new password",
       "ConfirmPassword": "Confirm your password",
       "Email": "Enter your email",
-      "Birthday": "Enter your birthday",
-      "Code": "Enter your code"
+      "Birthday": "dd/mm/yyyy",
+      "Code": "Enter your code",
+      "Filter": "Search here",
+      "Phone": "Enter your phone",
+      "CPF": "Enter your CPF",
+      "Gender": "Select your gender",
+      "GameName": "Enter the game name",
+      "GameDescription": "Enter the description",
+      "BattlegroundSelect": "Select the battleground",
+      "DateTime": "Select the date",
+      "BGName": "Enter the battleground name",
+      "CEP": "Enter the CEP",
+      "Address": "Enter the address",
+      "Number": "Enter the number",
+      "Neighborhood": "Enter the neighborhood",
+      "City": "Enter the city",
+      "State": "Enter the state",
+      "Country": "Enter the country",
+      "MaxPlayers": "Enter the max players number",
+      "Date": "Select the date"
     },
-    "Validators":{
-      "itIsRequired": "It is required:",
-      "invalidCharactersNumber": "Eigth characters",
+    "Validators": {
+      "itIsRequired": "Required:",
+      "minlength": "Eight characters",
       "invalidPasswordUppercase": "Uppercase letter",
-      "invalidPasswordLowercase": "Lowercase character",
-      "invalidPasswordNumber": "Number character",
+      "invalidPasswordLowercase": "Lowercase letter",
+      "invalidPasswordNumber": "Number",
       "invalidPasswordSpecial": "Special character",
-      "required": "It is required field",
+      "required": "Required field",
       "email": "Invalid email",
       "passwordMustMatch": "Passwords must match",
-      "invalidCode": "Invalid code"
+      "invalidCode": "Invalid code",
+      "invalidSpace": "Spaces are not allowed",
+      "incorrectPassword": "Incorrect password",
+      "valuesMustNotMatch": "New password can't be equal current password",
+      "valuesMustMatch": "Must match new password",
+      "invalidTimeUpTo": "Time up to must be greater than time from",
+      "matDatepickerParse": "Incorrect date format"
     }
   },
   "Components": {
@@ -72,6 +157,19 @@
       "Placeholder": "Search here"
     }
   },
+  "Snackbar": {
+    "ChangePassword": {
+      "Success": "Password change successfully"
+    }
+  },
+  "Dialog": {
+    "Title": {
+      "ChangePassword": "Change your password",
+      "CreateBattleground": "Create battleground",
+      "CreateGame": "Create game",
+      "SelectBattleground": "Select battleground"
+    }
+  },
   "Shared": {
     "Button": {
       "Next": "Next",
@@ -79,7 +177,23 @@
       "Continue": "Continue",
       "Send": "Send",
       "Reset": "Reset",
-      "Cancel": "Cancel"
-    }
+      "Cancel": "Cancel",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "Join": "Join",
+      "Leave": "Leave",
+      "Pay": "Pay",
+      "Apply": "Apply",
+      "Ok": "Ok",
+      "Yes": "Yes",
+      "No": "No"
+    },
+    "Gender": {
+      "Male": "Male",
+      "Female": "Female",
+      "Unknow": "I prefer not to answer"
+    },
+    "NoResultsFound": "No results found",
+    "Verified": "Verified"
   }
 }

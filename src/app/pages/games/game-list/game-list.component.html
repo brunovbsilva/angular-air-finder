@@ -1,0 +1,34 @@
+<div class="next-games mb-3">
+    <h1 class="title">{{ options.titleResource | translate }}</h1>
+    <button mat-icon-button *ngIf="options.canFilter" color="" (click)="openFilterDialog()">
+        <mat-icon>filter_alt</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="options.canCreateGame" (click)="openCreateGameDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div *ngIf="loading">
+    {{ 'loading' | translate }}
+</div>
+<div class="row" *ngIf="!loading">
+    <div class="col-6 col-sm-4 col-lg-3 col-xl-2 mb-3" *ngFor="let game of games">
+        <app-game-card
+            [model]="game"
+            [options]="getOptions(game)"
+            (onDelete)="onDelete(game.id)"
+            (onUpdate)="onUpdate(game.id)"
+            (onJoin)="onJoin(game.id)"
+            (onLeave)="onLeave(game.id)"
+            (onPay)="onPay(game.id)"
+            (click)="onInfo(game.id)">
+        </app-game-card>
+    </div>
+    <app-empty-list *ngIf="games.length == 0"></app-empty-list>
+</div>
+<mat-paginator
+    *ngIf="pageConfig.pageSize < pageConfig.length"
+    (page)="updatePage($event)"
+    [length]="pageConfig.length"
+    [pageSize]="pageConfig.pageSize"
+    [pageIndex]="pageConfig.pageIndex">
+</mat-paginator>

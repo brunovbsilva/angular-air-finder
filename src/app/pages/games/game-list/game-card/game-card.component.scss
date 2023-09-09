@@ -1,0 +1,53 @@
+@import '../../../../../assets/sass/palette';
+
+img {
+    aspect-ratio: 3/2;
+    width: 100%;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    .chip {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+    }
+    .chip-2 {
+        position: absolute;
+        right: 12px;
+        top: 47px;
+    }
+    .assigned {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        color: rgb(20, 149, 235);
+    }
+    .card-details {
+        position: relative;
+        width: 100%;
+        padding-top: 10px;
+        .card-name, .card-local {
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        .card-name {
+            font-size: 0.8rem;
+        }
+        .card-local {
+            font-size: 0.6rem;
+        }
+    }
+}
+
+.actions {
+    .payments {
+        color: green;
+    }
+}

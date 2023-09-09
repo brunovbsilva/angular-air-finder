@@ -1,0 +1,19 @@
+<mat-card class="data-card mt-3 mb-3" appearance="raised">
+    <mat-card-content class="card-content">
+        <div class="col-6">
+            <h4 color="primary">{{ 'Home.Banner.GamesPlayed' | translate | uppercase }}</h4>
+            <h1>{{ bannerItems.gamesPlayed }}</h1>
+        </div>
+        <mat-divider vertical="true"></mat-divider>
+        <div class="col-6">
+            <h4>{{ 'Home.Banner.WeekStreak' | translate | uppercase }}</h4>
+            <h1>{{ bannerItems.weekStreak }}</h1>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<div class="content-cards">
+    <mat-card class="mb-3" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
+        <img mat-card-image src="assets/images/teste.jpg"/>
+    </mat-card>
+</div>

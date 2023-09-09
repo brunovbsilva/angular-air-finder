@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ 'Dialog.Title.UpdateGame' | translate }}</h1>
+<div mat-dialog-content>
+  <game-form [createGameForm]="updateGameForm"></game-form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="okClick()" type="submit" [disabled]="loading">
+    <span *ngIf="!loading">{{ 'Shared.Button.Ok' | translate }}</span>
+    <mat-progress-spinner *ngIf="loading" mode="indeterminate" diameter="21"></mat-progress-spinner>
+  </button>
+  <button mat-button cdkFocusInitial (click)="cancelClick()" type="button" [disabled]="loading">{{ 'Shared.Button.Cancel' | translate }}</button>
+</div>

@@ -1,4 +1,4 @@
 export class BaseResponse {
-  success: boolean;
+  success: boolean = true;
   error: any;
 }

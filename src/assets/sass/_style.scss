@@ -1,7 +1,5 @@
 @import 'colors';
-@import 'fonts';
-@import 'shadow';
-@import 'typography';
+//@import 'shadow';
 @import 'theme';
 
 html,
@@ -14,4 +12,70 @@ body {
   mat-form-field{
     padding-top: 10px;
   }
+
+  .row-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+
+    .col-sm {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .row-wrap {
+      .col-sm {
+        width: calc(50% - 5px);
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .row-wrap {
+      .col-sm {
+        width: calc(33.333333333% - 6.666666666px);
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .row-wrap {
+      .col-sm {
+        width: calc(25% - 7.5px)
+      }
+    }
+  }
+
+  @media (min-width: 1500px) {
+    .row-wrap {
+      .col-sm {
+        width: calc(20% - 8px);
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-clip: content-box;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $AF_Gray;
+  border-radius: 3.5px;
+  background-clip: content-box;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $AF_Dark_Gray;
+  background-clip: content-box;
 }

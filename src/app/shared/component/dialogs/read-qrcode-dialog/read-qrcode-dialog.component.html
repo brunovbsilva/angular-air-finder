@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <ngx-scanner-qrcode
+    #action="scanner"
+    [config]="config"
+    (event)="setOutput($event)"
+    (error)="onError($event)">
+  </ngx-scanner-qrcode>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="cancelClick()" cdkFocusInitial type="button">{{ 'Shared.Button.Cancel' | translate }}</button>
+</div>
