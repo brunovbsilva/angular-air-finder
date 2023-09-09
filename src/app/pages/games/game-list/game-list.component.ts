@@ -5,16 +5,16 @@ import { ListGamesRequest } from '../models/requests/list-games-request.model';
 import { PageEvent } from '@angular/material/paginator';
 import { PageConfig } from 'src/app/material/models/page-config.model';
 import { finalize } from 'rxjs';
-import { CreateGameDialogComponent } from 'src/app/shared/component/dialogs/create-game-dialog/create-game-dialog.component';
-import { GameCardDialogComponent } from 'src/app/shared/component/dialogs/game-card-dialog/game-card-dialog.component';
-import { GameTabOptions } from '../models/game-tab/game-tab-options.model';
+import { GameCardDialogComponent } from 'src/app/pages/games/game-list/game-card/game-card-dialog/game-card-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/shared/component/dialogs/confirm-dialog/confirm-dialog.component';
-import { UpdateGameDialogComponent } from 'src/app/shared/component/dialogs/update-game-dialog/update-game-dialog.component';
+import { UpdateGameDialogComponent } from 'src/app/pages/games/game-list/game-card/update-game-dialog/update-game-dialog.component';
 import { UpdateGameRequest } from '../models/requests/update-game-request.model';
 import { GameStatus } from '../models/enums/game-status.enum';
-import { CardOptions } from 'src/app/shared/component/game-card/models/card-options.model';
+import { CardOptions } from 'src/app/pages/games/game-list/game-card/create-game-dialog/models/card-options.model';
 import { GamePaymentStatus } from '../models/enums/game-payment-status.enum';
 import { GameCard } from '../models/responses/get-list-response.model';
+import { GameTabOptions } from '../models/game-tab/game-tab.model';
+import { CreateGameDialogComponent } from './game-card/create-game-dialog/create-game-dialog.component';
 
 @Component({
   selector: 'app-game-list',

@@ -4,7 +4,7 @@ import { ReadQrcodeDialogComponent } from './read-qrcode-dialog.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxScannerQrcodeComponent } from 'ngx-scanner-qrcode';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 
 describe('ReadQrcodeDialogComponent', () => {
   let component: ReadQrcodeDialogComponent;

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GameCardComponent } from './game-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { GameCardModel } from '../../../pages/games/models/game-card.model';
+import { GameCard } from '../../models/responses/get-list-response.model';
 
 describe('GameCardComponent', () => {
   let component: GameCardComponent;
@@ -23,7 +23,7 @@ describe('GameCardComponent', () => {
 
     fixture = TestBed.createComponent(GameCardComponent);
     component = fixture.componentInstance;
-    component.model = new GameCardModel();
+    component.model = new GameCard();
     fixture.detectChanges();
   });
 

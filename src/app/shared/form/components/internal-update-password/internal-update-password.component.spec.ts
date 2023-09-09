@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { InternalUpdatePasswordForm } from './internal-update-password.form';
 
 describe('InternalUpdatePasswordComponent', () => {

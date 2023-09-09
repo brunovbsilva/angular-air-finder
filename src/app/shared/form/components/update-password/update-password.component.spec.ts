@@ -4,7 +4,7 @@ import { UpdatePasswordComponent } from './update-password.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { MatIconModule } from '@angular/material/icon';
 import { KeysPipe } from 'src/app/shared/pipe/keys.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

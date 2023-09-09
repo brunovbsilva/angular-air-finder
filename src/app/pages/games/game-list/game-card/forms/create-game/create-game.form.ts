@@ -24,14 +24,19 @@ export class CreateGameForm extends FormGroup {
         this.addControl('date', new FormControl('', [Validators.required]));
         this.addControl('timeFrom', new FormControl('', [Validators.required]));
         this.addControl('timeUpTo', new FormControl('', [Validators.required]));
+        this.timeUpTo.valueChanges.subscribe(v => {
+            this.validateTimeUpTo();
+            console.log(v);
+        });
+        this.timeFrom.valueChanges.subscribe(() => this.validateTimeUpTo());
     }
 
     public getValues() {
         return {
             name: this.name.value,
             description: this.description.value,
-            dateFrom: CustomDateExtention.getDateTime(this.date.value, this.timeFrom.value),
-            dateUpTo: CustomDateExtention.getDateTime(this.date.value, this.timeUpTo.value),
+            dateFrom: CustomDateExtention.getMillisFromDate(this.date.value, this.timeFrom.value),
+            dateUpTo: CustomDateExtention.getMillisFromDate(this.date.value, this.timeUpTo.value),
             maxPlayers: this.maxPlayers.value
         }
     }
@@ -43,5 +48,12 @@ export class CreateGameForm extends FormGroup {
         this.date.markAsDirty();
         this.timeFrom.markAsDirty();
         this.timeUpTo.markAsDirty();
+    }
+
+    private validateTimeUpTo() {
+        const date = new Date();
+        if(this.timeUpTo.value == null || this.timeUpTo.value == '') return;
+        if(CustomDateExtention.getMillisFromDate(date, this.timeFrom.value) > CustomDateExtention.getMillisFromDate(date, this.timeUpTo.value))
+            this.timeUpTo.setErrors({'invalidTimeUpTo': true});
     }
 }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavListComponent } from './nav-list.component';
 import { MatListModule } from '@angular/material/list';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Menu } from './models/menu.model';
 

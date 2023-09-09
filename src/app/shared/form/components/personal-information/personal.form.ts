@@ -32,8 +32,8 @@ export class PersonalForm extends FormGroup {
     private buildForm() {
         this.addControl('name', new FormControl('', [Validators.required]));
         this.addControl('email', new FormControl('', [Validators.required, CustomFormValidations.emailValidator]));
-        this.addControl('CPF', new FormControl('', [Validators.required]));
-        this.addControl('phone', new FormControl('', [Validators.required]));
+        this.addControl('CPF', new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)]));
+        this.addControl('phone', new FormControl('', [Validators.required, Validators.pattern(/^\d{10,11}$/)]));
         this.addControl('birthday', new FormControl(new Date(), [Validators.required]));
         this.addControl('gender', new FormControl(-1, Validators.required));
     }

@@ -3,8 +3,8 @@
   <mat-divider class="mb-2"></mat-divider>
   <app-item-list
     icon="location_on"
-    [name]="data.battleGround.name"
-    [description]="data.battleGround.address + ', n° ' + data.battleGround.number + ', ' + data.battleGround.city + ', ' + data.battleGround.state">
+    [name]="data.battleground.name"
+    [description]="data.battleground.address + ', n° ' + data.battleground.number + ', ' + data.battleground.city + ', ' + data.battleground.state">
   </app-item-list>
   <mat-divider class="mt-2 mb-2"></mat-divider>
   <app-item-list
@@ -17,11 +17,11 @@
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="okClick()" type="submit" [disabled]="loading">
-    {{ 'Apply' }} 
+    {{ 'Shared.Button.Apply' | translate }} 
     <mat-progress-spinner *ngIf="loading"
       mode="indeterminate"
       diameter="21">
     </mat-progress-spinner>
   </button>
-  <button mat-button (click)="cancelClick()" cdkFocusInitial type="button" [disabled]="loading">{{ 'Cancel' }}</button>
+  <button mat-button (click)="cancelClick()" cdkFocusInitial type="button" [disabled]="loading">{{ 'Shared.Button.Cancel' | translate }}</button>
 </div>

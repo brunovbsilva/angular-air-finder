@@ -4,7 +4,7 @@ import { SelectDialogComponent } from './select-dialog.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { FilterSearchPipe } from '../pipe/filter-search.pipe';

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GamePaymentStatus } from 'src/app/pages/games/models/enums/game-payment-status.enum';
 import { GameStatus } from 'src/app/pages/games/models/enums/game-status.enum';
-import { CardOptions } from './models/card-options.model';
 import { GameCard } from 'src/app/pages/games/models/responses/get-list-response.model';
+import { CardOptions } from './create-game-dialog/models/card-options.model';
 
 @Component({
   selector: 'app-game-card',
@@ -38,7 +38,7 @@ export class GameCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if(!this.model.imageUrl) this.model.imageUrl = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+    if(!this.model.imageUrl) this.model.imageUrl = 'assets/images/teste.jpg';
   }
 
   emitOnDelete(event: MouseEvent) {

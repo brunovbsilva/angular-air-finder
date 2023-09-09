@@ -28,11 +28,11 @@
     "bootstrap": "^5.2.3",
     "https-server": "^0.1.2",
     "jsonwebtoken": "^9.0.0",
-    "ngx-mask": "^15.1.0",
+    "ngx-mask": "^14.2.4",
     "ngx-scanner-qrcode": "^1.2.7",
     "openssl": "^2.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.6.0",
     "zbar.wasm": "^2.1.1",
     "zone.js": "~0.12.0"
   },

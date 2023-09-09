@@ -28,8 +28,9 @@ export class HeaderComponent {
     this.isChecked = themeService.getTheme() == 'dark-theme';
   }
 
-  onDarkModeSwitched({ checked }: MatSlideToggleChange) {
-    const theme = checked ? 'dark-theme' : 'light-theme';
+  onDarkModeSwitched() {
+    this.isChecked = !this.isChecked;
+    const theme = this.isChecked ? 'dark-theme' : 'light-theme';
     this.themeService.setTheme(theme);
   }
 

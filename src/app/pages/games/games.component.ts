@@ -11,25 +11,25 @@ export class GamesComponent {
 
   public tabs: GameTab[] = [
     { 
-      name: 'Next games', 
+      nameResource: 'GameList.Tabs.GameList', 
       options: {
-        title: 'Next Games',
+        titleResource: 'GameList.Titles.GameList',
         gameStatus: GameStatus.Created,
         canFilter: true,
         canCreateGame: true
       }
     },
     { 
-      name: 'Applyed games', 
+      nameResource: 'GameList.Tabs.ApplyedGames', 
       options: {
-        title: 'Applyed Games',
+        titleResource: 'GameList.Titles.ApplyedGames',
         gameStatus: GameStatus.Started
       }
     },
     { 
-      name: 'Played games', 
+      nameResource: 'GameList.Tabs.History', 
       options: {
-        title: 'Played Games',
+        titleResource: 'GameList.Titles.History',
         gameStatus: GameStatus.Finished
       }
     },

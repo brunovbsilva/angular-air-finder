@@ -6,8 +6,8 @@
 
 $dark-theme: mat.define-dark-theme((
     color: (
-        primary: mat.define-palette($AF-green, 900, A100, A400),
-        accent: mat.define-palette($AF-blue, A200, A100, A400),
+        primary: mat.define-palette($AF-black, 900, A100, A400, A400),
+        accent: mat.define-palette($AF-black, A200, A100, A400, A400),
     ),
     typography: mat.define-typography-config($my-font-name),
     density: 0,
@@ -15,8 +15,8 @@ $dark-theme: mat.define-dark-theme((
 
 $light-theme: mat.define-light-theme((
     color: (
-        primary: mat.define-palette($AF-green, 400),
-        accent: mat.define-palette($AF-orange, A200, A100, 700),
+        primary: mat.define-palette($AF-black, 400),
+        accent: mat.define-palette($AF-black, A200, A100, 700),
     ),
 ));
 
@@ -24,5 +24,11 @@ $light-theme: mat.define-light-theme((
 
 .light-theme{
     @include mat.all-component-colors($light-theme);
+    mat-drawer-content {
+        background-color: map_get($AF-black, 50) !important;
+    }
+    mat-drawer {
+        background-color: map_get($AF-black, 100) !important;
+    }
 }
 

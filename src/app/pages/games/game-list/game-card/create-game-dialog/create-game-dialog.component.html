@@ -45,8 +45,8 @@
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button *ngIf="showOkButton()" (click)="okClick()" type="submit" [disabled]="battlegroundLoading">
-    <span *ngIf="!battlegroundLoading">{{ 'Ok' | translate }}</span>
+    <span *ngIf="!battlegroundLoading">{{ 'Shared.Button.Ok' | translate }}</span>
     <mat-progress-spinner *ngIf="battlegroundLoading" mode="indeterminate" diameter="21"></mat-progress-spinner>
   </button>
-  <button mat-button cdkFocusInitial (click)="cancelClick()" type="button" [disabled]="battlegroundLoading || gameLoading">{{ 'Cancel' | translate }}</button>
+  <button mat-button cdkFocusInitial (click)="cancelClick()" type="button" [disabled]="battlegroundLoading || gameLoading">{{ 'Shared.Button.Cancel' | translate }}</button>
 </div>

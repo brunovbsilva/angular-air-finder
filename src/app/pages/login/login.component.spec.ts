@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { of } from 'rxjs';

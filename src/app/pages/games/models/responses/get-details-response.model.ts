@@ -6,7 +6,7 @@ export class GetDetailsResponse extends BaseResponse {
 }
 
 export class GameDetails {
-    battleGround: Battleground;
+    battleground: Battleground;
     dateFrom: number;
     dateUpTo: number;
     description: string;

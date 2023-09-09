@@ -17,7 +17,7 @@ export class ChangePasswordService {
 
   public changePassword(request: InternalChangePasswordRequest) {
     const userId = this.user.get().userId;
-    const url = `${this.appConfig.config?.url_api}api/user/password/${userId}`;
+    const url = `${this.appConfig.config?.url_api}api/user/password`;
 
     return this.http
       .put<BaseResponse>(url, request);

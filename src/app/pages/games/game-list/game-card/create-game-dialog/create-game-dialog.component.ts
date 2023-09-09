@@ -3,12 +3,12 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs';
 import { GameService } from 'src/app/pages/games/service/game.service';
-import { CreateBattlegroundForm } from 'src/app/shared/form/components/create-battleground/create-battleground.form';
-import { CreateGameForm } from 'src/app/shared/form/components/create-game/create-game.form';
-import { CreateGameEnum } from './enum/create-game-enum.model';
+import { CreateBattlegroundForm } from 'src/app/pages/games/game-list/game-card/forms/create-battleground/create-battleground.form';
+import { CreateGameForm } from 'src/app/pages/games/game-list/game-card/forms/create-game/create-game.form';
 import { BattlegroundService } from 'src/app/pages/games/service/battleground.service';
 import { Battleground } from 'src/app/pages/games/models/dtos/battleground.model';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { CreateGameEnum } from './enum/create-game-enum.model';
+import { ConfirmDialogComponent } from 'src/app/shared/component/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-create-game-dialog',
@@ -46,7 +46,7 @@ export class CreateGameDialogComponent implements OnInit {
   }
 
   populateBattlegrounds(initialPopulate: boolean = false) {
-    this.battlegroundService.getBattleGrounds().subscribe({
+    this.battlegroundService.getBattlegrounds().subscribe({
       next: response => {
         this.battlegrounds = response.battlegrounds;
         if(initialPopulate) this.selectedBattleground = this.battlegrounds[0] ?? undefined;
@@ -113,7 +113,7 @@ export class CreateGameDialogComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe({
       next: confirm => { if(confirm) {
-        this.battlegroundService.deleteBattleGround(id).subscribe({
+        this.battlegroundService.deleteBattleground(id).subscribe({
           next: () => this.populateBattlegrounds()
         });
         if(this.selectedBattleground!.id == id) this.selectedBattleground = this.battlegrounds[0] ?? undefined;
@@ -130,7 +130,7 @@ export class CreateGameDialogComponent implements OnInit {
 
     this.battlegroundLoading = true;
     const values = this.battlegroundForm.getValues();
-    this.battlegroundService.createBattleGround(values)
+    this.battlegroundService.createBattleground(values)
       .pipe(finalize(() => this.battlegroundLoading = false))
       .subscribe({
         next: (res) => {

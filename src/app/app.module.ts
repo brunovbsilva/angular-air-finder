@@ -17,6 +17,7 @@ import { LayoutModule } from './layout/layout.module';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { GamesModule } from './pages/games/games.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 registerLocaleData(localePt);
 
@@ -49,6 +50,7 @@ export const configFactory = (configService: AppConfigService) => {
         deps: [HttpClient],
       },
     }),
+    NgxMaskModule.forRoot({ validation: false }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
@@ -72,7 +74,7 @@ export const configFactory = (configService: AppConfigService) => {
       deps      : [AppConfigService],
       multi     : true
     },
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

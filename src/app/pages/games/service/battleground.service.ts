@@ -13,25 +13,25 @@ export class BattlegroundService {
     private appConfig: AppConfigService
   ) { }
   
-  createBattleGround(request: CreateBattlegroundRequest) {
+  createBattleground(request: CreateBattlegroundRequest) {
     const url = `${this.appConfig.config?.url_api}api/battleground`;
     return this.http
       .post<any>(url, request);
   };
 
-  getBattleGrounds() {
+  getBattlegrounds() {
     const url = `${this.appConfig.config?.url_api}api/battleground`;
     return this.http
       .get<any>(url);
   }
 
-  deleteBattleGround(id: string) {
+  deleteBattleground(id: string) {
     const url = `${this.appConfig.config?.url_api}api/battleground/${id}`;
     return this.http
       .delete<any>(url);
   }
 
-  updateBattleGround(id: string, request: any) {
+  updateBattleground(id: string, request: any) {
     const url = `${this.appConfig.config?.url_api}api/battleground/${id}`;
     return this.http
       .put<any>(url, request);

@@ -2,16 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChangePasswordDialogComponent } from './change-password-dialog.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { ChangePasswordService } from './service/change-password.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
-import { InternalUpdatePasswordComponentSpec } from 'src/app/core/mock/shared/forms/internal-update-password.component.spec';
-import { ChangePasswordServiceSpec } from './service/mock/change-password.service.spec';
-import { InternalUpdatePasswordForm } from '../../form/components/internal-update-password/internal-update-password.form';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
+import { InternalUpdatePasswordComponentSpec } from 'src/app/core/mock/forms/internal-update-password.component.spec';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ChangePasswordService } from './services/change-password.service';
+import { ChangePasswordServiceSpec } from './services/mock/change-password.service.spec';
+import { InternalUpdatePasswordForm } from 'src/app/shared/form/components/internal-update-password/internal-update-password.form';
 
 describe('ChangePasswordDialogComponent', () => {
   let component: ChangePasswordDialogComponent;

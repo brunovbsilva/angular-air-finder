@@ -4,6 +4,8 @@
       "Logo": "AirFinder",
       "ChangePassword": "Change password",
       "ScanQRCode": "Scan QRCode",
+      "LightMode": "Light mode",
+      "DarkMode": "Dark mode",
       "Logout": "Logout"
     },
     "Sidebar": {
@@ -18,7 +20,8 @@
         "Submenus": {
           "QRCodeGenerator": "QR Code Generator"
         }
-      }
+      },
+      "AllRightsReserved": "All rights reserved"
     },
     "Breadcrumb": {
       "Home": "Home",
@@ -54,6 +57,18 @@
       "Points": "Points"
     }
   },
+  "GameList": {
+    "Tabs": {
+      "GameList": "Game list",
+      "ApplyedGames": "Applyed games",
+      "History": "History"
+    },
+    "Titles": {
+      "GameList": "Game list",
+      "ApplyedGames": "Applyed games",
+      "History": "History"
+    }
+  },
   "FormFields": {
     "Label": {
       "Name": "Name",
@@ -80,8 +95,11 @@
       "Neighborhood": "Neighborhood",
       "City": "City",
       "State": "State",
-      "Country": "Country"
-
+      "Country": "Country",
+      "MaxPlayers": "Max players",
+      "Date": "Date",
+      "TimeFrom": "From",
+      "TimeUpTo": "Up to"
     },
     "Placeholder": {
       "Name": "Enter your name",
@@ -108,7 +126,9 @@
       "Neighborhood": "Enter the neighborhood",
       "City": "Enter the city",
       "State": "Enter the state",
-      "Country": "Enter the country"
+      "Country": "Enter the country",
+      "MaxPlayers": "Enter the max players number",
+      "Date": "Select the date"
     },
     "Validators": {
       "itIsRequired": "Required:",
@@ -124,7 +144,9 @@
       "invalidSpace": "Spaces are not allowed",
       "incorrectPassword": "Incorrect password",
       "valuesMustNotMatch": "New password can't be equal current password",
-      "valuesMustMatch": "Must match new password"
+      "valuesMustMatch": "Must match new password",
+      "invalidTimeUpTo": "Time up to must be greater than time from",
+      "matDatepickerParse": "Incorrect date format"
     }
   },
   "Components": {
@@ -155,13 +177,23 @@
       "Continue": "Continue",
       "Send": "Send",
       "Reset": "Reset",
-      "Cancel": "Cancel"
+      "Cancel": "Cancel",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "Join": "Join",
+      "Leave": "Leave",
+      "Pay": "Pay",
+      "Apply": "Apply",
+      "Ok": "Ok",
+      "Yes": "Yes",
+      "No": "No"
     },
     "Gender": {
       "Male": "Male",
       "Female": "Female",
       "Unknow": "I prefer not to answer"
     },
-    "NoResultsFound": "No results found"
+    "NoResultsFound": "No results found",
+    "Verified": "Verified"
   }
 }

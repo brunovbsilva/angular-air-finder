@@ -5,7 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeService } from 'src/app/core/themes/theme.service';
@@ -55,14 +55,14 @@ describe('HeaderComponent', () => {
 
   describe('onDarkModeSwitched', () => {
     it('should set theme to dark', () => {
-      const mockMatSlideToggleChange = { checked: true } as MatSlideToggleChange;
-      component.onDarkModeSwitched(mockMatSlideToggleChange);
+      component.isChecked = false;
+      component.onDarkModeSwitched();
       expect(themeService.setTheme).toHaveBeenCalledWith('dark-theme');
     });
   
     it('should set theme to light', () => {
-      const mockMatSlideToggleChange = { checked: false } as MatSlideToggleChange;
-      component.onDarkModeSwitched(mockMatSlideToggleChange);
+      component.isChecked = true;
+      component.onDarkModeSwitched();
       expect(themeService.setTheme).toHaveBeenCalledWith('light-theme');
     });
   });

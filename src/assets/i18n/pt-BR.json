@@ -1,6 +1,33 @@
 {
-  "Header": {
-    "Logo": "AirFinder"
+  "Layout": {
+    "Header": {
+      "Logo": "AirFinder",
+      "ChangePassword": "Alterar senha",
+      "ScanQRCode": "Escanear QR Code",
+      "LightMode": "Modo claro",
+      "DarkMode": "Modo escuro",
+      "Logout": "Sair"
+    },
+    "Sidebar": {
+      "Home": {
+        "Name": "Home"
+      },
+      "Games": {
+        "Name": "Jogos"
+      },
+      "Test": {
+        "Name": "Teste",
+        "Submenus": {
+          "QRCodeGenerator": "Gerarador de QRCode"
+        }
+      },
+      "AllRightsReserved": "Todos os direitos reservados"
+    },
+    "Breadcrumb": {
+      "Home": "Home",
+      "Test": "Test",
+      "Qrcode-generator": "QR Code Generator"
+    }
   },
   "Sidebar": {
     "Home": {
@@ -43,25 +70,76 @@
       "ChangePasswordStep": "Escolha sua nova senha"
     }
   },
+  "GameList": {
+    "Tabs": {
+      "GameList": "Lista de jogos",
+      "ApplyedGames": "Jogos aplicados",
+      "History": "Histórico"
+    },
+    "Titles": {
+      "GameList": "Lista de jogos",
+      "ApplyedGames": "Jogos aplicados",
+      "History": "Histórico"
+    }
+  },
   "FormFields": {
     "Label": {
       "Name": "Nome",
       "Login": "Login",
-      "NewPassword": "Nova senha",
       "Password": "Senha",
-      "ConfirmPassword": "Confirme a senha",
+      "CurrentPassword": "Senha atual",
+      "NewPassword": "Nova senha",
       "Email": "E-mail",
       "Birthday": "Data de aniversário",
-      "Code": "Código"
+      "Code": "Código",
+      "Filter": "Filtro",
+      "Phone": "Telefone",
+      "CPF": "CPF",
+      "Gender": "Gênero",
+      "GameName": "Nome",
+      "GameDescription": "Descrição",
+      "BattlegroundSelect": "Campo",
+      "DateTime": "Data",
+      "BGName": "Nome do campo",
+      "CEP": "CEP",
+      "Address": "Endereço",
+      "Number": "Numero",
+      "Neighborhood": "Bairro",
+      "City": "Cidade",
+      "State": "Estado",
+      "Country": "País",
+      "MaxPlayers": "Máximo de jogadores",
+      "Date": "Data",
+      "TimeFrom": "De",
+      "TimeUpTo": "Até"
     },
     "Placeholder": {
       "Name": "Digite seu nome",
       "Login": "Digite seu login",
       "Password": "Digite sua senha",
-      "ConfirmPassword": "Confirme sua senha",
+      "CurrentPassword": "Digite sua senha atual",
+      "NewPassword": "Digite sua nova senha",
       "Email": "Digite seu e-mail",
       "Birthday": "dd/mm/aaaa",
-      "Code": "Digite seu código"
+      "Code": "Digite seu código",
+      "Filter": "Pesquise aqui",
+      "Phone": "Digite seu telefone",
+      "CPF": "Digite seu CPF",
+      "Gender": "Selecione seu gênero",
+      "GameName": "Digite o nome do jogo",
+      "GameDescription": "Digite a descrição do jogo",
+      "BattlegroundSelect": "Selecione o campo",
+      "DateTime": "Selecione a data",
+      "BGName": "Digite o nome do campo",
+      "CEP": "Digite o CEP",
+      "Address": "Digite o endereço",
+      "Number": "Digite o número",
+      "Neighborhood": "Digite o bairro",
+      "City": "Digite a cidade",
+      "State": "Digite o estado",
+      "Country": "Digite o país",
+      "MaxPlayers": "Digite o número máximo de jogadores",
+      "Date": "Selecione a data"
     },
     "Validators": {
       "itIsRequired": "É requerido:",
@@ -73,7 +151,13 @@
       "required": "Campo obrigatório",
       "email": "Email inválido",
       "passwordMustMatch": "Senhas diferentes",
-      "invalidCode": "Código inválido"
+      "invalidCode": "Código inválido",
+      "invalidSpace": "Não pode conter espaços",
+      "incorrectPassword": "Senha incorreta",
+      "valuesMustNotMatch": "Nova senha não pode ser igual a senha atual",
+      "valuesMustMatch": "Senhas devem ser iguais",
+      "invalidTimeUpTo": "Hora inválida",
+      "matDatepickerParse": "Data inválida"
     }
   },
   "Components": {
@@ -84,6 +168,19 @@
       "Placeholder": "Pesquise aqui"
     }
   },
+  "Snackbar": {
+    "ChangePassword": {
+      "Success": "Senha alterada com sucesso"
+    }
+  },
+  "Dialog": {
+    "Title": {
+      "ChangePassword": "Alterar senha",
+      "CreateBattleground": "Criar campo",
+      "CreateGame": "Criar jogo",
+      "SelectBattleground": "Selecionar campo"
+    }
+  },
   "Shared": {
     "Button": {
       "Next": "Próximo",
@@ -91,7 +188,23 @@
       "Continue": "Continuar",
       "Send": "Enviar",
       "Reset": "Reset",
-      "Cancel": "Cancelar"
-    }
+      "Cancel": "Cancelar",
+      "Edit": "Editar",
+      "Delete": "Deletar",
+      "Join": "Entrar",
+      "Leave": "Sair",
+      "Pay": "Pagar",
+      "Apply": "Aplicar",
+      "Ok": "Ok",
+      "Yes": "Sim",
+      "No": "Não"
+    },
+    "Gender": {
+      "Male": "Masculino",
+      "Female": "Feminino",
+      "Unknow": "Prefiro não informar"
+    },
+    "NoResultsFound": "Não foram encontrados resultados",
+    "Verified": "Verificado"
   }
 }

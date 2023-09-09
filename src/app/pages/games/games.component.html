@@ -1,7 +1,7 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" animationDuration="0ms" color="accent">
     <mat-tab *ngFor="let tab of tabs">
         <ng-template mat-tab-label>
-            <div class="mat-h6 tab-label">{{tab.name}}</div>
+            <div class="mat-h6 tab-label">{{tab.nameResource | translate}}</div>
         </ng-template>
         <ng-template matTabContent>
             <app-game-list [options]="tab.options"></app-game-list>

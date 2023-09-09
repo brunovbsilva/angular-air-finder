@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { UpdateGameRequest } from 'src/app/pages/games/models/requests/update-game-request.model';
 import { GameService } from 'src/app/pages/games/service/game.service';
-import { CreateGameForm } from 'src/app/shared/form/components/create-game/create-game.form';
+import { CreateGameForm } from 'src/app/pages/games/game-list/game-card/forms/create-game/create-game.form';
 
 @Component({
   selector: 'app-update-game-dialog',

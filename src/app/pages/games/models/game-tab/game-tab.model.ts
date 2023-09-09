@@ -1,6 +1,13 @@
-import { GameTabOptions } from "./game-tab-options.model";
+import { GameStatus } from "../enums/game-status.enum";
 
 export class GameTab {
-  name!: string;
+  nameResource!: string;
   options: GameTabOptions;
+}
+
+export class GameTabOptions {
+  canFilter?: boolean = false;
+  canCreateGame?: boolean = false;
+  gameStatus: GameStatus = GameStatus.All;
+  titleResource: string = '';
 }

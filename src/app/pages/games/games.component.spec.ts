@@ -2,11 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GamesComponent } from './games.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { PlayedGamesComponentSpec } from 'src/app/core/mock/pages/played-games.component.spec';
-import { GameListComponentSpec } from 'src/app/core/mock/pages/game-list.component.spec';
-import { ApplyedGamesComponentSpec } from 'src/app/core/mock/pages/applyed-games.component.spec';
+import { GameListComponentSpec } from 'src/app/core/mock/components/games/game-list.component.spec';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import TranslateServiceMock from 'src/app/core/mock/translate.service.mock';
+import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('GamesComponent', () => {
@@ -17,9 +15,7 @@ describe('GamesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         GamesComponent,
-        PlayedGamesComponentSpec,
-        GameListComponentSpec,
-        ApplyedGamesComponentSpec
+        GameListComponentSpec
       ],
       imports: [
         MatTabsModule,

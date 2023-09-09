@@ -1,5 +1,5 @@
 <div class="next-games mb-3">
-    <h1 class="title">{{ options.title }}</h1>
+    <h1 class="title">{{ options.titleResource | translate }}</h1>
     <button mat-icon-button *ngIf="options.canFilter" color="" (click)="openFilterDialog()">
         <mat-icon>filter_alt</mat-icon>
     </button>
