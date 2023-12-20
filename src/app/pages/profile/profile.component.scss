@@ -7,23 +7,62 @@
 }
 
 .profile {
-  padding: 0.5rem;
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+  margin-bottom: 1rem;
   .profile-image {
-    max-width: 300px;
+    max-width: 77px;
+    max-height: 77px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    margin: 0.5rem auto;
+    margin: 0;
+    padding: 0;
   }
   
   .profile-name {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0.3rem auto;
+    line-height: 1.5rem;
+    font-size: 1.25rem;
+    margin: 0;
+    max-width: 200px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .profile-email {
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0.2rem auto;
+    line-height: 1rem;
+    font-size: .75rem;
+    margin: 0;
   }
+}
+
+.data {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  .data-item {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    align-items: center;
+    justify-content: center;
+
+    .data-item__value {
+      font-size: 1rem;
+      line-height: 1.25rem;
+      margin: 0;
+    }
+
+    .data-item__title {
+      font-size: .75rem;
+      line-height: 1rem;
+      margin: 0;
+      color: gray;
+    }
+  }
+}
+
+.search-input {
+  width: 100% !important;
 }

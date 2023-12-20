@@ -1,9 +1,9 @@
 import { BaseResponse } from "../../base-response";
-import { IPerson } from "../interfaces/person.interface";
+import { IPersonLimited } from "../interfaces/person-limited.interface";
 
 export class SearchPeopleResponse extends BaseResponse {
-  public people: Array<IPerson>;
-  constructor(people: Array<IPerson>) {
+  public people: Array<IPersonLimited>;
+  constructor(people: Array<IPersonLimited>) {
     super();
     this.people = people;
   }

@@ -50,7 +50,7 @@ export class EnterComponent {
           this.authenticationService
             .login(response.token)
             .pipe(finalize(() => this.router.navigate([''])))
-            .subscribe(() => console.log(this.sessionUser.get()));
+            .subscribe(() => {});
         }
       });
   }

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { CustomFormValidations } from "../../form-helpers/custom-form-validations";
 import { UpdateProfileRequest } from "src/app/shared/services/models/person/requests/update-profile.request";
 
 @Injectable()
@@ -25,10 +24,10 @@ export class UpdateProfileForm extends FormGroup {
   }
 
   private buildForm() {
-    this.addControl('name', new FormControl(null, [Validators.required]));
-    this.addControl('email', new FormControl(null, [Validators.required, CustomFormValidations.emailValidator]));
-    this.addControl('phone', new FormControl(null, [Validators.required, Validators.pattern(/^\d{10,11}$/)]));
-    this.addControl('image', new FormControl(null, [Validators.required]));
+    this.addControl('name', new FormControl(''));
+    this.addControl('email', new FormControl('', [Validators.pattern(/^[\w-\.]+@([A-Za-z]+\.)+[A-Za-z]{2,4}$/)]));
+    this.addControl('phone', new FormControl('', [Validators.pattern(/^\d{10,11}$/)]));
+    this.addControl('image', new FormControl(''));
   }
 
   public getValues(): UpdateProfileRequest {
@@ -36,7 +35,7 @@ export class UpdateProfileForm extends FormGroup {
       name: this.name.value,
       email: this.email.value,
       phone: this.phone.value,
-      image: this.image.value[0]
+      image: this.image.value[0] ?? undefined
     }
   }
 }

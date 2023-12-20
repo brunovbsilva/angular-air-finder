@@ -1,12 +1,42 @@
-<div class="row">
-  <mat-card class="profile col-6">
-    <img class="profile-image" [src]="profile.imageUrl"/>
-    <span class="profile-name">{{ profile.name }}</span>
-    <span class="profile-email">{{ profile.email }}</span>
-  </mat-card>
-  
-  <mat-card class="col-6">
-    <update-profile-form [form]="form"></update-profile-form>
-    <button mat-raised-button color="primary" (click)="updateProfile()">Update Profile</button>
-  </mat-card>
+<div class="profile-container">
+
+  <div class="profile">
+    <img [src]="profile.imageUrl" class="profile-image"/>
+    <div class="profile-details">
+      <h2 class="profile-name">{{ profile.name }}</h2>
+      <h3 class="profile-email">{{ profile.email }}</h3>
+      <button mat-raised-button (click)="openUpdateProfileDialog()">Edit Profile</button>
+    </div>
+  </div>
+
+  <div class="data">
+    <div class="data-item">
+      <span class="data-item__value">12</span>
+      <span class="data-item__title">{{ 'Games played' }}</span>
+    </div>
+    <div class="data-item">
+      <span class="data-item__value">3</span>
+      <span class="data-item__title">{{ 'Max week streak' }}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="search-for-people">
+  <mat-form-field class="search-input">
+    <mat-label>Search people</mat-label>
+    <input #searchInput matInput placeholder="type here">
+    <mat-icon matSuffix (click)="search(searchInput.value)">search</mat-icon>
+  </mat-form-field>
+
+  <div class="serach-result">
+    <div class="profile" *ngFor="let result of searchResult">
+      <img [src]="result.imageUrl" class="profile-image"/>
+      <div class="profile-details">
+        <h2 class="profile-name">{{ result.name }}</h2>
+        <h3 class="profile-email">{{ result.email }}</h3>
+        <button mat-raised-button color="primary">Add friend</button>
+      </div>
+    </div>
+  </div>
 </div>

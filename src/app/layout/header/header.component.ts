@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
+import { SessionUserService } from 'src/app/core/security/services/session-user.service';
 import { ThemeService } from 'src/app/core/themes/theme.service';
 import { ChangePasswordDialogComponent } from 'src/app/shared/component/dialogs/change-password-dialog/change-password-dialog.component';
 import { ReadQrcodeDialogComponent } from 'src/app/shared/component/dialogs/read-qrcode-dialog/read-qrcode-dialog.component';
@@ -13,19 +14,25 @@ import { ReadQrcodeDialogComponent } from 'src/app/shared/component/dialogs/read
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   @Output() menuToggle = new EventEmitter<void>();
   isChecked: boolean;
+  imageUrl: string;
   
   constructor(
     private authenticationService: AuthenticationService, 
+    private sessionUser: SessionUserService,
     private router: Router,
     private themeService: ThemeService,
     public dialog: MatDialog
   ) 
   {
     this.isChecked = themeService.getTheme() == 'dark-theme';
+  }
+
+  ngOnInit(): void {
+    this.imageUrl = this.sessionUser.get().profile.imageUrl;
   }
 
   onDarkModeSwitched() {

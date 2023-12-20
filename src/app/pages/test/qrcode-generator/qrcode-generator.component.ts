@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionUser } from 'src/app/core/common/models/session-user.model';
 import { SessionUserService } from 'src/app/core/security/services/session-user.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { SessionUserService } from 'src/app/core/security/services/session-user.
 })
 export class QrcodeGeneratorComponent implements OnInit {
 
-  user: any;
+  user: SessionUser;
 
   constructor(
     private sessionUser: SessionUserService
   ) {
-    this.user = sessionUser.get();
+    this.user = this.sessionUser.get();
   }
 
   ngOnInit(): void {

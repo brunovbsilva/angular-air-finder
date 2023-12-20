@@ -20,6 +20,7 @@ import { InputFileComponent } from './component/input-file/input-file.component'
 import { FileComponent } from './component/input-file/file/file.component';
 import { MessageComponent } from './component/input-file/message/message.component';
 import { FileTypePipe } from './component/input-file/pipes/file-type.pipe';
+import { UpdateProfileDialogComponent } from './component/dialogs/update-profile-dialog/update-profile-dialog.component';
 
 @NgModule({
   imports: [
@@ -65,7 +66,8 @@ import { FileTypePipe } from './component/input-file/pipes/file-type.pipe';
     InputFileComponent,
     FileComponent,
     MessageComponent,
-    FileTypePipe
+    FileTypePipe,
+    UpdateProfileDialogComponent
   ],
   providers: [
     FileTypePipe
