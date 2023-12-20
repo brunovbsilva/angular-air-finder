@@ -18,6 +18,7 @@ import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { GamesModule } from './pages/games/games.module';
 import { NgxMaskModule } from 'ngx-mask';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 registerLocaleData(localePt);
 
@@ -31,7 +32,8 @@ export const configFactory = (configService: AppConfigService) => {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

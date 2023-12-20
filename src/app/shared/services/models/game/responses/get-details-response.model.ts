@@ -1,5 +1,5 @@
-import { BaseResponse } from "src/app/shared/models/response/base-response";
-import { Battleground } from "../dtos/battleground.model";
+import { BaseResponse } from "src/app/shared/services/models/base-response";
+import { Battleground } from "../../../../../pages/games/models/dtos/battleground.model";
 
 export class GetDetailsResponse extends BaseResponse {
     game: GameDetails

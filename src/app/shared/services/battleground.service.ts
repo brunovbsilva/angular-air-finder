@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfigService } from 'src/app/app-config.service';
-import { CreateBattlegroundRequest } from '../models/requests/create-battleground-request.model';
+import { CreateBattlegroundRequest } from './models/battleground/requests/create-battleground-request.model';
 
 @Injectable({
   providedIn: 'root'

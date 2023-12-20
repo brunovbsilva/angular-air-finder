@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EnterComponent } from './enter.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../../../shared/services/user.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,7 +33,7 @@ class AuthenticationServiceMock {
 
 describe('EnterComponent', () => {
   let component: EnterComponent;
-  let loginService: LoginService;
+  let loginService: UserService;
   let authService: AuthenticationService;
   let fixture: ComponentFixture<EnterComponent>;
 
@@ -52,7 +52,7 @@ describe('EnterComponent', () => {
         MatIconModule
       ],
       providers: [
-        { provide: LoginService, useClass: LoginServiceMock },
+        { provide: UserService, useClass: LoginServiceMock },
         { provide: TranslateService, useClass: TranslateServiceMock },
         { provide: AuthenticationService, useClass: AuthenticationServiceMock }
       ]
@@ -61,7 +61,7 @@ describe('EnterComponent', () => {
 
     fixture = TestBed.createComponent(EnterComponent);
     component = fixture.componentInstance;
-    loginService = TestBed.inject(LoginService);
+    loginService = TestBed.inject(UserService);
     authService = TestBed.inject(AuthenticationService);
     component.form = new FormGroup({
       'login': new FormControl('login', [Validators.required]),

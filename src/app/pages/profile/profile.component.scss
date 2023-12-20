@@ -1,0 +1,27 @@
+:host {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 10px 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  padding: 0.5rem;
+  .profile-image {
+    max-width: 300px;
+    margin: 0.5rem auto;
+  }
+  
+  .profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.3rem auto;
+  }
+  
+  .profile-email {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0.2rem auto;
+  }
+}

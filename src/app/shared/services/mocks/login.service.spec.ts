@@ -1,8 +1,8 @@
 import { of } from "rxjs";
-import { LoginRequest } from "../../enter/model/login-request.model";
-import { UserRequest } from "../../create/model/user-request";
-import { VerifyTokenRequest } from "../../forgot-password/model/verify-token-request.model";
-import { ChangePasswordRequest } from "../../forgot-password/model/change-password-request.model";
+import { LoginRequest } from "../models/user/requests/login-request.model";
+import { UserRequest } from "../models/user/requests/user-request";
+import { VerifyTokenRequest } from "../models/user/requests/verify-token-request.model";
+import { ChangePasswordRequest } from "../models/user/requests/change-password-request.model";
 
 export class LoginServiceSpec {
 

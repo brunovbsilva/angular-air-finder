@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoginService } from './login.service';
+import { UserService } from './user.service';
 import { AppConfigService } from 'src/app/app-config.service';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { LoginRequest } from '../enter/model/login-request.model';
+import { LoginRequest } from './models/user/requests/login-request.model';
 import { of, throwError } from 'rxjs';
-import { UserRequest } from '../create/model/user-request';
-import { VerifyTokenRequest } from '../forgot-password/model/verify-token-request.model';
-import { ChangePasswordRequest } from '../forgot-password/model/change-password-request.model';
+import { UserRequest } from './models/user/requests/user-request';
+import { VerifyTokenRequest } from './models/user/requests/verify-token-request.model';
+import { ChangePasswordRequest } from './models/user/requests/change-password-request.model';
+import { InternalUpdatePasswordRequest } from './models/user/requests/internal-update-password.request.model';
 
-describe('LoginService', () => {
-  let service: LoginService;
+describe('UserService', () => {
+  let service: UserService;
   let httpClientSpy: { get: jasmine.Spy, post: jasmine.Spy, put: jasmine.Spy };
   let appConfigSpy: { get: jasmine.Spy };
 
@@ -27,7 +28,7 @@ describe('LoginService', () => {
 
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put']);
     appConfigSpy = jasmine.createSpyObj('AppConfigService', ['get']);
-    service = new LoginService(httpClientSpy as any, appConfigSpy as any);
+    service = new UserService(httpClientSpy as any, appConfigSpy as any);
 
     appConfigSpy.get.and.returnValue({
       config: {
@@ -186,6 +187,33 @@ describe('LoginService', () => {
       const expectError = new HttpErrorResponse({ status: 404 });
       httpClientSpy.put.and.returnValue(throwError(() => expectError));
       service.changePasswordToken(request).subscribe({ next: () => fail('expect an error'), error: err => expect(err.status).toEqual(404) });
+    });
+  });
+
+  describe('updatePasswordInternal', () => {
+    const request: InternalUpdatePasswordRequest = {
+      currentPassword: 'pass1',
+      newPassword: 'pass2'
+    };
+
+    afterEach(() => expect(httpClientSpy.put).toHaveBeenCalledTimes(1));
+
+    it('success', () => {
+      const expectResult = {};
+      httpClientSpy.put.and.returnValue(of(expectResult));
+      service.updatePasswordInternal(request).subscribe({ next: result => expect(result).toEqual(Object.assign(expectResult)), error: () => fail('expected an result') });
+    });
+
+    it('undefined error', () => {
+      const expectError = new HttpErrorResponse({});
+      httpClientSpy.put.and.returnValue(throwError(() => expectError));
+      service.updatePasswordInternal(request).subscribe({ next: () => fail('expect an error'), error: err => expect(err).toBeDefined() });
+    });
+
+    it('404 error', () => {
+      const expectError = new HttpErrorResponse({ status: 404 });
+      httpClientSpy.put.and.returnValue(throwError(() => expectError));
+      service.updatePasswordInternal(request).subscribe({ next: () => fail('expect an error'), error: err => expect(err.status).toEqual(404) });
     });
   });
 });

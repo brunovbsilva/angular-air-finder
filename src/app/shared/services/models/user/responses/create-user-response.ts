@@ -1,4 +1,4 @@
-import { BaseResponse } from "src/app/shared/models/response/base-response";
+import { BaseResponse } from "src/app/shared/services/models/base-response";
 
 export class CreateUserResponse extends BaseResponse {
     email: string = '';

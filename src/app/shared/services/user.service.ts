@@ -2,19 +2,20 @@ import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfigService } from 'src/app/app-config.service';
 import { skipBearerToken } from 'src/app/core/security/interceptor/app.http-interceptor';
-import { LoginRequest } from 'src/app/pages/login/enter/model/login-request.model';
-import { ChangePasswordRequest } from 'src/app/pages/login/forgot-password/model/change-password-request.model';
-import { VerifyTokenRequest } from 'src/app/pages/login/forgot-password/model/verify-token-request.model';
-import { BaseResponse } from 'src/app/shared/models/response/base-response';
+import { LoginRequest } from 'src/app/shared/services/models/user/requests/login-request.model';
+import { ChangePasswordRequest } from 'src/app/shared/services/models/user/requests/change-password-request.model';
+import { VerifyTokenRequest } from 'src/app/shared/services/models/user/requests/verify-token-request.model';
+import { BaseResponse } from 'src/app/shared/services/models/base-response';
 import { QueryString } from 'src/app/shared/utils/query-string.extention';
-import { UserRequest } from '../create/model/user-request';
-import { CreateUserResponse } from '../create/model/create-user-response';
-import { LoginResponse } from '../enter/model/login-response.model';
+import { UserRequest } from './models/user/requests/user-request';
+import { CreateUserResponse } from './models/user/responses/create-user-response';
+import { LoginResponse } from './models/user/responses/login-response.model';
+import { InternalUpdatePasswordRequest } from './models/user/requests/internal-update-password.request.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class UserService {
 
   constructor(
     private http: HttpClient, 
@@ -40,6 +41,13 @@ export class LoginService {
 
     return this.http
       .post<CreateUserResponse>(url, request);
+  }
+
+  public updatePasswordInternal(request: InternalUpdatePasswordRequest) {
+    const url = `${this.appConfig.config?.url_api}api/user/password`;
+
+    return this.http
+      .put<BaseResponse>(url, request);
   }
 
   public sendToken(email: string) {

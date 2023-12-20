@@ -14,12 +14,10 @@ export class SessionUserService {
   get(): SessionUser{
     const decodedToken = this.decodeTokenJtw(localStorage.getItem(this.tokenKey)!);
 
-    let user: SessionUser = new SessionUser();
-
-    user.login = decodedToken?.login.toLowerCase();
-    user.name = decodedToken?.name;
-    user.userId = decodedToken?.userId;
-    user.scopes = decodedToken?.scopes ?? [];
+    let user: SessionUser = new SessionUser(
+      JSON.parse(decodedToken?.profile),
+      decodedToken?.scopes
+    );
 
     return user;
   }

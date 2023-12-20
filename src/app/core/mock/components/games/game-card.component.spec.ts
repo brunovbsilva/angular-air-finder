@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardOptions } from 'src/app/pages/games/game-list/game-card/create-game-dialog/models/card-options.model';
-import { GameCard } from 'src/app/pages/games/models/responses/get-list-response.model';
+import { GameCard } from 'src/app/shared/services/models/game/responses/get-list-response.model';
 
 @Component({
   selector: 'app-game-card',

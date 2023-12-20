@@ -4,7 +4,7 @@ import { finalize } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { InternalUpdatePasswordForm } from 'src/app/shared/form/components/internal-update-password/internal-update-password.form';
-import { ChangePasswordService } from './services/change-password.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-change-password-dialog',
@@ -18,7 +18,7 @@ export class ChangePasswordDialogComponent {
 
   constructor (
     public dialogRef: MatDialogRef<ChangePasswordDialogComponent>,
-    private service: ChangePasswordService,
+    private service: UserService,
     private _snackBar: MatSnackBar,
     private translate: TranslateService
   ) { }
@@ -41,7 +41,7 @@ export class ChangePasswordDialogComponent {
     }
       
     this.loading = true;
-    this.service.changePassword(this.updatePassword.getValues())
+    this.service.updatePasswordInternal(this.updatePassword.getValues())
       .pipe(finalize(() => this.loading = false))
       .subscribe({
         next: (res) => {

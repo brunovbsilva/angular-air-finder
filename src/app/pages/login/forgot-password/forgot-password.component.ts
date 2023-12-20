@@ -3,11 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { finalize } from 'rxjs';
-import { VerifyTokenRequest } from './model/verify-token-request.model';
-import { LoginService } from 'src/app/pages/login/services/login.service';
+import { VerifyTokenRequest } from '../../../shared/services/models/user/requests/verify-token-request.model';
+import { UserService } from 'src/app/shared/services/user.service';
 import { UpdatePasswordForm } from 'src/app/shared/form/components/update-password/update-password.form';
 import { CustomFormValidations } from 'src/app/shared/form/form-helpers/custom-form-validations';
-import { ChangePasswordRequest } from './model/change-password-request.model';
+import { ChangePasswordRequest } from '../../../shared/services/models/user/requests/change-password-request.model';
 
 @Component({
   selector: 'app-forgot-password',
@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor (
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: UserService
   ) 
   {
     this.form = this.fb.group({

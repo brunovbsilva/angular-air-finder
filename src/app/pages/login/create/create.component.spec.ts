@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { CreateComponent } from './create.component';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../../../shared/services/user.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
@@ -20,7 +20,7 @@ class LoginServiceMock {
 
 describe('CreateComponent', () => {
   let component: CreateComponent;
-  let loginService: LoginService;
+  let loginService: UserService;
   let fixture: ComponentFixture<CreateComponent>;
 
   beforeEach(async () => {
@@ -38,7 +38,7 @@ describe('CreateComponent', () => {
         FormsModule
       ],
       providers: [
-        { provide: LoginService, useClass: LoginServiceMock },
+        { provide: UserService, useClass: LoginServiceMock },
         { provide: TranslateService, useClass: TranslateServiceMock }
       ]
     })
@@ -46,7 +46,7 @@ describe('CreateComponent', () => {
 
     fixture = TestBed.createComponent(CreateComponent);
     component = fixture.componentInstance;
-    loginService = TestBed.inject(LoginService);
+    loginService = TestBed.inject(UserService);
     fixture.detectChanges();
   });
 

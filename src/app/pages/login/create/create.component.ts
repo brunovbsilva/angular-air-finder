@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/pages/login/services/login.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { finalize } from 'rxjs';
 import { CreateMapper } from './mapper/create.mapper';
 import { CredentialsForm } from 'src/app/shared/form/components/credentials/credentials.form';
@@ -29,7 +29,7 @@ export class CreateComponent {
 
   constructor (
     private router: Router,
-    private loginService: LoginService,
+    private loginService: UserService,
     private createMapper: CreateMapper
   ) {}
 

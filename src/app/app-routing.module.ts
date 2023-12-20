@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { GamesComponent } from './pages/games/games.component';
 import { AuthenticationService } from './core/security/services/authentication.service';
 import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
         children: [
           { path: '', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
         ]
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       },
       { path: '**', redirectTo: 'home' }
     ]

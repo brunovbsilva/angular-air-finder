@@ -9,8 +9,8 @@ import { InternalUpdatePasswordComponentSpec } from 'src/app/core/mock/forms/int
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ChangePasswordService } from './services/change-password.service';
-import { ChangePasswordServiceSpec } from './services/mock/change-password.service.spec';
+import { ChangePasswordService } from '../../../services/change-password.service';
+import { ChangePasswordServiceSpec } from '../../../services/mocks/change-password.service.spec';
 import { InternalUpdatePasswordForm } from 'src/app/shared/form/components/internal-update-password/internal-update-password.form';
 
 describe('ChangePasswordDialogComponent', () => {

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/security/services/authentication.service';
-import { LoginRequest } from './model/login-request.model';
-import { LoginService } from 'src/app/pages/login/services/login.service';
+import { LoginRequest } from '../../../shared/services/models/user/requests/login-request.model';
+import { UserService } from 'src/app/shared/services/user.service';
 import { finalize, tap } from 'rxjs';
 import { SessionUserService } from 'src/app/core/security/services/session-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class EnterComponent {
 
   constructor (
     private authenticationService: AuthenticationService,
-    private loginService: LoginService, 
+    private loginService: UserService, 
     private router: Router,
     private fb: FormBuilder,
     private sessionUser: SessionUserService

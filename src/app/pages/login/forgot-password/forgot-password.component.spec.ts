@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgotPasswordComponent } from './forgot-password.component';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../../../shared/services/user.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import TranslateServiceMock from 'src/app/core/mock/outer/translate.service.mock';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -11,14 +11,14 @@ import { KeysPipe } from 'src/app/shared/pipe/keys.pipe';
 import { UpdatePasswordComponentSpec } from 'src/app/core/mock/forms/update-password.component.spec';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginServiceSpec } from '../services/mock/login.service.spec';
+import { LoginServiceSpec } from '../../../shared/services/mocks/login.service.spec';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
-  let loginService: LoginService;
+  let loginService: UserService;
   let router: Router;
   let fixture: ComponentFixture<ForgotPasswordComponent>;
 
@@ -39,7 +39,7 @@ describe('ForgotPasswordComponent', () => {
         FormsModule
       ],
       providers: [
-        { provide: LoginService, useClass: LoginServiceSpec },
+        { provide: UserService, useClass: LoginServiceSpec },
         { provide: TranslateService, useClass: TranslateServiceMock }
       ]
     })
@@ -47,7 +47,7 @@ describe('ForgotPasswordComponent', () => {
 
     fixture = TestBed.createComponent(ForgotPasswordComponent);
     component = fixture.componentInstance;
-    loginService = TestBed.inject(LoginService);
+    loginService = TestBed.inject(UserService);
     router = TestBed.inject(Router);
     fixture.detectChanges();
   });

@@ -1,5 +1,5 @@
-import { BaseResponse } from "src/app/shared/models/response/base-response";
-import { GamePaymentStatus } from "../enums/game-payment-status.enum";
+import { BaseResponse } from "src/app/shared/services/models/base-response";
+import { GamePaymentStatus } from "../../../../../pages/games/models/enums/game-payment-status.enum";
 
 export class GetListResponse extends BaseResponse {
     games: GameCard[] = [];

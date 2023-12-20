@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConfigService } from 'src/app/app-config.service';
 import { QueryString } from 'src/app/shared/utils/query-string.extention';
-import { ListGamesRequest } from '../models/requests/list-games-request.model';
-import { GetListResponse } from '../models/responses/get-list-response.model';
-import { GetDetailsResponse } from '../models/responses/get-details-response.model';
-import { CreateGameRequest } from '../models/requests/create-game-request.model';
-import { BaseResponse } from 'src/app/shared/models/response/base-response';
-import { UpdateGameRequest } from '../models/requests/update-game-request.model';
-import { ValidateGameJoinRequest } from '../models/requests/validate-game-join-request.model';
+import { ListGamesRequest } from './models/game/requests/list-games-request.model';
+import { GetListResponse } from './models/game/responses/get-list-response.model';
+import { GetDetailsResponse } from './models/game/responses/get-details-response.model';
+import { CreateGameRequest } from './models/game/requests/create-game-request.model';
+import { BaseResponse } from 'src/app/shared/services/models/base-response';
+import { UpdateGameRequest } from './models/game/requests/update-game-request.model';
+import { ValidateGameJoinRequest } from './models/game/requests/validate-game-join-request.model';
 
 @Injectable({
   providedIn: 'root'

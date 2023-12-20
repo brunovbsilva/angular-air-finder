@@ -1,0 +1,7 @@
+<mat-card class="profile col-6">
+  <img class="profile-image" [src]="profile.imageUrl"/>
+  <span class="profile-name">{{ profile.name }}</span>
+  <span class="profile-email">{{ profile.email }}</span>
+  <input type="file" (change)="onFileSelected($event)"/>
+  <button mat-raised-button color="primary" (click)="updateImage()">UpdateImage</button>
+</mat-card>

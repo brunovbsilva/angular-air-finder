@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GameCardDialogComponent } from './game-card-dialog.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { GameDetails } from '../../../models/responses/get-details-response.model';
+import { GameDetails } from '../../../../../shared/services/models/game/responses/get-details-response.model';
 import { Battleground } from '../../../models/dtos/battleground.model';
 
 describe('GameCardDialogComponent', () => {

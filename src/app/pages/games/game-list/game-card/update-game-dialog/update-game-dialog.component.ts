@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
-import { UpdateGameRequest } from 'src/app/pages/games/models/requests/update-game-request.model';
-import { GameService } from 'src/app/pages/games/service/game.service';
+import { UpdateGameRequest } from 'src/app/shared/services/models/game/requests/update-game-request.model';
+import { GameService } from 'src/app/shared/services/game.service';
 import { CreateGameForm } from 'src/app/pages/games/game-list/game-card/forms/create-game/create-game.form';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GamePaymentStatus } from 'src/app/pages/games/models/enums/game-payment-status.enum';
 import { GameStatus } from 'src/app/pages/games/models/enums/game-status.enum';
-import { GameCard } from 'src/app/pages/games/models/responses/get-list-response.model';
+import { GameCard } from 'src/app/shared/services/models/game/responses/get-list-response.model';
 import { CardOptions } from './create-game-dialog/models/card-options.model';
 
 @Component({
