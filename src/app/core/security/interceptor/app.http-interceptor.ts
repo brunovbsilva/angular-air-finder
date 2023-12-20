@@ -26,7 +26,6 @@ export class AppHttpInterceptor implements HttpInterceptor {
     if (!request.context.get(skipBearerToken)) {
       request = request.clone({
         setHeaders: {
-          'Content-Type'   : 'application/json',
           'Authorization'  : `Bearer ${this.getToken()}`,
           'Accept-Language': this.getLang(),
         },

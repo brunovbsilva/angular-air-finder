@@ -12,13 +12,17 @@ export class AuthenticationService {
   constructor() { }
 
   login(token: string) {
-    localStorage.setItem(this.JWTKey, token);
+    this.updateToken(token);
     return this.isAuthenticated();
   }
 
   logout() {
     localStorage.removeItem(this.JWTKey);
     return this.isAuthenticated();
+  }
+
+  updateToken(token: string) {
+    localStorage.setItem(this.JWTKey, token);
   }
 
   isAuthenticated() {

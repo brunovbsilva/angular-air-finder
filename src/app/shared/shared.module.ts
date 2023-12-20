@@ -61,6 +61,7 @@ import { FileTypePipe } from './component/input-file/pipes/file-type.pipe';
     ItemListComponent,
     MiniIconButtonComponent,
     ConfirmDialogComponent,
+    UpdateProfileComponent,
     InputFileComponent,
     FileComponent,
     MessageComponent,

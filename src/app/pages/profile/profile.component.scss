@@ -10,6 +10,8 @@
   padding: 0.5rem;
   .profile-image {
     max-width: 300px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
     margin: 0.5rem auto;
   }
   

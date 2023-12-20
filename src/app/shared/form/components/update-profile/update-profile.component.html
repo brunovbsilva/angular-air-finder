@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <mat-form-field class="form-field">
+    <mat-label>{{ 'FormFields.Label.Name' | translate }}</mat-label>
+    <input matInput formControlName="name"
+      type="text"
+      [placeholder]="'FormFields.Placeholder.Name' | translate"
+      autocomplete="name">
+    <mat-error *ngFor="let error of form.name.errors | keys">
+      {{ 'FormFields.Validators.'+error | translate }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>{{ 'FormFields.Label.Email' | translate }}</mat-label>
+    <input matInput formControlName="email"
+      type="email"
+      [placeholder]="'FormFields.Placeholder.Email' | translate"
+      autocomplete="email">
+    <mat-error *ngFor="let error of form.email.errors | keys">
+      {{ 'FormFields.Validators.'+error | translate }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>{{ 'FormFields.Label.Phone' | translate }}</mat-label>
+    <input matInput formControlName="phone"
+      type="text"
+      [placeholder]="'FormFields.Placeholder.Phone' | translate"
+      autocomplete="off">
+    <mat-error *ngFor="let error of form.phone.errors | keys">
+      {{ 'FormFields.Validators.'+error | translate }}
+    </mat-error>
+  </mat-form-field>
+  <app-input-file [form]="form" name="image" [maxLength]="1" [allowedTypes]="allowedTypes"></app-input-file>
+</form>
