@@ -1,0 +1,15 @@
+@import '../../../../../assets/sass/style';
+
+.message {
+  display: flex;
+  align-items: center;
+  .message-label {
+    @include M_Body_1;
+    color: $CS_Info_RED_100;
+    margin: 10px;
+
+    &.success {
+      color: $CS_Info_GREEN_100;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<label class="title">
+    {{ texts?.labels?.title }}
+    <span class="is-required" *ngIf="isRequired">*</span>
+  </label>
+  
+  <div [formGroup]="internalForm" class="content">
+    <input id="file-input" type="file" multiple name="file" (change)="onFileChange($event)"
+      (dragenter)="setDragover(true)" (dragleave)="setDragover(false)" (drop)="setDragover(false)"
+      [ngClass]="{ 'is-dragover': _isDragover }"
+      title=" " #form
+      [formControlName]="name" class="hidden-input"/>
+  
+    <div class="file-content">
+      <div class="files no-select" *ngIf="!_isDragover && _files.length != 0">
+        <app-file [@show-hide]
+          *ngFor="let file of _files" class="file"
+          [file]="file" (onRemove)="removeFile($event)">
+        </app-file>
+      </div>
+      <span [@dragover]="_isDragover ? 'over' : 'out'"
+        class="drag-and-drop-content no-select" *ngIf="_isDragover || _files.length == 0"
+        [ngClass]="{ 'is-dragover': _isDragover }">
+        {{ texts?.labels?.dragAndDrop }}
+      </span>
+      <span class="length-count no-select">{{ _files.length + '/' + maxLength }}</span>
+    </div>
+  </div>
+  <button mat-button (click)="form.click()">{{ texts?.labels?.searchFile! }}</button>
+  <button mat-button *ngIf="_files.length > 0" (click)="removeAllFiles()">{{ texts?.labels?.clearFiles! }}</button>
+  
+  <app-message #message></app-message>
+  

@@ -1,0 +1,76 @@
+.title {
+  color: grey;
+  margin-bottom: 10px;
+  .is-required {
+    color: gray;
+  }
+}
+
+.content {
+  position: relative;
+  width: auto;
+  height: 200px;
+
+  .hidden-input {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+    &.is-dragover {
+      z-index: 3;
+    }
+    &:hover {
+      pointer-events: none;
+    }
+  }
+
+  .file-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed gray;
+    border-radius: 6px;
+    .files,
+    .drag-and-drop-content {
+      position: relative;
+      left: 0px;
+      padding: 0 15px 0 18px;
+      height: 100%;
+      width: 100%;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: gray;
+      text-wrap: nowrap;
+      .file {
+        z-index: 2;
+      }
+    }
+    .length-count {
+      position: absolute;
+      bottom: 2px;
+      right: 5px;
+      color: gray;
+    }
+  }
+}
+  
+.button-content {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

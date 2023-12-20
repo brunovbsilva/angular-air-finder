@@ -15,6 +15,11 @@ import { ChangePasswordDialogComponent } from './component/dialogs/change-passwo
 import { ItemListComponent } from './component/item-list/item-list.component';
 import { MiniIconButtonComponent } from './component/mini-icon-button/mini-icon-button.component';
 import { ConfirmDialogComponent } from './component/dialogs/confirm-dialog/confirm-dialog.component';
+import { UpdateProfileComponent } from './form/components/update-profile/update-profile.component';
+import { InputFileComponent } from './component/input-file/input-file.component';
+import { FileComponent } from './component/input-file/file/file.component';
+import { MessageComponent } from './component/input-file/message/message.component';
+import { FileTypePipe } from './component/input-file/pipes/file-type.pipe';
 
 @NgModule({
   imports: [
@@ -23,7 +28,8 @@ import { ConfirmDialogComponent } from './component/dialogs/confirm-dialog/confi
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxScannerQrcodeModule
+    NgxScannerQrcodeModule,
+    MaterialModule
   ],
   exports: [
     CommonModule,
@@ -40,6 +46,8 @@ import { ConfirmDialogComponent } from './component/dialogs/confirm-dialog/confi
     ConfirmDialogComponent,
     MiniIconButtonComponent,
     ItemListComponent,
+    UpdateProfileComponent,
+    InputFileComponent
   ],
   declarations: [
     KeysPipe,
@@ -52,7 +60,14 @@ import { ConfirmDialogComponent } from './component/dialogs/confirm-dialog/confi
     EmptyListComponent,
     ItemListComponent,
     MiniIconButtonComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    InputFileComponent,
+    FileComponent,
+    MessageComponent,
+    FileTypePipe
+  ],
+  providers: [
+    FileTypePipe
   ]
 })
 export class SharedModule { }

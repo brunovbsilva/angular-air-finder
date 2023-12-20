@@ -1,0 +1,9 @@
+<div class="content">
+  <div class="file-icon" [matTooltip]="file!.name" matTooltipPosition="above" [matTooltipDisabled]="!file">
+    <img src="../../../../../assets/images/components/input-file/file-icon.svg" alt="" />
+    <div class="remove-file-button" (click)="removeFile($event)">
+      <img src="../../../../../assets/images/components/input-file/remove-file-icon.svg" alt="" />
+    </div>
+  </div>
+  <span class="file-name">{{ file!.name }}</span>
+</div>

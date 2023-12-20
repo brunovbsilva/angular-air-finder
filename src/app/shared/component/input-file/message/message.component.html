@@ -1,0 +1,4 @@
+<div class="message" *ngIf="showEvent | async">
+  <img [src]="'assets/images/components/input-file/' + ( success ? 'success' : 'warn' ) + '-icon.svg'" alt="" />
+  <label class="message-label" [ngClass]="{ 'success' : success }">{{ message }}</label>
+</div>
